@@ -587,41 +587,49 @@
         }
 
         /* COMPARISON TABLE */
+        .comparison-table-wrap {
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            margin: 40px 0;
+            border-radius: var(--radius-lg);
+        }
+
         .comparison-table {
             width: 100%;
             border-collapse: collapse;
-            margin: 40px 0;
             background: var(--card-bg);
             border-radius: var(--radius-lg);
             overflow: hidden;
+            min-width: 420px;
         }
 
         .comparison-table th,
         .comparison-table td {
-            padding: 16px 20px;
+            padding: 14px 16px;
             text-align: left;
             border-bottom: 1px solid rgba(255,255,255,0.1);
+            font-size: 0.95rem;
         }
 
         .comparison-table th {
             background: rgba(14, 165, 233, 0.2);
             font-family: 'Orbitron', sans-serif;
-            font-size: 1rem;
+            font-size: 0.85rem;
             color: #fff;
         }
 
         .comparison-table th:first-child {
-            width: 40%;
+            width: 35%;
         }
 
         .comparison-table .check {
             color: #10B981;
-            font-size: 1.2rem;
+            font-size: 1.1rem;
         }
 
         .comparison-table .cross {
             color: #EF4444;
-            font-size: 1.2rem;
+            font-size: 1.1rem;
         }
 
         .comparison-table tr:last-child td {
@@ -630,6 +638,73 @@
 
         .comparison-table tr:hover {
             background: rgba(14, 165, 233, 0.05);
+        }
+
+        /* MOBILE — card layout */
+        @media (max-width: 600px) {
+            .comparison-table-wrap {
+                overflow-x: visible;
+            }
+            .comparison-table,
+            .comparison-table thead,
+            .comparison-table tbody,
+            .comparison-table th,
+            .comparison-table td,
+            .comparison-table tr {
+                display: block;
+            }
+            .comparison-table thead tr {
+                display: none;
+            }
+            .comparison-table tbody tr {
+                background: var(--card-bg);
+                border: 1px solid rgba(14, 165, 233, 0.2);
+                border-radius: 12px;
+                margin-bottom: 12px;
+                padding: 12px;
+                min-width: unset;
+            }
+            .comparison-table td {
+                border-bottom: none;
+                padding: 6px 8px;
+                font-size: 0.9rem;
+                position: relative;
+            }
+            .comparison-table td::before {
+                content: attr(data-label);
+                display: block;
+                font-size: 0.7rem;
+                font-weight: 700;
+                text-transform: uppercase;
+                color: var(--text-gray);
+                letter-spacing: 0.05em;
+                margin-bottom: 2px;
+            }
+            .comparison-table td[data-label="Funkcja"] {
+                font-weight: 700;
+                color: #fff;
+                font-size: 1rem;
+                border-bottom: 1px solid rgba(255,255,255,0.08);
+                margin-bottom: 8px;
+                padding-bottom: 10px;
+            }
+            .comparison-table td[data-label="Funkcja"]::before {
+                display: none;
+            }
+            .comparison-table td.cross,
+            .comparison-table td.check {
+                display: inline-block;
+                width: 48%;
+                vertical-align: top;
+                border-radius: 8px;
+                padding: 8px;
+            }
+            .comparison-table td.cross {
+                background: rgba(239, 68, 68, 0.08);
+            }
+            .comparison-table td.check {
+                background: rgba(16, 185, 129, 0.08);
+            }
         }
 
         /* TESTIMONIALS */
@@ -1180,7 +1255,7 @@
         <div class="container">
             <div class="urgency-bar rv-h" style="border-color: #F59E0B; background: linear-gradient(90deg, rgba(245, 158, 11, 0.2), rgba(245, 158, 11, 0.05));">
                 <p class="urgency-text">⚠️ FAZA WALIDACJI: PRZYJMUJĘ TYLKO 5 LABORATORIÓW PILOTOWYCH</p>
-                <p style="color: var(--text-gray); margin-top: 12px;">Jako laboratorium pilotowe otrzymujesz: <strong>darmowe wdrożenie (wartość 3000 zł), darmowe utrzymanie przez 3 miesiące, bezpośredni wpływ na rozwój funkcji.</strong> W zamian: feedback i case study.</p>
+                <p style="color: var(--text-gray); margin-top: 12px;">Jako laboratorium pilotowe otrzymujesz: <strong>darmowe wdrożenie (wartość 20 000 zł), darmowe utrzymanie przez 3 miesiące, bezpośredni wpływ na rozwój funkcji.</strong> W zamian: feedback i case study.</p>
             </div>
         </div>
     </section>
@@ -1331,57 +1406,59 @@
     <section class="section" style="background: rgba(14, 165, 233, 0.05);">
         <div class="container">
             <h2 class="rv-h" style="text-align: center; margin-bottom: 40px;">Porównanie: Przed i Po Wdrożeniu</h2>
-            <table class="comparison-table rv-h">
+            <div class="comparison-table-wrap rv-h">
+            <table class="comparison-table">
                 <thead>
                     <tr>
                         <th>Funkcja</th>
-                        <th>Tradycyjny Obieg</th>
-                        <th>Cyfrowy Obieg AI Lab</th>
+                        <th>❌ Tradycyjny Obieg</th>
+                        <th>✅ Cyfrowy Obieg</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <td>Rejestracja próbki</td>
-                        <td class="cross">2-3h ręcznego przepisywania</td>
-                        <td class="check">2 min na tablecie</td>
+                        <td data-label="Funkcja">Rejestracja próbki</td>
+                        <td class="cross" data-label="Tradycyjny Obieg">2-3h ręcznego przepisywania</td>
+                        <td class="check" data-label="Cyfrowy Obieg">2 min na tablecie</td>
                     </tr>
                     <tr>
-                        <td>Podpis klienta</td>
-                        <td class="cross">Fizyczny, czeka kurier</td>
-                        <td class="check">E-podpis na ekranie</td>
+                        <td data-label="Funkcja">Podpis klienta</td>
+                        <td class="cross" data-label="Tradycyjny Obieg">Fizyczny, czeka kurier</td>
+                        <td class="check" data-label="Cyfrowy Obieg">E-podpis na ekranie</td>
                     </tr>
                     <tr>
-                        <td>Identyfikacja</td>
-                        <td class="cross">Ręczne naklejki</td>
-                        <td class="check">QR kod z automatu</td>
+                        <td data-label="Funkcja">Identyfikacja</td>
+                        <td class="cross" data-label="Tradycyjny Obieg">Ręczne naklejki</td>
+                        <td class="check" data-label="Cyfrowy Obieg">QR kod z automatu</td>
                     </tr>
                     <tr>
-                        <td>Wyniki</td>
-                        <td class="cross">3-5 dni, ręczne PDF</td>
-                        <td class="check">24h, auto-generowanie</td>
+                        <td data-label="Funkcja">Wyniki</td>
+                        <td class="cross" data-label="Tradycyjny Obieg">3-5 dni, ręczne PDF</td>
+                        <td class="check" data-label="Cyfrowy Obieg">24h, auto-generowanie</td>
                     </tr>
                     <tr>
-                        <td>Archiwizacja</td>
-                        <td class="cross">Papiery w szafach</td>
-                        <td class="check">Chmura, wyszukiwarka</td>
+                        <td data-label="Funkcja">Archiwizacja</td>
+                        <td class="cross" data-label="Tradycyjny Obieg">Papiery w szafach</td>
+                        <td class="check" data-label="Cyfrowy Obieg">Chmura, wyszukiwarka</td>
                     </tr>
                     <tr>
-                        <td>Dostęp klienta</td>
-                        <td class="cross">Telefon/mail</td>
-                        <td class="check">Panel 24/7</td>
+                        <td data-label="Funkcja">Dostęp klienta</td>
+                        <td class="cross" data-label="Tradycyjny Obieg">Telefon/mail</td>
+                        <td class="check" data-label="Cyfrowy Obieg">Panel 24/7</td>
                     </tr>
                     <tr>
-                        <td>Błędy danych</td>
-                        <td class="cross">Częste (przepisywanie)</td>
-                        <td class="check">0 (automatyczne)</td>
+                        <td data-label="Funkcja">Błędy danych</td>
+                        <td class="cross" data-label="Tradycyjny Obieg">Częste (przepisywanie)</td>
+                        <td class="check" data-label="Cyfrowy Obieg">0 (automatyczne)</td>
                     </tr>
                     <tr>
-                        <td>Czas obsługi</td>
-                        <td class="cross">15h/tydzień</td>
-                        <td class="check">2h/tydzień</td>
+                        <td data-label="Funkcja">Czas obsługi</td>
+                        <td class="cross" data-label="Tradycyjny Obieg">15h/tydzień</td>
+                        <td class="check" data-label="Cyfrowy Obieg">2h/tydzień</td>
                     </tr>
                 </tbody>
             </table>
+            </div>
             <div style="text-align: center; margin-top: 32px;">
                 <a href="#kontakt" class="cta-primary rv-h">CHCĘ CYFROWY OBIEG W MOIM LABORATORIUM</a>
             </div>
