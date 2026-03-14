@@ -1,0 +1,1979 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>AI Biznes Lab | Cyfrowy Obieg Dokumentów w Laboratorium — Automatyzacja od Podstaw</title>
+
+    <meta name="description" content="Zautomatyzuj obieg dokumentów w laboratorium. QR kody, e-podpisy, automatyczne wyniki. Oszczędź 15h/tydzień. Gwarancja 30 dni, wdrożenie w 7 dni.">
+
+    <meta name="keywords" content="cyfrowy obieg dokumentów, laboratoria, QR kody, automatyzacja, e-podpisy, AI Biznes Lab, Mirek Burneiko, digitalizacja">
+
+    <link rel="canonical" href="https://adriansga.github.io/Labsolutions/">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="Adrian Sga, AI Biznes Lab">
+    <meta name="theme-color" content="#0EA5E9">
+    <link rel="sitemap" type="application/xml" href="sitemap.xml">
+
+    <!-- OPEN GRAPH -->
+    <meta property="og:title" content="AI Biznes Lab — Cyfrowy Obieg Dokumentów w Laboratorium | Wdrożenie w 7 Dni">
+    <meta property="og:description" content="Koniec z ręcznym rejestrowaniem próbek. QR kody, e-podpisy, automatyczne wyniki. 15h oszczędności tygodniowo. 30 dni gwarancji.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://adriansga.github.io/Labsolutions/">
+    <meta property="og:image" content="https://adriansga.github.io/Labsolutions/og-image.jpg">
+    <meta property="og:locale" content="pl_PL">
+    <meta property="og:site_name" content="AI Biznes Lab">
+
+    <!-- TWITTER CARD -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="AI Biznes Lab — Cyfrowy Obieg Dokumentów | Wdrożenie w 7 Dni">
+    <meta name="twitter:description" content="Zautomatyzuj laboratorium: QR kody, e-podpisy, automatyczne wyniki. Oszczędź 15h/tydzień. 30 dni gwarancji.">
+    <meta name="twitter:image" content="https://adriansga.github.io/Labsolutions/og-image.jpg">
+
+    <!-- FONTY -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" as="style"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Orbitron:wght@700;900&display=swap"
+        onload="this.onload=null;this.rel='stylesheet'">
+    <noscript>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Orbitron:wght@700;900&display=swap">
+    </noscript>
+
+    <!-- SCHEMA.ORG FAQPage -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "Jak długo trwa wdrożenie systemu?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Pełne wdrożenie zajmuje 7-14 dni roboczych. Dzień 1-3: konfiguracja i integracja. Dzień 4-7: szkolenie zespołu i testy. Dzień 8-14: wsparcie powdrożeniowe."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Czy potrzebne są specjalne urządzenia?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Wystarczą standardowe tablety (iOS/Android) i drukarka etykiet z kodami QR. Nie wymagamy specjalistycznego sprzętu."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Czy system integruje się z istniejącym oprogramowaniem?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Tak, integrujemy się z większością popularnych systemów LIMS. Zapewniamy API do integracji z niestandardowymi rozwiązaniami."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Jak wygląda gwarancja i wsparcie?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Oferujemy 30-dniową gwarancję satysfakcji. W cenie: wsparcie techniczne 24/7, aktualizacje, backup danych."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Czy dane są bezpieczne?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Tak. Szyfrowanie AES-256, backup w czasie rzeczywistym, zgodność z RODO, certyfikaty ISO 27001."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Ile kosztuje wdrożenie?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Pakiet Start: 4997 PLN (do 5 użytkowników). Pakiet Pro: 9997 PLN (do 20 użytkowników). Pakiet Enterprise: indywidualna wycena."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Czy jest możliwość wypróbowania przed zakupem?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Tak! Oferujemy 14-dniowy darmowy trial z pełną funkcjonalnością. Bez karty kredytowej."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Jak wygląda szkolenie zespołu?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Szkolenie online (2h) + materiały wideo + dokumentacja. Możliwość szkolenia stacjonarnego (dodatkowo płatne)."
+                }
+            }
+        ]
+    }
+    </script>
+
+    <!-- SCHEMA.ORG Organization + Products -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@graph": [
+            {
+                "@type": "Organization",
+                "name": "AI Biznes Lab",
+                "url": "https://adriansga.github.io/Labsolutions/",
+                "logo": "https://adriansga.github.io/Labsolutions/og-image.jpg",
+                "email": "kontakt@ailab.pl",
+                "address": {
+                    "@type": "PostalAddress",
+                    "addressLocality": "Nowy Sącz",
+                    "addressCountry": "PL"
+                },
+                "founder": {
+                    "@type": "Person",
+                    "name": "Mirek Burneiko"
+                }
+            },
+            {
+                "@type": "Product",
+                "name": "Cyfrowy Obieg Dokumentów — Pakiet Start",
+                "description": "Kompletny system cyfrowego obiegu dokumentów dla laboratoriów. QR kody, e-podpisy, automatyczne wyniki.",
+                "offers": {
+                    "@type": "Offer",
+                    "price": "4997",
+                    "priceCurrency": "PLN",
+                    "availability": "https://schema.org/InStock"
+                },
+                "aggregateRating": {
+                    "@type": "AggregateRating",
+                    "ratingValue": "4.9",
+                    "reviewCount": "47"
+                }
+            },
+            {
+                "@type": "Product",
+                "name": "Cyfrowy Obieg Dokumentów — Pakiet Pro",
+                "description": "Rozszerzona wersja dla średnich laboratoriów. Do 20 użytkowników, pełna integracja LIMS.",
+                "offers": {
+                    "@type": "Offer",
+                    "price": "9997",
+                    "priceCurrency": "PLN",
+                    "availability": "https://schema.org/InStock"
+                }
+            }
+        ]
+    }
+    </script>
+
+    <style>
+        :root {
+            --primary: #0EA5E9;
+            --primary-glow: rgba(14, 165, 233, 0.4);
+            --accent: #F59E0B;
+            --bg-dark: #050507;
+            --card-bg: #111118;
+            --text-main: #e0e0e0;
+            --text-gray: #888899;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --radius-sm: 8px;
+            --radius-md: 12px;
+            --radius-lg: 16px;
+            --spacing-xs: 8px;
+            --spacing-sm: 16px;
+            --spacing-md: 24px;
+            --spacing-lg: 40px;
+            --spacing-xl: 60px;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+
+        @media (prefers-reduced-motion: reduce) {
+            html { scroll-behavior: auto; }
+            .rv-h { transition: none !important; opacity: 1 !important; transform: none !important; }
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg-dark);
+            color: var(--text-main);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        h1, h2, h3, h4, h5 {
+            font-family: 'Orbitron', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            line-height: 1.2;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .section {
+            padding: 80px 0;
+            border-bottom: 1px solid #111;
+            content-visibility: auto;
+            contain-intrinsic-size: 0 600px;
+        }
+
+        /* REVEAL ANIMATIONS */
+        .rv-h {
+            opacity: 0;
+            transform: translateY(28px);
+            transition: opacity 0.65s ease, transform 0.65s ease;
+            will-change: opacity, transform;
+        }
+
+        /* NAVIGATION */
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(5, 5, 7, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(14, 165, 233, 0.2);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .nav-logo {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 900;
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        .nav-desktop {
+            display: flex;
+            gap: 24px;
+            align-items: center;
+        }
+
+        .nav-desktop a {
+            color: var(--text-main);
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+
+        .nav-desktop a:hover {
+            color: var(--primary);
+        }
+
+        .nav-cta {
+            background: var(--primary);
+            color: white;
+            padding: 10px 20px;
+            border-radius: var(--radius-sm);
+            font-weight: 600;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .nav-cta:hover {
+            background: #0284C7;
+            transform: translateY(-2px);
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            background: none;
+            border: none;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background: var(--primary);
+            transition: var(--transition);
+        }
+
+        .mobile-nav {
+            display: none;
+            position: fixed;
+            top: 60px;
+            left: 0;
+            right: 0;
+            background: var(--bg-dark);
+            padding: 20px;
+            border-bottom: 1px solid rgba(14, 165, 233, 0.2);
+            z-index: 999;
+        }
+
+        .mobile-nav.open {
+            display: block;
+        }
+
+        .mobile-nav a {
+            display: block;
+            color: var(--text-main);
+            text-decoration: none;
+            padding: 12px 0;
+            font-weight: 600;
+            border-bottom: 1px solid #111;
+        }
+
+        /* HERO SECTION */
+        .hero {
+            padding-top: 140px;
+            padding-bottom: 80px;
+            background: radial-gradient(ellipse at top, rgba(14, 165, 233, 0.15), transparent 60%);
+        }
+
+        .hero-pre {
+            color: var(--accent);
+            font-weight: 800;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 16px;
+        }
+
+        .hero h1 {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #fff, var(--primary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-sub {
+            font-size: 1.2rem;
+            color: var(--text-gray);
+            max-width: 700px;
+            margin-bottom: 32px;
+            line-height: 1.8;
+        }
+
+        .cta-primary {
+            background: var(--primary);
+            color: white;
+            padding: 18px 40px;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-block;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 0 20px var(--primary-glow);
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .cta-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px var(--primary-glow);
+            background: #0284C7;
+        }
+
+        .cta-primary::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.5s;
+        }
+
+        .cta-primary:hover::before {
+            left: 100%;
+        }
+
+        .trust-bar {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 24px;
+            margin-top: 40px;
+            padding-top: 32px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .trust-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--text-gray);
+            font-size: 0.9rem;
+        }
+
+        .trust-item svg {
+            width: 20px;
+            height: 20px;
+            fill: var(--primary);
+        }
+
+        /* STATS BAR */
+        .stats-bar {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 24px;
+            padding: 40px 0;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 24px;
+            background: var(--card-bg);
+            border-radius: var(--radius-lg);
+            border: 1px solid rgba(14, 165, 233, 0.2);
+        }
+
+        .stat-num {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: var(--primary);
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        .stat-label {
+            color: var(--text-gray);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        /* URGENCY BAR */
+        .urgency-bar {
+            background: linear-gradient(90deg, rgba(245, 158, 11, 0.2), rgba(245, 158, 11, 0.05));
+            border: 1px solid var(--accent);
+            border-radius: var(--radius-md);
+            padding: 20px;
+            text-align: center;
+            margin: 40px 0;
+        }
+
+        .urgency-text {
+            color: var(--accent);
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+
+        .countdown {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2rem;
+            color: #fff;
+        }
+
+        /* CARDS */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+            margin-top: 40px;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border-radius: var(--radius-lg);
+            padding: 32px;
+            border: 1px solid rgba(14, 165, 233, 0.2);
+            transition: var(--transition);
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+            border-color: var(--primary);
+            box-shadow: 0 15px 40px rgba(14, 165, 233, 0.2);
+        }
+
+        .card-icon {
+            width: 60px;
+            height: 60px;
+            background: rgba(14, 165, 233, 0.2);
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .card-icon svg {
+            width: 32px;
+            height: 32px;
+            fill: var(--primary);
+        }
+
+        .card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 12px;
+            color: #fff;
+        }
+
+        .card p {
+            color: var(--text-gray);
+            line-height: 1.7;
+        }
+
+        .card ul {
+            list-style: none;
+            margin-top: 16px;
+        }
+
+        .card ul li {
+            padding: 8px 0;
+            padding-left: 24px;
+            position: relative;
+            color: var(--text-main);
+        }
+
+        .card ul li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--primary);
+            font-weight: 700;
+        }
+
+        /* BENTO GRID */
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: repeat(2, 300px);
+            gap: 20px;
+            margin-top: 40px;
+        }
+
+        .bento-item {
+            background: var(--card-bg);
+            border-radius: var(--radius-lg);
+            padding: 32px;
+            border: 1px solid rgba(14, 165, 233, 0.2);
+            transition: var(--transition);
+        }
+
+        .bento-item:hover {
+            border-color: var(--primary);
+        }
+
+        .bento-item.large {
+            grid-column: span 2;
+        }
+
+        .bento-item.tall {
+            grid-row: span 2;
+        }
+
+        .bento-item h3 {
+            font-size: 1.3rem;
+            margin-bottom: 12px;
+        }
+
+        .bento-item p {
+            color: var(--text-gray);
+            margin-bottom: 16px;
+        }
+
+        .bento-tag {
+            display: inline-block;
+            background: rgba(14, 165, 233, 0.2);
+            color: var(--primary);
+            padding: 6px 12px;
+            border-radius: var(--radius-sm);
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        /* COMPARISON TABLE */
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 40px 0;
+            background: var(--card-bg);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+        }
+
+        .comparison-table th,
+        .comparison-table td {
+            padding: 16px 20px;
+            text-align: left;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .comparison-table th {
+            background: rgba(14, 165, 233, 0.2);
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1rem;
+            color: #fff;
+        }
+
+        .comparison-table th:first-child {
+            width: 40%;
+        }
+
+        .comparison-table .check {
+            color: #10B981;
+            font-size: 1.2rem;
+        }
+
+        .comparison-table .cross {
+            color: #EF4444;
+            font-size: 1.2rem;
+        }
+
+        .comparison-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .comparison-table tr:hover {
+            background: rgba(14, 165, 233, 0.05);
+        }
+
+        /* TESTIMONIALS */
+        .testimonial-card {
+            background: var(--card-bg);
+            border-radius: var(--radius-lg);
+            padding: 32px;
+            border: 1px solid rgba(14, 165, 233, 0.2);
+        }
+
+        .testimonial-stars {
+            color: var(--accent);
+            font-size: 1.2rem;
+            margin-bottom: 16px;
+        }
+
+        .testimonial-text {
+            font-size: 1rem;
+            line-height: 1.7;
+            margin-bottom: 20px;
+            color: var(--text-main);
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .testimonial-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            color: #fff;
+        }
+
+        .testimonial-info strong {
+            display: block;
+            color: #fff;
+            margin-bottom: 4px;
+        }
+
+        .testimonial-info span {
+            color: var(--text-gray);
+            font-size: 0.85rem;
+        }
+
+        /* PRICING */
+        .pricing-card {
+            background: var(--card-bg);
+            border-radius: var(--radius-lg);
+            padding: 40px;
+            border: 2px solid rgba(14, 165, 233, 0.2);
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .pricing-card:hover {
+            border-color: var(--primary);
+            transform: translateY(-8px);
+        }
+
+        .pricing-card.featured {
+            border-color: var(--primary);
+            box-shadow: 0 0 40px rgba(14, 165, 233, 0.3);
+        }
+
+        .pricing-badge {
+            position: absolute;
+            top: -12px;
+            right: 20px;
+            background: var(--accent);
+            color: #000;
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-weight: 700;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+        }
+
+        .pricing-name {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.3rem;
+            color: #fff;
+            margin-bottom: 8px;
+        }
+
+        .pricing-price {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 3rem;
+            font-weight: 900;
+            color: var(--primary);
+            margin-bottom: 8px;
+        }
+
+        .pricing-price span {
+            font-size: 1rem;
+            color: var(--text-gray);
+            font-weight: 400;
+        }
+
+        .pricing-desc {
+            color: var(--text-gray);
+            margin-bottom: 24px;
+        }
+
+        .pricing-features {
+            list-style: none;
+            margin-bottom: 32px;
+        }
+
+        .pricing-features li {
+            padding: 10px 0;
+            padding-left: 28px;
+            position: relative;
+            color: var(--text-main);
+        }
+
+        .pricing-features li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #10B981;
+            font-weight: 700;
+        }
+
+        .roi-tag {
+            display: block;
+            background: rgba(245, 158, 11, 0.2);
+            color: var(--accent);
+            padding: 12px;
+            border-radius: var(--radius-sm);
+            text-align: center;
+            font-weight: 600;
+            margin-top: 16px;
+        }
+
+        /* FAQ */
+        .faq-item {
+            background: var(--card-bg);
+            border-radius: var(--radius-md);
+            margin-bottom: 16px;
+            border: 1px solid rgba(14, 165, 233, 0.2);
+            overflow: hidden;
+        }
+
+        .faq-question {
+            width: 100%;
+            padding: 20px 24px;
+            background: none;
+            border: none;
+            text-align: left;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1rem;
+            color: #fff;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: var(--transition);
+        }
+
+        .faq-question:hover {
+            background: rgba(14, 165, 233, 0.1);
+        }
+
+        .faq-question::after {
+            content: '+';
+            font-size: 1.5rem;
+            color: var(--primary);
+            transition: var(--transition);
+        }
+
+        .faq-item.active .faq-question::after {
+            content: '−';
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 300px;
+        }
+
+        .faq-answer-content {
+            padding: 0 24px 20px;
+            color: var(--text-gray);
+            line-height: 1.7;
+        }
+
+        /* FORM */
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-label {
+            display: block;
+            color: #fff;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .form-input,
+        .form-select,
+        .form-textarea {
+            width: 100%;
+            padding: 14px 16px;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(14, 165, 233, 0.3);
+            border-radius: var(--radius-sm);
+            color: #fff;
+            font-family: 'Inter', sans-serif;
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+
+        .form-input:focus,
+        .form-select:focus,
+        .form-textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(14, 165, 233, 0.2);
+        }
+
+        .form-textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .form-helper {
+            color: var(--text-gray);
+            font-size: 0.85rem;
+            margin-top: 6px;
+        }
+
+        .form-success,
+        .form-error {
+            padding: 16px;
+            border-radius: var(--radius-sm);
+            margin-top: 20px;
+            display: none;
+        }
+
+        .form-success {
+            background: rgba(16, 185, 129, 0.2);
+            border: 1px solid #10B981;
+            color: #10B981;
+        }
+
+        .form-error {
+            background: rgba(239, 68, 68, 0.2);
+            border: 1px solid #EF4444;
+            color: #EF4444;
+        }
+
+        /* FOOTER */
+        .footer {
+            padding: 60px 0 30px;
+            background: #020203;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-col h4 {
+            color: #fff;
+            margin-bottom: 16px;
+            font-size: 1rem;
+        }
+
+        .footer-col ul {
+            list-style: none;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-col a {
+            color: var(--text-gray);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-col a:hover {
+            color: var(--primary);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid #111;
+            color: var(--text-gray);
+            font-size: 0.9rem;
+        }
+
+        /* FLOATING CTA */
+        .float-cta {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 900;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(20px);
+            transition: var(--transition);
+        }
+
+        .float-cta.visible {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        /* PROGRESS BAR */
+        #progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 3px;
+            background: var(--primary);
+            z-index: 1001;
+            transition: width 0.1s;
+        }
+
+        /* COOKIE BANNER */
+        .cookie-banner {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            right: 20px;
+            max-width: 400px;
+            background: var(--card-bg);
+            border: 1px solid rgba(14, 165, 233, 0.3);
+            border-radius: var(--radius-lg);
+            padding: 20px;
+            z-index: 950;
+            display: none;
+        }
+
+        .cookie-banner.show {
+            display: block;
+        }
+
+        .cookie-text {
+            color: var(--text-gray);
+            font-size: 0.9rem;
+            margin-bottom: 16px;
+        }
+
+        .cookie-buttons {
+            display: flex;
+            gap: 12px;
+        }
+
+        .cookie-btn {
+            flex: 1;
+            padding: 12px;
+            border-radius: var(--radius-sm);
+            font-weight: 600;
+            cursor: pointer;
+            border: none;
+            transition: var(--transition);
+        }
+
+        .cookie-btn-primary {
+            background: var(--primary);
+            color: #fff;
+        }
+
+        .cookie-btn-secondary {
+            background: transparent;
+            color: var(--text-gray);
+            border: 1px solid rgba(14, 165, 233, 0.3);
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 900px) {
+            .bento-grid {
+                grid-template-columns: 1fr;
+                grid-template-rows: auto;
+            }
+            .bento-item.large,
+            .bento-item.tall {
+                grid-column: span 1;
+                grid-row: span 1;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-desktop {
+                display: none;
+            }
+            .hamburger {
+                display: flex;
+            }
+            .hero {
+                padding-top: 120px;
+            }
+            .stats-bar {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 600px) {
+            .stats-bar {
+                grid-template-columns: 1fr;
+            }
+            .stat-num {
+                font-size: 2rem;
+            }
+            .float-cta {
+                bottom: 80px;
+                right: 20px;
+            }
+            .cookie-banner {
+                left: 10px;
+                right: 10px;
+                max-width: none;
+            }
+        }
+
+        /* LOADING STATE */
+        .cta-primary.loading {
+            pointer-events: none;
+            opacity: 0.7;
+        }
+
+        .cta-primary.loading::after {
+            content: ' Wysyłanie...';
+        }
+    </style>
+</head>
+<body>
+    <!-- PROGRESS BAR -->
+    <div id="progress-bar" style="width: 0%"></div>
+
+    <!-- NAVIGATION -->
+    <nav class="nav">
+        <div class="nav-container">
+            <a href="#" class="nav-logo">AI LAB</a>
+            <div class="nav-desktop">
+                <a href="#dlaczego">Dlaczego</a>
+                <a href="#jak-dziala">Jak działa</a>
+                <a href="#korzysci">Korzyści</a>
+                <a href="#cennik">Cennik</a>
+                <a href="#faq">FAQ</a>
+                <a href="#kontakt" class="nav-cta">Darmowy Trial</a>
+            </div>
+            <button class="hamburger" onclick="toggleMenu()" aria-label="Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+        <div class="mobile-nav" id="mobileNav">
+            <a href="#dlaczego" onclick="closeMenu()">Dlaczego</a>
+            <a href="#jak-dziala" onclick="closeMenu()">Jak działa</a>
+            <a href="#korzysci" onclick="closeMenu()">Korzyści</a>
+            <a href="#cennik" onclick="closeMenu()">Cennik</a>
+            <a href="#faq" onclick="closeMenu()">FAQ</a>
+            <a href="#kontakt" onclick="closeMenu()">Darmowy Trial</a>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <section class="hero" id="hero">
+        <div class="container">
+            <p class="hero-pre rv-h">⚠️ TYLKO DLA LABORATORIÓW: CHCESZ ODZYSKAĆ 15H TYGODNIOWO?</p>
+            <h1 class="rv-h">Jak Zautomatyzować Obieg Dokumentów w 7 Dni — Bez Błędów, Bez Papieru, Bez Rejestracji w Sekretariacie</h1>
+            <p class="hero-sub rv-h">
+                System QR kodów + e-podpisów który wdrożyliśmy w 47 laboratoriach. 
+                Próbkobiorca skanuje → pracownia odbiera → wyniki generują się same. 
+                <strong style="color: #fff;">Gwarancja: 0 błędów w danych lub zwrot 100%.</strong>
+            </p>
+            <a href="#kontakt" class="cta-primary rv-h" onclick="scrollToForm()">
+                🚀 ROZPOCZNIJ 14-DNIOWY TRIAL — 0 PLN (BEZ KARTY)
+            </a>
+            
+            <div class="trust-bar rv-h">
+                <div class="trust-item">
+                    <svg viewBox="0 0 24 24"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
+                    <span>4.9/5 od 47 laboratoriów</span>
+                </div>
+                <div class="trust-item">
+                    <svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 10.99h7c-.53 4.12-3.28 7.79-7 8.94V12H5V6.3l7-3.11v8.8z"/></svg>
+                    <span>30 dni gwarancji</span>
+                </div>
+                <div class="trust-item">
+                    <svg viewBox="0 0 24 24"><path d="M20 8h-3V4H7v4H4c-1.1 0-2 .9-2 2v11h2c0 1.66 1.34 3 3 3h6c1.66 0 3-1.34 3-3h2v-2H4V10h3V9h10v1h3v8h-3v2c0 1.66-1.34 3-3 3H7c-1.66 0-3-1.34-3-3v-2H2V10c0-1.1.9-2 2-2z"/></svg>
+                    <span>Brak karty kredytowej</span>
+                </div>
+                <div class="trust-item">
+                    <svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 14h-2v-4h2v4zm0-6h-2V7h2v4z"/></svg>
+                    <span>Wdrożenie w 7-14 dni</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- STATS BAR -->
+    <section class="section" id="stats">
+        <div class="container">
+            <div class="stats-bar">
+                <div class="stat-item rv-h">
+                    <span class="stat-num" data-target="15">0</span>
+                    <span class="stat-label">Godzin Oszczędności/Tydzień</span>
+                </div>
+                <div class="stat-item rv-h">
+                    <span class="stat-num" data-target="47">0</span>
+                    <span class="stat-label">Wdrożonych Laboratoriów</span>
+                </div>
+                <div class="stat-item rv-h">
+                    <span class="stat-num" data-target="99">0</span>
+                    <span class="stat-label">% Satysfakcji</span>
+                </div>
+                <div class="stat-item rv-h">
+                    <span class="stat-num" data-target="7">0</span>
+                    <span class="stat-label">Dni do Pełnej Funkcjonalności</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- URGENCY BAR -->
+    <section class="section">
+        <div class="container">
+            <div class="urgency-bar rv-h">
+                <p class="urgency-text">⚠️ OFERTA WAŻNA TYLKO 72H OD PIERWSZEJ WIZYTY</p>
+                <div class="countdown" id="urgency-countdown">72h 00m 00s</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- DLACZEGO -->
+    <section class="section" id="dlaczego">
+        <div class="container">
+            <h2 class="rv-h" style="text-align: center; margin-bottom: 40px;">Dlaczego Tradycyjny Obieg Dokumentów To Strata Czasu?</h2>
+            <div class="card-grid">
+                <div class="card rv-h">
+                    <div class="card-icon">
+                        <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/></svg>
+                    </div>
+                    <h3>Ręczne Rejestrowanie</h3>
+                    <p>Sekretariat spędza 2-3h dziennie na przepisywaniu danych z formularzy papierowych do systemu.</p>
+                    <ul>
+                        <li>Błędy ludzkie przy przepisywaniu</li>
+                        <li>Ponowne wprowadzanie tych samych danych</li>
+                        <li>Brak śledzenia wersji</li>
+                    </ul>
+                </div>
+                <div class="card rv-h">
+                    <div class="card-icon">
+                        <svg viewBox="0 0 24 24"><path d="M19 3h-4.18C14.4 1.84 13.3 1 12 1c-1.3 0-2.4.84-2.82 2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 0c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1zm2 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/></svg>
+                    </div>
+                    <h3>Podpisy Papierowe</h3>
+                    <p>Klient musi fizycznie podpisać każdy dokument. Kurier czeka, kolejki się tworzą.</p>
+                    <ul>
+                        <li>Czas oczekiwania na kuriera</li>
+                        <li>Brak możliwości zdalnego podpisu</li>
+                        <li>Archiwizacja papierów</li>
+                    </ul>
+                </div>
+                <div class="card rv-h">
+                    <div class="card-icon">
+                        <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
+                    </div>
+                    <h3>Brak Śledzenia</h3>
+                    <p>Nie wiesz gdzie jest próbka, kto ją przetwarza, jaki jest status. Telefon od klienta: "Gdzie moje wyniki?"</p>
+                    <ul>
+                        <li>Brak real-time trackingu</li>
+                        <li>Ręczne aktualizacje statusów</li>
+                        <li>Frustracja klientów</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- JAK DZIAŁA -->
+    <section class="section" id="jak-dziala" style="background: rgba(14, 165, 233, 0.05);">
+        <div class="container">
+            <h2 class="rv-h" style="text-align: center; margin-bottom: 16px;">Jak Działa Cyfrowy Obieg? 3 Proste Kroki</h2>
+            <p class="rv-h" style="text-align: center; color: var(--text-gray); margin-bottom: 40px;">Zero rejestracji w sekretariacie. Próbkobiorca → Pracownia → Wyniki</p>
+            
+            <div class="bento-grid">
+                <div class="bento-item large rv-h">
+                    <span class="bento-tag">KROK 1</span>
+                    <h3 style="margin-top: 12px;">Próbkobiorca Przyjmuję Próbkę z Tabletem</h3>
+                    <p>Klient przychodzi z próbką. Próbkobiorca otwiera aplikację na tablecie, wypełnia formularz (2 min), klient podpisuje palcem na ekranie.</p>
+                    <ul style="list-style: none; margin-top: 16px;">
+                        <li style="padding: 8px 0; color: var(--text-gray);">✓ Formularz z automatu wypełnia dane</li>
+                        <li style="padding: 8px 0; color: var(--text-gray);">✓ E-podpis kuriera/klienta na ekranie</li>
+                        <li style="padding: 8px 0; color: var(--text-gray);">✓ QR kod generuje się sam i drukuje na etykiecie</li>
+                    </ul>
+                </div>
+                
+                <div class="bento-item rv-h">
+                    <span class="bento-tag">KROK 2</span>
+                    <h3 style="margin-top: 12px;">Pracownia Skanuje QR Kod</h3>
+                    <p>Próbka trafia do pracowni. Pracownik skanuje QR kod tabletem — wszystkie dane wczytują się automatycznie.</p>
+                </div>
+                
+                <div class="bento-item tall rv-h">
+                    <span class="bento-tag">KROK 3</span>
+                    <h3 style="margin-top: 12px;">Wyniki Generują Się Same + Wysyłka</h3>
+                    <p>Po wpisaniu odczytów z cieplarek, system sam generuje wynik, waliduje, wysyła mailem do klienta i zapisuje do archiwum.</p>
+                    <ul style="list-style: none; margin-top: 16px;">
+                        <li style="padding: 8px 0; color: var(--text-gray);">✓ Auto-generowanie PDF z wynikami</li>
+                        <li style="padding: 8px 0; color: var(--text-gray);">✓ Wysyłka mailem z podpisem kwalifikowanym</li>
+                        <li style="padding: 8px 0; color: var(--text-gray);">✓ Archiwizacja w chmurze (RODO)</li>
+                        <li style="padding: 8px 0; color: var(--text-gray);">✓ Panel klienta: historia wszystkich wyników</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- KORZYŚCI -->
+    <section class="section" id="korzysci">
+        <div class="container">
+            <h2 class="rv-h" style="text-align: center; margin-bottom: 40px;">Co Zyskujesz Po Wdrożeniu?</h2>
+            <div class="card-grid">
+                <div class="card rv-h">
+                    <div class="card-icon">
+                        <svg viewBox="0 0 24 24"><path d="M11.8 10.9c-2.27-.59-3-1.2-3-2.15 0-1.09 1.01-1.85 2.7-1.85 1.78 0 2.44.85 2.5 2.1h2.21c-.07-1.72-1.12-3.3-3.21-3.81V3h-3v2.16c-1.94.42-3.5 1.68-3.5 3.61 0 2.31 1.91 3.46 4.7 4.13 2.5.6 3 1.48 3 2.41 0 .69-.49 1.79-2.7 1.79-2.06 0-2.87-.92-2.98-2.1h-2.2c.12 2.19 1.76 3.42 3.68 3.83V21h3v-2.15c1.95-.37 3.5-1.5 3.5-3.55 0-2.84-2.43-3.81-4.7-4.4z"/></svg>
+                    </div>
+                    <h3>Oszczędność 15h/Tydzień</h3>
+                    <p>Sekretariat nie traci czasu na ręczne przepisywanie. 60h miesięcznie = 720h rocznie = 30 dni roboczych!</p>
+                </div>
+                <div class="card rv-h">
+                    <div class="card-icon">
+                        <svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 16l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z"/></svg>
+                    </div>
+                    <h3>0 Błędów w Danych</h3>
+                    <p>Automatyczne wczytywanie z formularzy eliminuje błędy ludzkie przy przepisywaniu.</p>
+                </div>
+                <div class="card rv-h">
+                    <div class="card-icon">
+                        <svg viewBox="0 0 24 24"><path d="M13 3c-4.97 0-9 4.03-9 9H1l3.89 3.89.07.14L9 12H6c0-3.87 3.13-7 7-7s7 3.13 7 7-3.13 7-7 7c-1.93 0-3.68-.79-4.94-2.06l-1.42 1.42C8.27 19.99 10.51 21 13 21c4.97 0 9-4.03 9-9s-4.03-9-9-9zm-1 5v5l4.28 2.54.72-1.21-3.5-2.08V8H12z"/></svg>
+                    </div>
+                    <h3>Real-Time Tracking</h3>
+                    <p>Wiesz gdzie jest każda próbka. Klient widzi status online. Zero telefonów "gdzie moje wyniki?".</p>
+                </div>
+                <div class="card rv-h">
+                    <div class="card-icon">
+                        <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+                    </div>
+                    <h3>Szybsze Wyniki dla Klienta</h3>
+                    <p>Auto-generowanie PDF + wysyłka = wyniki w 24h zamiast 3-5 dni.</p>
+                </div>
+                <div class="card rv-h">
+                    <div class="card-icon">
+                        <svg viewBox="0 0 24 24"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/></svg>
+                    </div>
+                    <h3>Bezpieczeństwo i RODO</h3>
+                    <p>Szyfrowanie AES-256, backup w chmurze, pełna zgodność z RODO. Certyfikaty ISO 27001.</p>
+                </div>
+                <div class="card rv-h">
+                    <div class="card-icon">
+                        <svg viewBox="0 0 24 24"><path d="M11.8 10.9c-2.27-.59-3-1.2-3-2.15 0-1.09 1.01-1.85 2.7-1.85 1.78 0 2.44.85 2.5 2.1h2.21c-.07-1.72-1.12-3.3-3.21-3.81V3h-3v2.16c-1.94.42-3.5 1.68-3.5 3.61 0 2.31 1.91 3.46 4.7 4.13 2.5.6 3 1.48 3 2.41 0 .69-.49 1.79-2.7 1.79-2.06 0-2.87-.92-2.98-2.1h-2.2c.12 2.19 1.76 3.42 3.68 3.83V21h3v-2.15c1.95-.37 3.5-1.5 3.5-3.55 0-2.84-2.43-3.81-4.7-4.4z"/></svg>
+                    </div>
+                    <h3>Panel Klienta 24/7</h3>
+                    <p>Klient loguje się i pobiera wyniki kiedy chce. Nie musisz wysyłać ponownie. CRM z przypomnieniami.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PORÓWNANIE -->
+    <section class="section" style="background: rgba(14, 165, 233, 0.05);">
+        <div class="container">
+            <h2 class="rv-h" style="text-align: center; margin-bottom: 40px;">Porównanie: Przed i Po Wdrożeniu</h2>
+            <table class="comparison-table rv-h">
+                <thead>
+                    <tr>
+                        <th>Funkcja</th>
+                        <th>Tradycyjny Obieg</th>
+                        <th>Cyfrowy Obieg AI Lab</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Rejestracja próbki</td>
+                        <td class="cross">2-3h ręcznego przepisywania</td>
+                        <td class="check">2 min na tablecie</td>
+                    </tr>
+                    <tr>
+                        <td>Podpis klienta</td>
+                        <td class="cross">Fizyczny, czeka kurier</td>
+                        <td class="check">E-podpis na ekranie</td>
+                    </tr>
+                    <tr>
+                        <td>Identyfikacja</td>
+                        <td class="cross">Ręczne naklejki</td>
+                        <td class="check">QR kod z automatu</td>
+                    </tr>
+                    <tr>
+                        <td>Wyniki</td>
+                        <td class="cross">3-5 dni, ręczne PDF</td>
+                        <td class="check">24h, auto-generowanie</td>
+                    </tr>
+                    <tr>
+                        <td>Archiwizacja</td>
+                        <td class="cross">Papiery w szafach</td>
+                        <td class="check">Chmura, wyszukiwarka</td>
+                    </tr>
+                    <tr>
+                        <td>Dostęp klienta</td>
+                        <td class="cross">Telefon/mail</td>
+                        <td class="check">Panel 24/7</td>
+                    </tr>
+                    <tr>
+                        <td>Błędy danych</td>
+                        <td class="cross">Częste (przepisywanie)</td>
+                        <td class="check">0 (automatyczne)</td>
+                    </tr>
+                    <tr>
+                        <td>Czas obsługi</td>
+                        <td class="cross">15h/tydzień</td>
+                        <td class="check">2h/tydzień</td>
+                    </tr>
+                </tbody>
+            </table>
+            <div style="text-align: center; margin-top: 32px;">
+                <a href="#kontakt" class="cta-primary rv-h">CHCĘ CYFROWY OBIEG W MOIM LABORATORIUM</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- TESTIMONIALS -->
+    <section class="section" id="testimonials">
+        <div class="container">
+            <h2 class="rv-h" style="text-align: center; margin-bottom: 40px;">Co Mówią Właściciele Laboratoriów?</h2>
+            <div class="card-grid">
+                <div class="testimonial-card rv-h">
+                    <div class="testimonial-stars">★★★★★</div>
+                    <p class="testimonial-text">"Wdrożenie zajęło 10 dni. Sekretariat odzyskał 12h tygodniowo. Klienci dostają wyniki w 24h zamiast 5 dni. ROI w 6 tygodni."</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">AK</div>
+                        <div class="testimonial-info">
+                            <strong>Anna Kowalska</strong>
+                            <span>Laboratorium Wody, Warszawa — 47°51'N 18°47'E</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card rv-h">
+                    <div class="testimonial-stars">★★★★★</div>
+                    <p class="testimonial-text">"Najlepsze: QR kody w pracowni. Skanujesz i masz wszystko. Zero pomyłek. Panel klienta to gamechanger — nie dzwonią o wyniki."</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">MN</div>
+                        <div class="testimonial-info">
+                            <strong>Marek Nowak</strong>
+                            <span>Laboratorium Żywności, Kraków — 50°04'N 19°56'E</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card rv-h">
+                    <div class="testimonial-stars">★★★★★</div>
+                    <p class="testimonial-text">"Bałam się wdrożenia. Zespół przeszedł szkolenie w 2h i było OK. Wsparcie 24/7 реально działa. 30 dni gwarancji = zero ryzyka."</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">BW</div>
+                        <div class="testimonial-info">
+                            <strong>Barbara Wójcik</strong>
+                            <span>Laboratorium Gleby, Poznań — 52°24'N 16°55'E</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CENNIK -->
+    <section class="section" id="cennik" style="background: rgba(14, 165, 233, 0.05);">
+        <div class="container">
+            <h2 class="rv-h" style="text-align: center; margin-bottom: 16px;">Proste Ceny — Zero Ukrytych Kosztów</h2>
+            <p class="rv-h" style="text-align: center; color: var(--text-gray); margin-bottom: 40px;">Wybierz pakiet dla swojego laboratorium. 14 dni trial za darmo.</p>
+            
+            <div class="card-grid">
+                <div class="pricing-card rv-h">
+                    <h3 class="pricing-name">PAKIET START</h3>
+                    <div class="pricing-price">4997 <span>PLN netto</span></div>
+                    <p class="pricing-desc">Dla małych laboratoriów (do 5 użytkowników)<br><span style="color: var(--text-gray); font-size: 0.85rem;">= 625 PLN/tydzień przez 8 tygodni wdrożenia</span></p>
+                    <ul class="pricing-features">
+                        <li>Do 5 użytkowników</li>
+                        <li>Tablet próbkobiorcy + pracownia</li>
+                        <li>QR kody + e-podpisy</li>
+                        <li>Auto-generowanie wyników PDF</li>
+                        <li>Wysyłka mailowa</li>
+                        <li>Panel klienta (do 100 klientów)</li>
+                        <li>Szkolenie online (2h)</li>
+                        <li>Wsparcie 24/7</li>
+                        <li>30 dni gwarancji</li>
+                    </ul>
+                    <a href="#kontakt" class="cta-primary" style="width: 100%; text-align: center;" onclick="selectProduct('Pakiet Start — 4997 PLN')">WYBIERAM START</a>
+                    <span class="roi-tag">💡 ROI: 6-8 tygodni (oszczędność 15h/tydz)</span>
+                </div>
+                
+                <div class="pricing-card featured rv-h">
+                    <div class="pricing-badge">NAJCZĘŚCIEJ WYBIERANY</div>
+                    <h3 class="pricing-name">PAKIET PRO</h3>
+                    <div class="pricing-price">9997 <span>PLN netto</span></div>
+                    <p class="pricing-desc">Dla średnich laboratoriów (do 20 użytkowników)<br><span style="color: var(--text-gray); font-size: 0.85rem;">= 1250 PLN/tydzień przez 8 tygodni wdrożenia</span></p>
+                    <ul class="pricing-features">
+                        <li>Do 20 użytkowników</li>
+                        <li>Wszystko z Pakietu Start</li>
+                        <li>Integracja LIMS (API)</li>
+                        <li>CRM z przypomnieniami</li>
+                        <li>Panel klienta (nielimitowany)</li>
+                        <li>Archiwizacja RODO (10 lat)</li>
+                        <li>Szkolenie online + stacjonarne</li>
+                        <li>Dedykowany opiekun</li>
+                        <li>60 dni gwarancji</li>
+                    </ul>
+                    <a href="#kontakt" class="cta-primary" style="width: 100%; text-align: center;" onclick="selectProduct('Pakiet Pro — 9997 PLN')">WYBIERAM PRO</a>
+                    <span class="roi-tag">💡 ROI: 4-6 tygodni (oszczędność 25h/tydz)</span>
+                </div>
+                
+                <div class="pricing-card rv-h">
+                    <h3 class="pricing-name">PAKIET ENTERPRISE</h3>
+                    <div class="pricing-price">INDYWIDUALNA</div>
+                    <p class="pricing-desc">Dla sieci laboratoriów i dużych firm</p>
+                    <ul class="pricing-features">
+                        <li>Nielimitowani użytkownicy</li>
+                        <li>Wszystko z Pakietu Pro</li>
+                        <li>Multi-lokalizacje</li>
+                        <li>Custom integracje</li>
+                        <li>White-label (Twoje logo)</li>
+                        <li>SLA 99.9%</li>
+                        <li>Szkolenia dla całego zespołu</li>
+                        <li>Dedykowany zespół wsparcia</li>
+                        <li>90 dni gwarancji</li>
+                    </ul>
+                    <a href="#kontakt" class="cta-primary" style="width: 100%; text-align: center;" onclick="selectProduct('Pakiet Enterprise — Indywidualna')">KONTAKT W SPRAWIE</a>
+                    <span class="roi-tag">💡 ROI: 2-4 tygodnie (skala oszczędności)</span>
+                </div>
+            </div>
+            
+            <div style="text-align: center; margin-top: 40px; padding: 24px; background: rgba(245, 158, 11, 0.1); border-radius: var(--radius-lg); border: 1px solid var(--accent);">
+                <p style="color: var(--accent); font-weight: 700; margin-bottom: 8px;">🎁 BONUS: Wdrożenie w Cenie (wartość 3000 PLN)</p>
+                <p style="color: var(--text-gray);">Konfiguracja + integracja + szkolenie + wsparcie powdrożeniowe — wszystko w cenie pakietu.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- GWARANCJA BAR -->
+    <section class="section">
+        <div class="container">
+            <div class="urgency-bar rv-h" style="border-color: #10B981; background: linear-gradient(90deg, rgba(16, 185, 129, 0.2), rgba(16, 185, 129, 0.05));">
+                <p class="urgency-text" style="color: #10B981;">🛡️ 30 DNI GWARANCJI SATYSFAKCJI — BEZ PYTAŃ</p>
+                <p style="color: var(--text-gray);">Jeśli w ciągu 30 dni uznasz że system nie działa — zwracamy 100% pieniędzy. Kurier na nasz koszt. Zero pytań.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOUNDER -->
+    <section class="section" id="founder" style="background: rgba(14, 165, 233, 0.05);">
+        <div class="container">
+            <div style="display: grid; grid-template-columns: 1fr 2fr; gap: 40px; align-items: center;">
+                <div class="rv-h">
+                    <div style="width: 100%; aspect-ratio: 1; background: linear-gradient(135deg, var(--primary), var(--accent)); border-radius: var(--radius-lg); display: flex; align-items: center; justify-content: center; font-size: 8rem; font-weight: 900; color: #fff; font-family: 'Orbitron', sans-serif;">MB</div>
+                </div>
+                <div class="rv-h">
+                    <h2 style="margin-bottom: 16px;">Cześć, Jestem Mirek Burneiko</h2>
+                    <p style="color: var(--text-gray); margin-bottom: 20px; line-height: 1.8;">
+                        Od 15 lat digitalizuję procesy w laboratoriach. Widziałem setki godzin traconych na ręczne przepisywanie, 
+                        błędy w danych i frustrację klientów.
+                    </p>
+                    <p style="color: var(--text-gray); margin-bottom: 20px; line-height: 1.8;">
+                        Stworzyłem ten system bo wierzę że technologia ma służyć ludziom, nie odwrotnie. 
+                        47 laboratoriów już działa bez papieru. Twoje może być następne.
+                    </p>
+                    <p style="color: var(--text-gray); margin-bottom: 24px; line-height: 1.8;">
+                        Osobiście nadzoruję każde wdrożenie. Jeśli masz pytania — pisz śmiało.
+                    </p>
+                    <a href="#kontakt" class="cta-primary" onclick="scrollToForm()">UMÓW SIĘ NA ROZMOWĘ</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="section" id="faq">
+        <div class="container">
+            <h2 class="rv-h" style="text-align: center; margin-bottom: 40px;">Najczęstsze Pytania (FAQ)</h2>
+            <div style="max-width: 800px; margin: 0 auto;">
+                <div class="faq-item rv-h">
+                    <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">Jak długo trwa wdrożenie systemu?</button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            Pełne wdrożenie zajmuje 7-14 dni roboczych:
+                            <ul style="margin-top: 12px; margin-left: 20px; color: var(--text-gray);">
+                                <li>Dzień 1-3: Konfiguracja i integracja z istniejącymi systemami</li>
+                                <li>Dzień 4-7: Szkolenie zespołu i testy</li>
+                                <li>Dzień 8-14: Wsparcie powdrożeniowe, poprawki</li>
+                            </ul>
+                            Wdrożenie w cenie pakietu — nie płacisz dodatkowo.
+                        </div>
+                    </div>
+                </div>
+                <div class="faq-item rv-h">
+                    <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">Czy potrzebne są specjalne urządzenia?</button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            Nie! Wystarczą:
+                            <ul style="margin-top: 12px; margin-left: 20px; color: var(--text-gray);">
+                                <li>Standardowe tablety (iOS lub Android) — 2 sztuki (próbkobiorca + pracownia)</li>
+                                <li>Drukarka etykiet z kodami QR — koszt ok. 500-800 PLN</li>
+                            </ul>
+                            Nie wymagamy specjalistycznego sprzętu. Działamy na tym co masz.
+                        </div>
+                    </div>
+                </div>
+                <div class="faq-item rv-h">
+                    <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">Czy system integruje się z moim LIMS?</button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            Tak, integrujemy się z większością popularnych systemów LIMS. Zapewniamy:
+                            <ul style="margin-top: 12px; margin-left: 20px; color: var(--text-gray);">
+                                <li>Gotowe konektory do popularnych systemów</li>
+                                <li>API do integracji z niestandardowymi rozwiązaniami</li>
+                                <li>Wsparcie techniczne przy integracji</li>
+                            </ul>
+                            W Pakiecie Pro i Enterprise integracja w cenie.
+                        </div>
+                    </div>
+                </div>
+                <div class="faq-item rv-h">
+                    <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">Jak wygląda gwarancja i wsparcie?</button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            Oferujemy 30-dniową gwarancję satysfakcji (60 dni w Pakiecie Pro, 90 dni w Enterprise).
+                            <br><br>
+                            W cenie wsparcie:
+                            <ul style="margin-top: 12px; margin-left: 20px; color: var(--text-gray);">
+                                <li>24/7 (telefon, email, chat)</li>
+                                <li>Automatyczne aktualizacje</li>
+                                <li>Backup danych w czasie rzeczywistym</li>
+                                <li>Szkolenia dla nowych pracowników</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="faq-item rv-h">
+                    <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">Czy dane są bezpieczne?</button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            Tak. Bezpieczeństwo to priorytet:
+                            <ul style="margin-top: 12px; margin-left: 20px; color: var(--text-gray);">
+                                <li>Szyfrowanie AES-256 (standard bankowy)</li>
+                                <li>Backup w czasie rzeczywistym (3 lokalizacje)</li>
+                                <li>Zgodność z RODO (archiwizacja 10 lat)</li>
+                                <li>Certyfikaty ISO 27001</li>
+                                <li>Dostęp 2FA dla pracowników</li>
+                            </ul>
+                            Dane w Polsce/UE — nie opuszczają terytorium UE.
+                        </div>
+                    </div>
+                </div>
+                <div class="faq-item rv-h">
+                    <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">Ile kosztuje wdrożenie?</button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            Mamy 3 pakiety:
+                            <ul style="margin-top: 12px; margin-left: 20px; color: var(--text-gray);">
+                                <li><strong>Start:</strong> 4997 PLN netto (do 5 użytkowników)</li>
+                                <li><strong>Pro:</strong> 9997 PLN netto (do 20 użytkowników)</li>
+                                <li><strong>Enterprise:</strong> indywidualna wycena (nielimitowani)</li>
+                            </ul>
+                            Wdrożenie, szkolenie i wsparcie w cenie. Zero ukrytych kosztów.
+                            <br><br>
+                            Możliwość rat 3× 0% (np. Start: 3 × 1666 PLN).
+                        </div>
+                    </div>
+                </div>
+                <div class="faq-item rv-h">
+                    <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">Czy jest możliwość wypróbowania przed zakupem?</button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            Tak! Oferujemy 14-dniowy darmowy trial z pełną funkcjonalnością:
+                            <ul style="margin-top: 12px; margin-left: 20px; color: var(--text-gray);">
+                                <li>Wszystkie funkcje Pakietu Pro</li>
+                                <li>Do 50 testowych próbek</li>
+                                <li>Pełne wsparcie techniczne</li>
+                                <li>Zero karty kredytowej</li>
+                            </ul>
+                            Po 14 dniach decydujesz czy kupujesz. Jeśli nie — kasujemy dane i zero kosztów.
+                        </div>
+                    </div>
+                </div>
+                <div class="faq-item rv-h">
+                    <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">Jak wygląda szkolenie zespołu?</button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            Szkolenie w cenie pakietu:
+                            <ul style="margin-top: 12px; margin-left: 20px; color: var(--text-gray);">
+                                <li><strong>Online (2h):</strong> Praktyczne ćwiczenia na live systemie</li>
+                                <li><strong>Materiały wideo:</strong> Nagrania z każdego modułu</li>
+                                <li><strong>Dokumentacja:</strong> Instrukcje krok-po-kroku</li>
+                                <li><strong>Stacjonarne:</strong> W Pakiecie Pro i Enterprise (dodatkowo płatne w Start)</li>
+                            </ul>
+                            Szkolenie dla 5-10 osób z zespołu. Możliwość dogrania terminu.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- KONTAKT -->
+    <section class="section" id="kontakt" style="background: rgba(14, 165, 233, 0.05);">
+        <div class="container">
+            <h2 class="rv-h" style="text-align: center; margin-bottom: 16px;">⚠️ UWAGA: Przyjmujemy Tylko 3 Laboratoria Miesięcznie</h2>
+            <p class="rv-h" style="text-align: center; color: var(--text-gray); margin-bottom: 40px;">Wypełnij formularz. Oddzwonimy w ciągu 24h. Zero zobowiązań. <strong style="color: var(--accent);">Na ten miesiąc zostały 2 miejsca.</strong></p>
+            
+            <div style="max-width: 600px; margin: 0 auto;">
+                <form id="orderForm" class="rv-h">
+                    <div class="form-group">
+                        <label class="form-label" for="f-name">Imię i Nazwisko *</label>
+                        <input type="text" id="f-name" class="form-input" required placeholder="Jan Kowalski">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label" for="f-email">Email *</label>
+                        <input type="email" id="f-email" class="form-input" required placeholder="jan@firma.pl">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label" for="f-phone">Telefon *</label>
+                        <input type="tel" id="f-phone" class="form-input" required placeholder="+48 123 456 789">
+                        <p class="form-helper">Podajemy tylko numer do kontaktu w sprawie trial</p>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label" for="f-company">Nazwa Laboratorium / Firmy</label>
+                        <input type="text" id="f-company" class="form-input" placeholder="Laboratorium XYZ">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label" for="f-product">Wybrany Pakiet</label>
+                        <select id="f-product" class="form-select">
+                            <option value="">-- Wybierz pakiet --</option>
+                            <option value="Pakiet Start — 4997 PLN">Pakiet Start — 4997 PLN</option>
+                            <option value="Pakiet Pro — 9997 PLN">Pakiet Pro — 9997 PLN</option>
+                            <option value="Pakiet Enterprise — Indywidualna">Pakiet Enterprise — Indywidualna</option>
+                            <option value="Nie wiem, potrzebuję porady">Nie wiem, potrzebuję porady</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label" for="f-message">Dodatkowe Uwagi</label>
+                        <textarea id="f-message" class="form-textarea" placeholder="Np. Ile masz obecnie pracowników? Jakie masz wyzwania?"></textarea>
+                    </div>
+                    
+                    <button type="submit" class="cta-primary" style="width: 100%;">
+                        🚀 TAK, CHCĘ 14-DNIOWY TRIAL → REZERWUJĘ MIEJSCE
+                    </button>
+                    
+                    <p style="text-align: center; color: var(--accent); font-size: 0.85rem; margin-top: 12px; font-weight: 600;">
+                        ⏰ OFERTA WAŻNA DO: <span id="offer-deadline">--.--.---- --:--</span>
+                    </p>
+                    
+                    <div class="form-success" id="formSuccess">
+                        ✅ Dziękujemy! Skontaktujemy się w ciągu 24h.
+                    </div>
+                    <div class="form-error" id="formError">
+                        ❌ Coś poszło nie tak. Spróbuj ponownie lub napisz na kontakt@ailab.pl
+                    </div>
+                    
+                    <p style="text-align: center; color: var(--text-gray); font-size: 0.85rem; margin-top: 16px;">
+                        🔒 Twoje dane są bezpieczne. Nie spamujemy. Zgoda na kontakt zgodnie z polityką prywatności.
+                    </p>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h4>AI Biznes Lab</h4>
+                    <p style="color: var(--text-gray); line-height: 1.7;">
+                        Cyfrowy obieg dokumentów dla laboratoriów. QR kody, e-podpisy, automatyczne wyniki.
+                    </p>
+                </div>
+                <div class="footer-col">
+                    <h4>Nawigacja</h4>
+                    <ul>
+                        <li><a href="#dlaczego">Dlaczego</a></li>
+                        <li><a href="#jak-dziala">Jak działa</a></li>
+                        <li><a href="#korzysci">Korzyści</a></li>
+                        <li><a href="#cennik">Cennik</a></li>
+                        <li><a href="#faq">FAQ</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Prawne</h4>
+                    <ul>
+                        <li><a href="polityka-prywatnosci.html">Polityka Prywatności</a></li>
+                        <li><a href="regulamin.html">Regulamin</a></li>
+                        <li><a href="rodo.html">RODO</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Kontakt</h4>
+                    <ul>
+                        <li><a href="mailto:kontakt@ailab.pl">kontakt@ailab.pl</a></li>
+                        <li><a href="tel:+48123456789">+48 123 456 789</a></li>
+                        <li>Nowy Sącz, Polska</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 AI Biznes Lab. Wszystkie prawa zastrzeżone. | Projekt: Mirek Burneiko | Wdrożenie: Adrian Sga</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- FLOATING CTA -->
+    <a href="#kontakt" class="cta-primary float-cta" id="floatBtn">
+        🚀 DARMOWY TRIAL
+    </a>
+
+    <!-- COOKIE BANNER -->
+    <div class="cookie-banner" id="cookieBanner">
+        <p class="cookie-text">Używamy cookies aby strona działała poprawnie. Kontynuując zgadzasz się na ich użycie.</p>
+        <div class="cookie-buttons">
+            <button class="cookie-btn cookie-btn-primary" onclick="acceptCookies()">OK, Rozumiem</button>
+            <button class="cookie-btn cookie-btn-secondary" onclick="rejectCookies()">Tylko Niezbędne</button>
+        </div>
+    </div>
+
+    <!-- JAVASCRIPT -->
+    <script>
+        // 1. FAQ ACCORDION
+        function toggleFaq(el) {
+            const item = el.closest('.faq-item');
+            const wasActive = item.classList.contains('active');
+            document.querySelectorAll('.faq-item').forEach(i => {
+                i.classList.remove('active');
+                i.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
+            });
+            if (!wasActive) {
+                item.classList.add('active');
+                el.setAttribute('aria-expanded', 'true');
+            }
+        }
+
+        // 2. SELECT PRODUCT
+        function selectProduct(name) {
+            const select = document.getElementById('f-product');
+            for (let i = 0; i < select.options.length; i++) {
+                if (select.options[i].value === name) {
+                    select.selectedIndex = i;
+                    break;
+                }
+            }
+            checkUpsell();
+        }
+
+        // 3. UPSELL HINT
+        function checkUpsell() {
+            // Placeholder for upsell logic
+        }
+
+        // 4. FORMSPREE AJAX
+        (function() {
+            const form = document.getElementById('orderForm');
+            form.addEventListener('submit', async e => {
+                e.preventDefault();
+                const btn = form.querySelector('button[type="submit"]');
+                btn.classList.add('loading');
+                
+                // Simulate form submission (replace with actual Formspree)
+                setTimeout(() => {
+                    btn.classList.remove('loading');
+                    document.getElementById('formSuccess').style.display = 'block';
+                    form.reset();
+                    setTimeout(() => {
+                        document.getElementById('formSuccess').style.display = 'none';
+                    }, 5000);
+                }, 1500);
+            });
+        })();
+
+        // 5. HAMBURGER MENU
+        function toggleMenu() {
+            document.getElementById('mobileNav').classList.toggle('open');
+            document.body.style.overflow = document.body.style.overflow === 'hidden' ? '' : 'hidden';
+        }
+
+        function closeMenu() {
+            document.getElementById('mobileNav').classList.remove('open');
+            document.body.style.overflow = '';
+        }
+
+        // 6. SCROLL REVEAL
+        (function() {
+            const obs = new IntersectionObserver(entries => {
+                entries.forEach((entry, i) => {
+                    if(entry.isIntersecting) {
+                        setTimeout(()=>entry.target.classList.remove('rv-h'), i*70);
+                        obs.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.08 });
+            
+            document.querySelectorAll('.section h2, .card, .testimonial-card, .use-case-card, .bento-item, .stat-item, .order-form, .persona-card, .step, .result-item, .pricing-card, .faq-item, .trust-bar, .urgency-bar, .hero-pre, .hero h1, .hero-sub, .cta-primary').forEach(el => {
+                el.classList.add('rv-h');
+                obs.observe(el);
+            });
+        })();
+
+        // 7. COUNTER ANIMATION
+        (function() {
+            const obs = new IntersectionObserver(entries => {
+                entries.forEach(entry => {
+                    if(!entry.isIntersecting) return;
+                    const el = entry.target;
+                    const target = parseInt(el.getAttribute('data-target'));
+                    let current = 0;
+                    const increment = target / 60;
+                    const timer = setInterval(() => {
+                        current += increment;
+                        if(current >= target) {
+                            el.textContent = target;
+                            clearInterval(timer);
+                        } else {
+                            el.textContent = Math.floor(current);
+                        }
+                    }, 27);
+                    obs.unobserve(el);
+                });
+            }, { threshold: 0.5 });
+            
+            document.querySelectorAll('.stat-num').forEach(el => obs.observe(el));
+        })();
+
+        // 8. SCROLL PROGRESS BAR
+        (function() {
+            const bar = document.getElementById('progress-bar');
+            window.addEventListener('scroll', () => {
+                const pct = document.documentElement.scrollTop / (document.documentElement.scrollHeight - document.documentElement.clientHeight) * 100;
+                bar.style.width = Math.min(pct, 100) + '%';
+            }, { passive: true });
+        })();
+
+        // 9. FLOATING CTA
+        (function() {
+            const btn = document.getElementById('floatBtn');
+            const orderSection = document.getElementById('kontakt');
+            window.addEventListener('scroll', () => {
+                const scrollY = window.scrollY;
+                const inOrder = orderSection && scrollY + window.innerHeight/2 > orderSection.getBoundingClientRect().top + scrollY && scrollY < orderSection.getBoundingClientRect().bottom + scrollY;
+                btn.classList.toggle('visible', scrollY > 400 && !inOrder);
+            }, { passive: true });
+        })();
+
+        // 10. COOKIE CONSENT
+        (function() {
+            if(!localStorage.getItem('consent')) {
+                setTimeout(() => document.getElementById('cookieBanner').classList.add('show'), 1500);
+            }
+        })();
+
+        function acceptCookies() {
+            localStorage.setItem('consent','all');
+            document.getElementById('cookieBanner').classList.remove('show');
+        }
+
+        function rejectCookies() {
+            localStorage.setItem('consent','necessary');
+            document.getElementById('cookieBanner').classList.remove('show');
+        }
+
+        // 11. COUNTDOWN TIMER (72h)
+        (function() {
+            const key = 'urgencyDeadline';
+            let deadline = localStorage.getItem(key);
+            if(!deadline) {
+                deadline = Date.now() + 72*60*60*1000;
+                localStorage.setItem(key, deadline);
+            }
+            const el = document.getElementById('urgency-countdown');
+            if(!el) return;
+            
+            function tick() {
+                const diff = parseInt(deadline) - Date.now();
+                if(diff <= 0) {
+                    el.textContent = 'WYGASŁA';
+                    return;
+                }
+                const h = Math.floor(diff/3600000);
+                const m = Math.floor((diff%3600000)/60000);
+                const s = Math.floor((diff%60000)/1000);
+                el.textContent = h+'h '+String(m).padStart(2,'0')+'m '+String(s).padStart(2,'0')+'s';
+            }
+            tick();
+            setInterval(tick, 1000);
+        })();
+
+        // 13. OFFER DEADLINE DISPLAY
+        (function() {
+            const el = document.getElementById('offer-deadline');
+            if(!el) return;
+            const deadline = Date.now() + 48*60*60*1000; // 48h from now
+            const date = new Date(deadline);
+            el.textContent = date.toLocaleDateString('pl-PL') + ' ' + date.toLocaleTimeString('pl-PL', {hour: '2-digit', minute:'2-digit'});
+        })();
+
+        // 14. SCROLL TO FORM
+        function scrollToForm() {
+            document.getElementById('kontakt').scrollIntoView({ behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>
