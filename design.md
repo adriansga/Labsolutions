@@ -96,7 +96,7 @@ Kontrast tekstu i CTA minimum WCAG AA.
 | Sekcja | Cel | Główne komponenty | Status |
 |---|---|---|---|
 | Nawigacja + hero | obietnica i szybkie CTA | nav, badge, h1, CTA, proof frame | IMPLEMENTED |
-| Kalkulator bezpośrednio pod hero | natychmiastowe policzenie skali i pokazanie stanu przed/po | suwaki: pracownicy + wyniki/miesiąc; dwie dynamiczne kolumny i podsumowanie miesięczne/roczne | APPROVED V4 |
+| Kalkulator bezpośrednio pod hero | natychmiastowe policzenie skali i pokazanie stanu przed/po | suwaki: pracownicy + wyniki/miesiąc; dwie dynamiczne kolumny i podsumowanie miesięczne/roczne | IMPLEMENTED V4 |
 | Problem | nazwanie źródeł policzonego kosztu | 3 karty | IMPLEMENTED |
 | Mechanizm | pokazanie jednej drogi próbki | 5 kroków procesu | IMPLEMENTED |
 | Produkt | dowód realnego działania | aktualny pulpit + sekwencja: rejestr, pracownia, kierownik, panel klienta | IMPLEMENTED |
@@ -134,7 +134,7 @@ Kontrast tekstu i CTA minimum WCAG AA.
 ## 10. Weryfikacja
 
 - [x] Walidacja DOM / testy dwóch modeli i scenariusza ELABS
-- [ ] Główny flow E2E V4: hero → kalkulator przed/po → problem → aktualne ekrany → wiarygodność → CTA
+- [x] Główny flow E2E V4: hero → kalkulator przed/po → problem → aktualne ekrany → wiarygodność → CTA
 - [x] Mobile 390 px
 - [x] Tablet 768 px
 - [x] Desktop 1440 px
@@ -144,3 +144,5 @@ Kontrast tekstu i CTA minimum WCAG AA.
 - [x] Produkcyjny URL + HTTP 200, sekcja Adriana i kluczowa interakcja
 
 Dowód V3 z 2026-08-26: Playwright `5/5`, brak overflow przy 390/768/1440, screenshoty w `_SCRATCH/ELABS_LANDING_V3_2026-08-26/`; commit `82f8abb`, GitHub Pages run `32951454882` = success. Produkcja HTTP 200; domyślne `25 000–28 000 zł`, zespół `28 000 zł`, wolumen `25 000 zł`, ELABS `4 167 zł`, potencjalnie uwolniona wartość `20 833–23 833 zł`, `6× mniej czasu`. Po zmianie wszystkich założeń: `19 200–23 760 zł`, ELABS `3 200 zł`. Karta Adriana i zdjęcie obecne, mobile bez overflow, błędy JS = 0.
+
+Dowód V4 z 2026-08-26: kalkulator jest bezpośrednim następnikiem hero i pokazuje dynamiczne kolumny „Przed ELABS / Po wdrożeniu ELABS”. Playwright `5/5`, brak overflow przy 390/768/1440, screenshoty w `_SCRATCH/ELABS_LANDING_V4_2026-08-26/`; commit `bb5204e`, GitHub Pages run `32958181554` = success. Produkcja HTTP 200; wartości domyślne: przed `25 000–28 000 zł / 500–560 h / 30 min`, po `4 167 zł / 83,3 h / 5 min`, potencjał `20 833–23 833 zł/mies.` i `250 000–286 000 zł/rok`, redukcja `83,3–85,1%`. Po zmianie wszystkich założeń: `16 000–20 560 zł/mies.` i `192 000–246 720 zł/rok`. Karta Adriana i 5 ekranów produktu obecne, mobile bez overflow, błędy JS = 0.
