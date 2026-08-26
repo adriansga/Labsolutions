@@ -8,8 +8,14 @@
   <meta name="robots" content="index,follow">
   <meta name="theme-color" content="#061322">
   <meta name="author" content="Adrian Sga">
-  <link rel="canonical" href="https://adriansga.github.io/Labsolutions/">
+  <link rel="canonical" href="https://labsolutions.pl/">
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <script>
+    // Utrzymuj czysty adres: labsolutions.pl zamiast labsolutions.pl/index.html
+    if (location.pathname.endsWith('/index.html')) {
+      history.replaceState(null, '', location.pathname.slice(0, -'index.html'.length) + location.search + location.hash);
+    }
+  </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -19,7 +25,7 @@
   <meta property="og:site_name" content="ELABS">
   <meta property="og:title" content="ELABS: od próbki do gotowego wyniku">
   <meta property="og:description" content="Policz koszt generowania wyników i zobacz cyfrowy obieg próbki krok po kroku.">
-  <meta property="og:url" content="https://adriansga.github.io/Labsolutions/">
+  <meta property="og:url" content="https://labsolutions.pl/">
 
   <script type="application/ld+json">
   {
@@ -29,7 +35,7 @@
     "applicationCategory": "BusinessApplication",
     "operatingSystem": "Web",
     "description": "Cyfrowy obieg próbki dla laboratoriów, od zgłoszenia i poboru po wynik oraz panel klienta.",
-    "url": "https://adriansga.github.io/Labsolutions/",
+    "url": "https://labsolutions.pl/",
     "author": {
       "@type": "Person",
       "name": "Adrian Sga"
@@ -197,6 +203,20 @@
       box-shadow: 0 8px 20px rgba(29, 111, 220, .24);
     }
     .brand-mark svg { width: 23px; height: 23px; }
+    .brand-text {
+      display: inline-flex;
+      flex-direction: column;
+      justify-content: center;
+      line-height: 1.02;
+    }
+    .brand-domain {
+      margin-top: 1px;
+      font-size: .64rem;
+      font-weight: 600;
+      letter-spacing: 0;
+      text-transform: lowercase;
+      color: var(--muted);
+    }
     .nav-links { display: flex; align-items: center; gap: 26px; }
     .nav-links > a:not(.button) {
       color: #3b4f63;
@@ -714,7 +734,10 @@
             <path d="M8 15h8"/>
           </svg>
         </span>
-        ELABS
+        <span class="brand-text">
+          <span class="brand-name">ELABS</span>
+          <span class="brand-domain">labsolutions.pl</span>
+        </span>
       </a>
 
       <button class="menu-button" type="button" aria-label="Otwórz menu" aria-expanded="false" aria-controls="main-nav">
