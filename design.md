@@ -96,11 +96,11 @@ Kontrast tekstu i CTA minimum WCAG AA.
 |---|---|---|---|
 | Nawigacja + hero | obietnica i szybkie CTA | nav, badge, h1, CTA, proof frame | IMPLEMENTED |
 | Problem | nazwanie kosztów procesu | 3 karty | IMPLEMENTED |
-| Kalkulator | policzenie własnej skali | suwaki: pracownicy + wyniki/miesiąc; jawne 10 min/wynik, 55 zł/h i 168 h/FTE; koszt, czas, FTE i obciążenie zespołu | TO UPDATE |
+| Kalkulator | policzenie własnej skali | suwaki: pracownicy + wyniki/miesiąc; jawne 10 min/wynik, 55 zł/h i 168 h/FTE; koszt, czas, FTE i obciążenie zespołu | IMPLEMENTED |
 | Mechanizm | pokazanie jednej drogi próbki | 5 kroków procesu | IMPLEMENTED |
-| Produkt | dowód realnego działania | aktualny pulpit + sekwencja: zgłoszenie, rejestr, pracownia, kierownik, panel klienta | TO UPDATE |
+| Produkt | dowód realnego działania | aktualny pulpit + sekwencja: rejestr, pracownia, kierownik, panel klienta | IMPLEMENTED |
 | Pilot | obniżenie ryzyka | 3 etapy pilota | IMPLEMENTED |
-| FAQ | odpowiedzi na obiekcje | wyłącznie `details`; bez osobnej sekcji twórcy i zdjęcia | TO UPDATE |
+| FAQ | odpowiedzi na obiekcje | wyłącznie `details`; bez osobnej sekcji twórcy i zdjęcia | IMPLEMENTED |
 | Kontakt | rozpoczęcie rozmowy | formularz mailto + e-mail bezpośredni | IMPLEMENTED |
 
 ## 8. Dostępność
@@ -126,14 +126,14 @@ Kontrast tekstu i CTA minimum WCAG AA.
 
 ## 10. Weryfikacja
 
-- [ ] Walidacja DOM / testy logiki nowego kalkulatora
-- [ ] Główny flow E2E: hero → kalkulator → aktualne ekrany → CTA kontaktowe
-- [ ] Mobile 390 px
-- [ ] Tablet 768 px
-- [ ] Desktop 1440 px
-- [ ] Kalkulator: wartości domyślne + zmiana wszystkich założeń
-- [ ] Menu, FAQ, walidacja formularza i link `mailto:`
-- [ ] Porównanie z prototypem
-- [ ] Produkcyjny URL + HTTP 200 i poprawne ładowanie sześciu aktualnych screenshotów
+- [x] Walidacja DOM / testy logiki nowego kalkulatora
+- [x] Główny flow E2E: hero → kalkulator → aktualne ekrany → CTA kontaktowe
+- [x] Mobile 390 px
+- [x] Tablet 768 px
+- [x] Desktop 1440 px
+- [x] Kalkulator: wartości domyślne + zmiana wszystkich założeń
+- [x] Menu, FAQ, walidacja formularza i link `mailto:`
+- [x] Porównanie z prototypem
+- [x] Produkcyjny URL + HTTP 200 i poprawne ładowanie pięciu aktualnych screenshotów
 
-Poprzedni dowód wersji 1: Playwright `5/5`, commit `5a4d68f`, GitHub Pages run `32940790166`. Weryfikację wersji 2 uzupełnić po implementacji i kontroli realnego renderu.
+Dowód wersji 2 z 2026-08-26: Playwright `5/5`, brak overflow przy 390/768/1440, screenshoty w `_SCRATCH/ELABS_LANDING_V2_2026-08-26/`; commit `f316132`, GitHub Pages run `32942826406` = success. Produkcja HTTP 200; wartości domyślne `18 333 zł`, `333,3 godz.`, `66,1%`; po zmianie `5 osób / 1000 wyników / 12 min / 60 zł / 160 h` = `12 000 zł` i `25%`. Pięć ekranów produktu załadowanych, sekcja twórcy nieobecna, mobile bez overflow, błędy JS = 0.

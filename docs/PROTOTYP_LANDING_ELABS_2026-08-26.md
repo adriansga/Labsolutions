@@ -84,4 +84,4 @@
 
 ## Najważniejsza decyzja UX
 
-Kalkulator liczy koszt czasu przeznaczanego na generowanie dokumentów — nie obiecuje, że ELABS odzyska 100% tej kwoty. Dwa główne parametry są proste (`pracownicy zaangażowani w wyniki`, `wyniki/miesiąc`), a założenia czasu i kosztu są jawne oraz edytowalne. Domyślne `4 osoby + 2500 wyników` przy `10 min/wynik` pokazuje ok. 62% dostępnego czasu zespołu, co pozwala skonfrontować kalkulację z hipotezą 60–70% z wywiadów.
+Kalkulator liczy koszt czasu przeznaczanego na generowanie dokumentów — nie obiecuje, że ELABS odzyska 100% tej kwoty. Dwa główne parametry są proste (`pracownicy zaangażowani w wyniki`, `wyniki/miesiąc`), a założenia czasu i kosztu są jawne oraz edytowalne. Domyślne `3 osoby + 2000 wyników` przy `10 min/wynik` pokazuje 66,1% dostępnego czasu zespołu, co pozwala skonfrontować kalkulację z hipotezą 60–70% z wywiadów.
