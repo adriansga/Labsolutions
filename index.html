@@ -479,8 +479,9 @@
       background: rgba(255, 255, 255, .045);
     }
     .scenario-card-after { border-color: rgba(123, 224, 236, .3); background: rgba(34, 184, 207, .1); }
-    .scenario-badge { display: inline-flex; margin-bottom: 22px; padding: 7px 10px; border-radius: 999px; color: #c0cfdb; background: rgba(255, 255, 255, .07); font-size: .72rem; font-weight: 850; letter-spacing: .08em; text-transform: uppercase; }
-    .scenario-card-after .scenario-badge { color: #baf4f9; background: rgba(34, 184, 207, .16); }
+    .scenario-badge { display: inline-flex; margin-bottom: 22px; padding: 8px 13px; border-radius: 999px; border: 1px solid transparent; font-size: .82rem; font-weight: 850; letter-spacing: .06em; text-transform: uppercase; }
+    .scenario-card-before .scenario-badge { color: #ffb1b1; background: rgba(239, 68, 68, .16); border-color: rgba(239, 68, 68, .45); }
+    .scenario-card-after .scenario-badge { color: #7ff0ad; background: rgba(16, 185, 129, .17); border-color: rgba(16, 185, 129, .5); }
     .scenario-cost-label { display: block; margin-bottom: 7px; color: #a9bdcc; font-size: .82rem; }
     .scenario-cost { display: block; color: #fff; font-size: clamp(2rem, 4vw, 3.15rem); line-height: 1; letter-spacing: -.05em; font-variant-numeric: tabular-nums; }
     .scenario-annual { display: flex; align-items: baseline; justify-content: space-between; gap: 14px; margin-top: 13px; padding-top: 13px; border-top: 1px solid rgba(255, 255, 255, .12); }
@@ -680,7 +681,7 @@
       .pilot-grid { grid-template-columns: 1fr; }
       .problem-card { min-height: 0; }
       .primary-controls { grid-template-columns: 1fr; gap: 34px; }
-      .comparison-grid { grid-template-columns: 1fr; }
+      .comparison-grid { gap: 12px; }
       .proof-list { grid-template-columns: 1fr; padding: 14px 0; }
       .proof-list li { min-height: 46px; }
       .proof-list li + li { border-top: 1px solid var(--line); border-left: 0; }
@@ -704,7 +705,18 @@
       .number-wrap input { width: 100%; }
       .number-wrap { width: 100%; }
       .assumption-grid { grid-template-columns: 1fr; }
-      .scenario-metrics { grid-template-columns: 1fr; }
+      /* Porównanie Przed/Po zostaje obok siebie na telefonie (jak na PC) — dociążone, by zmieściło się bez overflow */
+      .comparison-grid { gap: 8px; }
+      .scenario-card { padding: 14px 12px; }
+      .scenario-badge { margin-bottom: 12px; padding: 5px 9px; font-size: .64rem; letter-spacing: .02em; }
+      .scenario-cost-label { margin-bottom: 5px; font-size: .68rem; }
+      .scenario-cost { font-size: clamp(1.15rem, 6.2vw, 1.7rem); letter-spacing: -.04em; }
+      .scenario-annual { flex-direction: column; align-items: flex-start; gap: 2px; margin-top: 10px; padding-top: 10px; }
+      .scenario-annual strong { font-size: .92rem; }
+      .scenario-metrics { grid-template-columns: 1fr; gap: 8px; margin-top: 14px; }
+      .scenario-metric { padding-top: 10px; }
+      .scenario-metric span { font-size: .68rem; }
+      .scenario-metric strong { font-size: .92rem; }
       .savings-main { align-items: flex-start; flex-direction: column; gap: 8px; }
       .savings-grid { grid-template-columns: 1fr; gap: 12px; }
       .product-shot-copy { min-height: 0; padding: 22px 20px 22px 70px; }
@@ -825,36 +837,15 @@
               </div>
             </div>
 
-            <details class="assumptions">
-              <summary>Sprawdź lub zmień założenia kalkulatora</summary>
-              <div class="assumption-grid">
-                <div class="assumption-field">
-                  <label for="team-share">Część czasu zespołu przy wynikach (%)</label>
-                  <input id="team-share" type="number" min="10" max="100" step="1" value="70" inputmode="decimal">
-                </div>
-                <div class="assumption-field">
-                  <label for="hours-day">Godziny pracy dziennie</label>
-                  <input id="hours-day" type="number" min="1" max="16" step="0.5" value="8" inputmode="decimal">
-                </div>
-                <div class="assumption-field">
-                  <label for="workdays">Dni pracy w miesiącu</label>
-                  <input id="workdays" type="number" min="1" max="31" step="1" value="20" inputmode="numeric">
-                </div>
-                <div class="assumption-field">
-                  <label for="minutes-current">Łączne minuty pracy na wynik</label>
-                  <input id="minutes-current" type="number" min="1" max="180" step="1" value="30" inputmode="decimal">
-                </div>
-                <div class="assumption-field">
-                  <label for="minutes-elabs">Ręczna praca z ELABS na wynik (min)</label>
-                  <input id="minutes-elabs" type="number" min="0.5" max="60" step="0.5" value="5" inputmode="decimal">
-                </div>
-                <div class="assumption-field">
-                  <label for="hourly-cost">Przyjęta stawka godzinowa (zł)</label>
-                  <input id="hourly-cost" type="number" min="10" max="300" step="1" value="50" inputmode="decimal">
-                </div>
-              </div>
-              <p class="assumption-note">70%, 30 minut, 5 minut i 50 zł/h to robocze założenia z rozmów. Każdą wartość możesz zmienić.</p>
-            </details>
+            <!-- Opcja edycji założeń usunięta na życzenie. Wartości domyślne (z rozmów) napędzają kalkulator w tle. -->
+            <div class="calc-assumptions-defaults" hidden aria-hidden="true">
+              <input id="team-share" type="number" value="70">
+              <input id="hours-day" type="number" value="8">
+              <input id="workdays" type="number" value="20">
+              <input id="minutes-current" type="number" value="30">
+              <input id="minutes-elabs" type="number" value="5">
+              <input id="hourly-cost" type="number" value="50">
+            </div>
           </div>
 
           <aside class="calculator-results" aria-live="polite" aria-atomic="true">
@@ -881,7 +872,7 @@
               </article>
 
               <article class="scenario-card scenario-card-after">
-                <span class="scenario-badge">Po wdrożeniu ELABS</span>
+                <span class="scenario-badge">Po ELABS</span>
                 <span class="scenario-cost-label">Koszt ręcznej pracy miesięcznie</span>
                 <strong class="scenario-cost" id="after-cost">4 167 zł</strong>
                 <div class="scenario-annual">
