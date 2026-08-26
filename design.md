@@ -84,7 +84,7 @@ Kontrast tekstu i CTA minimum WCAG AA.
 |---|---|---|---|
 | Button | primary / secondary / ghost-on-dark | default / hover / focus / disabled | jeden primary w obrębie bloku |
 | Field | text / email / number / range | default / focus / invalid | zawsze etykieta i komunikat błędu |
-| Metric card | cost / annual / time / FTE / team load | default / updated | liczby aktualizowane w `aria-live` |
+| Metric card | current range / team estimate / volume estimate / ELABS scenario / released capacity | default / updated | liczby aktualizowane w `aria-live`; dwóch estymacji tego samego kosztu nigdy nie sumujemy |
 | Proof frame | desktop browser / process gallery | default | tylko realne, aktualne screenshoty ELABS bez danych klientów |
 | Process step | 1–5 | default | zachowuje kanoniczną kolejność próbki |
 | FAQ item | accordion | closed / open | natywny `details/summary` |
@@ -96,11 +96,11 @@ Kontrast tekstu i CTA minimum WCAG AA.
 |---|---|---|---|
 | Nawigacja + hero | obietnica i szybkie CTA | nav, badge, h1, CTA, proof frame | IMPLEMENTED |
 | Problem | nazwanie kosztów procesu | 3 karty | IMPLEMENTED |
-| Kalkulator | policzenie własnej skali | suwaki: pracownicy + wyniki/miesiąc; jawne 10 min/wynik, 55 zł/h i 168 h/FTE; koszt, czas, FTE i obciążenie zespołu | IMPLEMENTED |
+| Kalkulator | policzenie własnej skali | suwaki: pracownicy + wyniki/miesiąc; dwa niezależne oszacowania, widełki kosztu i scenariusz ELABS | TO UPDATE V3 |
 | Mechanizm | pokazanie jednej drogi próbki | 5 kroków procesu | IMPLEMENTED |
 | Produkt | dowód realnego działania | aktualny pulpit + sekwencja: rejestr, pracownia, kierownik, panel klienta | IMPLEMENTED |
 | Pilot | obniżenie ryzyka | 3 etapy pilota | IMPLEMENTED |
-| FAQ | odpowiedzi na obiekcje | wyłącznie `details`; bez osobnej sekcji twórcy i zdjęcia | IMPLEMENTED |
+| Wiarygodność + FAQ | odpowiedzi na obiekcje | przywrócona karta Adriana + `details` | TO UPDATE V3 |
 | Kontakt | rozpoczęcie rozmowy | formularz mailto + e-mail bezpośredni | IMPLEMENTED |
 
 ## 8. Dostępność
@@ -118,22 +118,26 @@ Kontrast tekstu i CTA minimum WCAG AA.
 - Bez niepotwierdzonych oszczędności, certyfikatów, integracji, cen, liczby miejsc i sztucznych deadline'ów.
 - Bez obietnicy „zero błędów” i „100% odzyskanej kwoty”.
 - Bez logotypów klientów i opinii, dopóki nie ma zgody i źródła.
-- Kalkulator pokazuje estymację kosztu pracy przeznaczonej na generowanie wyników. Nie nazywa całej kwoty gwarantowaną oszczędnością ELABS.
+- Kalkulator pokazuje estymację obecnego kosztu pracy i potencjału uwolnienia czasu. Nie nazywa całej różnicy gwarantowaną oszczędnością ELABS.
 - Dwa suwaki to: liczba pracowników zaangażowanych w wyniki i łączna liczba wyników miesięcznie.
-- Formuła kosztu: `wyniki × minuty na wynik ÷ 60 × koszt godziny`; liczba pracowników nie mnoży kosztu drugi raz, tylko pozwala policzyć udział czasu zespołu: `godziny dokumentacji ÷ (pracownicy × 168 h)`.
-- Domyślne założenia (`10 min/wynik`, `55 zł/h`, `168 h/miesiąc na osobę`) wynikają z roboczych ustaleń z wywiadów Adriana i pozostają jawne oraz edytowalne; nie przedstawiamy ich jako niezależnego benchmarku branżowego.
+- Estymacja z czasu zespołu: `pracownicy × 8 h × 20 dni × 70% × 50 zł/h`.
+- Estymacja z wolumenu: `wyniki × 30 min ÷ 60 × 50 zł/h`.
+- To dwa sposoby oszacowania tego samego kosztu, więc pokazujemy zakres od niższej do wyższej wartości; nigdy ich nie dodajemy ani nie mnożymy przez siebie.
+- Scenariusz ELABS: `wyniki × 5 min ÷ 60 × 50 zł/h`; potencjał uwolnienia pokazujemy jako różnicę względem obu obecnych estymacji.
+- Domyślne założenia (`70% czasu`, `8 h/dzień`, `20 dni/miesiąc`, `30 min/wynik`, `5 min/wynik w scenariuszu ELABS`, `50 zł brutto/h`) wynikają z roboczych ustaleń z wywiadów Adriana i pozostają jawne oraz edytowalne; nie przedstawiamy ich jako niezależnego benchmarku branżowego.
+- Przy domyślnych `5 osób + 1000 wyników` estymacje to `28 000 zł` i `25 000 zł`, czyli zakres `25 000–28 000 zł`. Scenariusz ELABS to `83,3 h / 4 167 zł`, a czas na wynik spada z 30 do 5 min, czyli 6× — nie 10–20×.
 - Produkcyjny screenshot może zostać skopiowany do repo jako statyczny dowód; używamy ostatniego zweryfikowanego zestawu po aktualizacji UI 25.08.2026 i nie ujawniamy danych klientów.
 
 ## 10. Weryfikacja
 
-- [x] Walidacja DOM / testy logiki nowego kalkulatora
-- [x] Główny flow E2E: hero → kalkulator → aktualne ekrany → CTA kontaktowe
-- [x] Mobile 390 px
-- [x] Tablet 768 px
-- [x] Desktop 1440 px
-- [x] Kalkulator: wartości domyślne + zmiana wszystkich założeń
-- [x] Menu, FAQ, walidacja formularza i link `mailto:`
-- [x] Porównanie z prototypem
-- [x] Produkcyjny URL + HTTP 200 i poprawne ładowanie pięciu aktualnych screenshotów
+- [ ] Walidacja DOM / testy dwóch modeli i scenariusza ELABS
+- [ ] Główny flow E2E: hero → kalkulator → aktualne ekrany → wiarygodność → CTA
+- [ ] Mobile 390 px
+- [ ] Tablet 768 px
+- [ ] Desktop 1440 px
+- [ ] Kalkulator: wartości domyślne + zmiana wszystkich założeń
+- [ ] Menu, FAQ, walidacja formularza i link `mailto:`
+- [ ] Porównanie z prototypem
+- [ ] Produkcyjny URL + HTTP 200, sekcja Adriana i kluczowa interakcja
 
-Dowód wersji 2 z 2026-08-26: Playwright `5/5`, brak overflow przy 390/768/1440, screenshoty w `_SCRATCH/ELABS_LANDING_V2_2026-08-26/`; commit `f316132`, GitHub Pages run `32942826406` = success. Produkcja HTTP 200; wartości domyślne `18 333 zł`, `333,3 godz.`, `66,1%`; po zmianie `5 osób / 1000 wyników / 12 min / 60 zł / 160 h` = `12 000 zł` i `25%`. Pięć ekranów produktu załadowanych, sekcja twórcy nieobecna, mobile bez overflow, błędy JS = 0.
+Poprzedni dowód V2: Playwright `5/5`, commit `f316132`, GitHub Pages run `32942826406`. Dowód V3 uzupełnić po implementacji i kontroli produkcyjnej.

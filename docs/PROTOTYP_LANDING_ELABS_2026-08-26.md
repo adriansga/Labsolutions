@@ -24,8 +24,9 @@
 │ Czy dane tej samej próbki żyją w kilku miejscach?  [3 karty problemu]      │
 ├────────────────────────────────────────────────────────────────────────────┤
 │ KALKULATOR: pracownicy [slider + liczba] | wyniki/mies. [slider + liczba]  │
-│             [koszt mies.] [koszt rok] [godziny] [FTE] [obciążenie zespołu] │
-│             Założenia: 10 min/wynik · 55 zł/h · 168 h/FTE (edytowalne)     │
+│ [z czasu zespołu: 28k] [z wolumenu: 25k] → zakres 25–28k                  │
+│ [ELABS: 83 h / 4,2k] [uwolnione: 417–477 h] [6× krótszy czas]             │
+│ Założenia: 70% · 8h · 20 dni · 30 min/wynik · ELABS 5 min · 50 zł/h       │
 ├────────────────────────────────────────────────────────────────────────────┤
 │ Zamiast łatać papier kolejnym Excelem — jeden cyfrowy obieg                │
 │ [1 zgłoszenie] → [2 pobór] → [3 rejestr] → [4 pracownia] → [5 wynik]      │
@@ -35,7 +36,7 @@
 ├────────────────────────────────────────────────────────────────────────────┤
 │ Pilot jednego procesu: mapa → demo → decyzja                               │
 ├────────────────────────────────────────────────────────────────────────────┤
-│ FAQ — bez sekcji twórcy i bez zdjęcia                                       │
+│ Karta Adriana / wiarygodność operacyjna │ FAQ                             │
 ├────────────────────────────────────────────────────────────────────────────┤
 │ CTA: Pokaż mi swój obieg — odpowiadamy gotową mapą rozmowy                 │
 │ [formularz: imię, firma, e-mail, próbki] [Przygotuj wiadomość]             │
@@ -59,8 +60,9 @@
 │ Kalkulator                   │
 │ Pracownicy [slider] [liczba] │
 │ Wyniki/mies. [slider] [liczba]│
-│ Koszt / Rok / Godziny / FTE  │
-│ Obciążenie czasu zespołu     │
+│ Koszt z zespołu / wolumenu   │
+│ Zakres obecnego kosztu       │
+│ ELABS / uwolniony czas / 6×  │
 │ Założenia                    │
 ├──────────────────────────────┤
 │ Proces — 5 kroków pionowo    │
@@ -75,8 +77,9 @@
 ## Stany do sprawdzenia
 
 - Kalkulator: minimum, wartości domyślne, maksimum i ręczne wpisanie liczby pracowników oraz wyników.
-- Założenia: zwinięte i rozwinięte; zmiana minut, kosztu godziny oraz miesięcznej liczby godzin FTE aktualizuje wynik.
-- Pracownicy wpływają na obciążenie zespołu, ale nie mnożą drugi raz czasu wynikającego z łącznej liczby dokumentów.
+- Założenia: zwinięte i rozwinięte; zmiana udziału czasu, godzin/dnia, dni/miesiąc, minut na wynik, minut ELABS i stawki aktualizuje wynik.
+- Koszt z czasu zespołu i koszt z wolumenu są dwiema niezależnymi estymacjami tego samego procesu; interfejs pokazuje ich zakres, nigdy sumę.
+- Przy `5 osób / 1000 wyników` wartości bazowe to: `28 000 zł` z czasu zespołu, `25 000 zł` z wolumenu, obecny zakres `25 000–28 000 zł`, ELABS `4 167 zł`, `6×` krótszy czas.
 - Nawigacja: menu mobilne otwiera się, zamyka i nie blokuje dalszego scrollowania.
 - FAQ: pojedynczy otwarty element, poprawne `aria-expanded`.
 - Kontakt: wymagane pola; po poprawnym wypełnieniu powstaje prawdziwy link `mailto:` z danymi, bez fałszywego komunikatu o wysłaniu.
@@ -84,4 +87,4 @@
 
 ## Najważniejsza decyzja UX
 
-Kalkulator liczy koszt czasu przeznaczanego na generowanie dokumentów — nie obiecuje, że ELABS odzyska 100% tej kwoty. Dwa główne parametry są proste (`pracownicy zaangażowani w wyniki`, `wyniki/miesiąc`), a założenia czasu i kosztu są jawne oraz edytowalne. Domyślne `3 osoby + 2000 wyników` przy `10 min/wynik` pokazuje 66,1% dostępnego czasu zespołu, co pozwala skonfrontować kalkulację z hipotezą 60–70% z wywiadów.
+Kalkulator nie zmusza dwóch przesłanek do jednego sztucznego mnożenia. Liczy ten sam obecny koszt dwiema drogami (`czas zespołu` i `wolumen × 30 min`), pokazuje widełki, a osobno zestawia je ze scenariuszem `5 min ręcznej pracy ELABS na wynik`. Różnica jest potencjałem uwolnienia czasu do walidacji w pilocie, nie gwarantowaną oszczędnością.
