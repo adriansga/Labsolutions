@@ -10,7 +10,7 @@
 - Produkt / ekran: sprzedażowy landing ELABS z kalkulatorem kosztu ręcznego generowania dokumentów i wyników.
 - Główny użytkownik: właściciel, kierownik lub osoba operacyjna małego/średniego laboratorium.
 - Zadanie użytkownika: policzyć czas i koszt generowania wyników, zobaczyć aktualny cyfrowy przepływ krok po kroku i umówić demo jednego procesu.
-- Pożądane odczucie: wiarygodnie, konkretnie, spokojnie i operacyjnie — bez „startupowego dymu”.
+- Pożądane odczucie: wiarygodnie, konkretnie, spokojnie i operacyjnie, bez „startupowego dymu”.
 - Zasada nadrzędna: najpierw własne liczby i realny proces, potem oferta.
 
 ## 2. Referencje i prototyp
@@ -30,6 +30,8 @@ Prototyp: `docs/PROTOTYP_LANDING_ELABS_2026-08-26.md`.
 - Realne, aktualne ekrany produktu są ważniejszym dowodem niż dekoracyjne mockupy; pokazujemy je w kolejności przejścia próbki.
 - Jedna akcja główna: „Umów krótkie demo”; kalkulator jest głównym mostem do tej akcji.
 - Bez emoji, stockowych logotypów i fikcyjnych testimoniali.
+- Publiczny tekst nie używa półpauzy `—`. Zdania są krótkie, konkretne i zapisane językiem osoby prowadzącej laboratorium.
+- Bez ogólnych formuł typowych dla tekstu generowanego, takich jak „realny potencjał”, „bezpieczna transformacja”, „rewolucja” lub konstrukcje „nie X, tylko Y”.
 
 ## 4. Tokeny
 
@@ -95,14 +97,15 @@ Kontrast tekstu i CTA minimum WCAG AA.
 
 | Sekcja | Cel | Główne komponenty | Status |
 |---|---|---|---|
-| Nawigacja + hero | obietnica i szybkie CTA prowadzące bezpośrednio do kalkulatora | nav, badge, h1, dwa CTA; bez ekranu produktu | IMPLEMENTED V6 |
-| Kalkulator bezpośrednio pod CTA | natychmiastowe policzenie skali i pokazanie stanu przed/po | suwaki: pracownicy + wyniki/miesiąc; dwie dynamiczne kolumny z kwotami miesiąc/rok; roczny potencjał jako liczba główna | IMPLEMENTED V6 |
+| Nawigacja + hero | obietnica i szybkie CTA prowadzące bezpośrednio do kalkulatora | nav, badge, h1, dwa CTA; bez ekranu produktu | IMPLEMENTED V7 |
+| Kalkulator bezpośrednio pod CTA | natychmiastowe policzenie skali i pokazanie stanu przed/po | suwaki: pracownicy + wyniki/miesiąc; dwie dynamiczne kolumny z kwotami miesiąc/rok; roczna wartość odzyskanego czasu jako liczba główna | IMPLEMENTED V7 |
 | Problem | nazwanie źródeł policzonego kosztu | 3 karty | IMPLEMENTED |
 | Mechanizm | pokazanie jednej drogi próbki | 5 kroków procesu | IMPLEMENTED |
 | Produkt | dowód realnego działania | aktualny pulpit + sekwencja: rejestr, pracownia, kierownik, panel klienta | IMPLEMENTED |
 | Pilot | obniżenie ryzyka | 3 etapy pilota | IMPLEMENTED |
 | Wiarygodność + FAQ | odpowiedzi na obiekcje | przywrócona karta Adriana + `details` | IMPLEMENTED V3 |
 | Kontakt | rozpoczęcie rozmowy | formularz mailto + e-mail bezpośredni | IMPLEMENTED |
+| Polityka prywatności + informacje prawne | zgodny z faktycznym działaniem opis strony | statyczne podstrony, prawdziwy e-mail, hosting GitHub Pages, brak nieistniejących pakietów i gwarancji | IMPLEMENTED V7 |
 
 ## 8. Dostępność
 
@@ -117,6 +120,7 @@ Kontrast tekstu i CTA minimum WCAG AA.
 ## 9. Zakazy i wyjątki
 
 - Bez niepotwierdzonych oszczędności, certyfikatów, integracji, cen, liczby miejsc i sztucznych deadline'ów.
+- Bez nieaktualnych pakietów, gwarancji, terminów wdrożenia i mechanizmów analitycznych, których nie ma w kodzie strony.
 - Bez obietnicy „zero błędów” i „100% odzyskanej kwoty”.
 - Bez logotypów klientów i opinii, dopóki nie ma zgody i źródła.
 - Kalkulator pokazuje estymację obecnego kosztu pracy i potencjału uwolnienia czasu. Nie nazywa całej różnicy gwarantowaną oszczędnością ELABS.
@@ -150,3 +154,5 @@ Dowód V4 z 2026-08-26: kalkulator jest bezpośrednim następnikiem hero i pokaz
 Dowód V5 z 2026-08-26: widełki zastąpiono jedną średnią arytmetyczną, a obie kolumny pokazują koszt miesięczny i roczny. Playwright `5/5`, brak overflow przy 390/768/1440, screenshoty w `_SCRATCH/ELABS_LANDING_V5_2026-08-26/`; commit `003f108`, GitHub Pages run `32961347990` = success. Produkcja HTTP 200; wartości domyślne: przed `26 500 zł/mies. / 318 000 zł/rok`, po `4 167 zł/mies. / 50 000 zł/rok`, potencjał `22 333 zł/mies. / 268 000 zł/rok`, `446,7 h` i `84,3%`. Po zmianie wszystkich założeń: przed `21 480 zł/mies. / 257 760 zł/rok`, po `3 200 zł/mies. / 38 400 zł/rok`, potencjał `18 280 zł/mies. / 219 360 zł/rok`. Karta Adriana i 5 ekranów produktu obecne, mobile bez overflow, błędy JS = 0.
 
 Dowód V6 z 2026-08-26: usunięto ekran produktu z hero, a kalkulator zaczyna się bezpośrednio po dwóch CTA; zmierzony odstęp CTA→nagłówek kalkulatora na mobile wynosi `64 px`. Roczny potencjał `268 000 zł` jest liczbą główną, miesięczny `22 333 zł` pomocniczą. Playwright `5/5`, brak overflow przy 390/768/1440, screenshoty w `_SCRATCH/ELABS_LANDING_V6_2026-08-26/`; commit `7279f9c`, GitHub Pages run `32962833496` = success. Produkcja HTTP 200, hero product visual = 0, późniejsza galeria = 5 ekranów, karta Adriana obecna, obrazy kompletne, błędy JS = 0.
+
+Dowód V7 z 2026-08-26: finalny audyt copy CSO/CMO usunął półpauzy i nieaktualne obietnice ze wszystkich publicznych plików HTML. Uproszczono język, zachowując kalkulator przed/po, pięć ekranów produktu i kartę Adriana. Polityka prywatności oraz informacje prawne opisują faktyczne działanie statycznej strony i kontakt `mailto:`. Playwright `6/6`, skan półpauz `0`, skan starego copy `0`, brak overflow przy 390/768/1440; screenshoty w `_SCRATCH/ELABS_LANDING_FINAL_COPY_2026-08-26/`.

@@ -8,6 +8,8 @@
 
 `Obietnica → policz koszt i zobacz stan przed/po → rozpoznaj źródła kosztu → zobacz aktualny ELABS krok po kroku → umów demo`
 
+Reguła finalnego copy: krótkie zdania, konkret operacyjny, bez półpauzy `—`, sloganów i niepotwierdzonych obietnic.
+
 ## Desktop 1440 px
 
 ```text
@@ -23,7 +25,7 @@
 │ │ 26,5k/mies. · 318k/rok       │  │ 4,2k/mies. · 50k/rok              │ │
 │ │ 530 h · 30 min / wynik       │  │ 83 h · 5 min / wynik              │ │
 │ └──────────────────────────────┘  └──────────────────────────────────────┘ │
-│ POTENCJAŁ: 268k zł / rok (główna liczba) · 22,3k zł / mies. · 446,7 h      │
+│ ODZYSKANY CZAS: 268k zł / rok (główna liczba) · 22,3k zł / mies. · 446,7 h│
 │ Założenia: 70% · 8h · 20 dni · 30 min/wynik · ELABS 5 min · 50 zł/h       │
 ├────────────────────────────────────────────────────────────────────────────┤
 │ Telefon/tablet · Jeden status · Panel klienta                              │
@@ -35,7 +37,7 @@
 │ REALNY PRODUKT: [01 aktualny pulpit — szeroko]                              │
 │ [02 zgłoszenie] [03 rejestr] [04 pracownia] [05 kierownik] [06 klient]     │
 ├────────────────────────────────────────────────────────────────────────────┤
-│ Pilot jednego procesu: mapa → demo → decyzja                               │
+│ Pilot jednego obiegu: mapa → demo → decyzja                                │
 ├────────────────────────────────────────────────────────────────────────────┤
 │ Karta Adriana / wiarygodność operacyjna │ FAQ                             │
 ├────────────────────────────────────────────────────────────────────────────┤
@@ -65,7 +67,7 @@
 │ │ koszt mies. + roczny      │ │
 │ │ godziny / minuty          │ │
 │ └──────────────────────────┘ │
-│ Potencjał ROK / mies. / czas │
+│ Wartość czasu ROK / mies. / czas│
 ├──────────────────────────────┤
 │ 3 problemy — karty pionowo   │
 ├──────────────────────────────┤

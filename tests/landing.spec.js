@@ -1,7 +1,7 @@
 const { test, expect } = require('@playwright/test');
 const path = require('path');
 
-const screenshotDir = '/mnt/g/Mój dysk/.AI/_SCRATCH/ELABS_LANDING_V6_2026-08-26';
+const screenshotDir = '/mnt/g/Mój dysk/.AI/_SCRATCH/ELABS_LANDING_FINAL_COPY_2026-08-26';
 
 test('główny flow landing → kalkulator → kontakt działa', async ({ page }) => {
   const pageErrors = [];
@@ -72,6 +72,27 @@ test('główny flow landing → kalkulator → kontakt działa', async ({ page }
     .map((image) => image.getAttribute('src')));
   expect(brokenImages).toEqual([]);
   expect(pageErrors).toEqual([]);
+});
+
+test('publiczne podstrony nie zawierają półpauz ani starej oferty', async ({ page }) => {
+  const pages = ['/', '/404.html', '/polityka-prywatnosci.html', '/regulamin.html', '/og-image.html'];
+  for (const url of pages) {
+    await page.goto(url, { waitUntil: 'networkidle' });
+    const html = await page.locator('html').evaluate((element) => element.outerHTML);
+    expect(html).not.toContain('—');
+  }
+
+  await page.goto('/polityka-prywatnosci.html', { waitUntil: 'networkidle' });
+  await expect(page.locator('body')).toContainText('adrian.labsolutions@gmail.com');
+  await expect(page.locator('body')).not.toContainText('Formspree');
+  await expect(page.locator('body')).not.toContainText('Microsoft Clarity');
+  await expect(page.locator('body')).not.toContainText('[NIP]');
+
+  await page.goto('/regulamin.html', { waitUntil: 'networkidle' });
+  await expect(page.locator('h1')).toHaveText('Informacje prawne');
+  await expect(page.locator('body')).not.toContainText('Pakiet Start');
+  await expect(page.locator('body')).not.toContainText('gwarancję satysfakcji');
+  await expect(page.locator('body')).not.toContainText('Kurier');
 });
 
 test('menu mobile, FAQ i formularz mają poprawne stany', async ({ page }) => {

@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>ELABS — cyfrowy obieg próbki w laboratorium</title>
-  <meta name="description" content="Policz koszt czasu przeznaczanego na generowanie wyników i zobacz aktualny ELABS — cyfrowy obieg próbki od zgłoszenia do panelu klienta.">
+  <title>ELABS: cyfrowy obieg próbki w laboratorium</title>
+  <meta name="description" content="Policz koszt czasu przeznaczanego na generowanie wyników i zobacz aktualną wersję ELABS od zgłoszenia próbki do panelu klienta.">
   <meta name="robots" content="index,follow">
   <meta name="theme-color" content="#061322">
   <meta name="author" content="Adrian Sga">
@@ -17,8 +17,8 @@
   <meta property="og:type" content="website">
   <meta property="og:locale" content="pl_PL">
   <meta property="og:site_name" content="ELABS">
-  <meta property="og:title" content="ELABS — od próbki do gotowego wyniku">
-  <meta property="og:description" content="Policz koszt generowania wyników i zobacz aktualny cyfrowy obieg próbki — ekran po ekranie.">
+  <meta property="og:title" content="ELABS: od próbki do gotowego wyniku">
+  <meta property="og:description" content="Policz koszt generowania wyników i zobacz cyfrowy obieg próbki krok po kroku.">
   <meta property="og:url" content="https://adriansga.github.io/Labsolutions/">
 
   <script type="application/ld+json">
@@ -28,7 +28,7 @@
     "name": "ELABS",
     "applicationCategory": "BusinessApplication",
     "operatingSystem": "Web",
-    "description": "Cyfrowy obieg próbki dla laboratoriów — od zgłoszenia i poboru po wynik oraz panel klienta.",
+    "description": "Cyfrowy obieg próbki dla laboratoriów, od zgłoszenia i poboru po wynik oraz panel klienta.",
     "url": "https://adriansga.github.io/Labsolutions/",
     "author": {
       "@type": "Person",
@@ -707,7 +707,7 @@
 
   <header class="site-header">
     <div class="container nav-wrap">
-      <a class="brand" href="#top" aria-label="ELABS — strona główna">
+      <a class="brand" href="#top" aria-label="ELABS, strona główna">
         <span class="brand-mark" aria-hidden="true">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9">
             <path d="M9 3h6M10 3v6l-5 8.2A2.5 2.5 0 0 0 7.1 21h9.8a2.5 2.5 0 0 0 2.1-3.8L14 9V3"/>
@@ -761,20 +761,20 @@
         <div class="section-heading center reveal">
           <span class="eyebrow">Policz swój miesiąc</span>
           <h2>Ile kosztuje ręczne generowanie wyników?</h2>
-          <p class="section-lead">Podaj liczbę pracowników i gotowych wyników miesięcznie. Od razu zobaczysz porównanie ręcznej pracy przed ELABS i po wdrożeniu cyfrowego obiegu.</p>
+          <p class="section-lead">Podaj liczbę osób przygotowujących wyniki i liczbę dokumentów wydawanych miesięcznie. Kalkulator porówna obecny koszt pracy z wariantem opartym na założonym czasie obsługi w ELABS.</p>
         </div>
 
         <div class="calculator-shell reveal">
           <div class="calculator-inputs">
             <h3 class="calculator-title">Twój obecny obieg</h3>
-            <p class="calculator-intro">Podaj średni miesiąc — nie rekordowy i nie najspokojniejszy.</p>
-            <p class="interview-note">Punkt startowy z rozmów: 70% dnia pracy przy wynikach. Druga estymacja zakłada 30 minut łącznej pracy na dokument. Kalkulator uśrednia oba rachunki — nie dodaje ich.</p>
+            <p class="calculator-intro">Podaj dane z typowego miesiąca, bez wybierania rekordu ani wyjątkowo spokojnego okresu.</p>
+            <p class="interview-note">Na start przyjęliśmy, że zespół poświęca na wyniki 70% czasu, a przygotowanie jednego dokumentu zajmuje 30 minut. Kalkulator liczy koszt na oba sposoby i pokazuje ich średnią.</p>
 
             <div class="primary-controls">
               <div class="calc-group">
               <div class="calc-label-row">
                 <label for="employees-range">
-                  Pracownicy zaangażowani w wyniki
+                  Osoby przygotowujące wyniki
                   <span class="calc-helper">Osoby, które składają, sprawdzają lub autoryzują dokumenty</span>
                 </label>
                 <div class="number-wrap">
@@ -782,28 +782,28 @@
                   <span>os.</span>
                 </div>
               </div>
-              <input id="employees-range" type="range" min="1" max="50" step="1" value="5" aria-label="Liczba pracowników zaangażowanych w wyniki — suwak">
+              <input id="employees-range" type="range" min="1" max="50" step="1" value="5" aria-label="Suwak liczby osób przygotowujących wyniki">
               <div class="range-scale"><span>1</span><span>50</span></div>
               </div>
 
               <div class="calc-group">
               <div class="calc-label-row">
                 <label for="results-range">
-                  Gotowe wyniki miesięcznie
-                  <span class="calc-helper">Jeden wynik = jeden dokument końcowy przekazywany klientowi</span>
+                  Wyniki wydawane miesięcznie
+                  <span class="calc-helper">Za wynik uznajemy jeden dokument przekazany klientowi</span>
                 </label>
                 <div class="number-wrap">
                   <input id="results-number" type="number" min="50" max="20000" step="50" value="1000" inputmode="numeric" aria-label="Liczba gotowych wyników miesięcznie">
                   <span>szt.</span>
                 </div>
               </div>
-              <input id="results-range" type="range" min="50" max="20000" step="50" value="1000" aria-label="Liczba gotowych wyników miesięcznie — suwak">
+              <input id="results-range" type="range" min="50" max="20000" step="50" value="1000" aria-label="Suwak liczby wyników wydawanych miesięcznie">
               <div class="range-scale"><span>50</span><span>20 000</span></div>
               </div>
             </div>
 
             <details class="assumptions">
-              <summary>Założenia kalkulatora — zobacz lub zmień</summary>
+              <summary>Sprawdź lub zmień założenia kalkulatora</summary>
               <div class="assumption-grid">
                 <div class="assumption-field">
                   <label for="team-share">Część czasu zespołu przy wynikach (%)</label>
@@ -826,11 +826,11 @@
                   <input id="minutes-elabs" type="number" min="0.5" max="60" step="0.5" value="5" inputmode="decimal">
                 </div>
                 <div class="assumption-field">
-                  <label for="hourly-cost">Wartość godziny pracy (zł brutto)</label>
+                  <label for="hourly-cost">Przyjęta stawka godzinowa (zł)</label>
                   <input id="hourly-cost" type="number" min="10" max="300" step="1" value="50" inputmode="decimal">
                 </div>
               </div>
-              <p class="assumption-note">70%, 30 min, 5 min i 50 zł/h to robocze założenia z rozmów, nie niezależny benchmark branżowy. Wszystkie możesz zmienić.</p>
+              <p class="assumption-note">70%, 30 minut, 5 minut i 50 zł/h to robocze założenia z rozmów. Każdą wartość możesz zmienić.</p>
             </details>
           </div>
 
@@ -881,28 +881,28 @@
             <div class="savings-summary">
               <div class="savings-main">
                 <div class="savings-main-copy">
-                  <span>Potencjalna wartość odzyskanego czasu w skali roku</span>
+                  <span>Szacowana wartość odzyskanego czasu w skali roku</span>
                   <strong class="savings-value" id="annual-savings">268 000 zł</strong>
                 </div>
                 <span class="savings-period">rocznie</span>
               </div>
               <div class="savings-grid">
                 <div class="savings-metric">
-                  <span>Potencjał miesięcznie</span>
+                  <span>Miesięcznie</span>
                   <strong id="monthly-savings">22 333 zł</strong>
                 </div>
                 <div class="savings-metric">
-                  <span>Odzyskany czas miesięcznie</span>
+                  <span>Różnica w czasie pracy</span>
                   <strong id="released-hours">446,7 godz.</strong>
                 </div>
                 <div class="savings-metric">
-                  <span>Mniej ręcznej pracy</span>
+                  <span>Mniej pracy ręcznej</span>
                   <strong id="reduction-percent">84,3%</strong>
                 </div>
               </div>
             </div>
-            <p class="calc-disclaimer">„Przed” to średnia arytmetyczna dwóch oszacowań tego samego kosztu: z czasu zespołu i z liczby wyników — nigdy ich suma. „Po” zakłada 5 minut ręcznej pracy na wynik. Pokazana różnica jest potencjałem do pomiaru w pilocie, nie gwarancją oszczędności gotówkowej.</p>
-            <a class="button button-primary" href="#kontakt">Pokaż mi ten proces na demo</a>
+            <p class="calc-disclaimer">Koszt obecnego sposobu pracy liczymy na podstawie czasu zespołu oraz liczby wyników. Pokazujemy średnią, a nie sumę. Wariant z ELABS przyjmuje 5 minut pracy ręcznej na wynik. To założenie do sprawdzenia podczas pilota, a nie gwarancja oszczędności.</p>
+            <a class="button button-primary" href="#kontakt">Umów 20-minutowe demo</a>
           </aside>
         </div>
       </div>
@@ -920,7 +920,7 @@
         </li>
         <li>
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 19V8l8-4 8 4v11"/><path d="M8 19v-5h8v5M3 19h18"/></svg>
-          Zbudowane na realnym obiegu pracy laboratorium
+          Oparte na obiegu pracy laboratorium
         </li>
       </ul>
     </div>
@@ -929,8 +929,8 @@
       <div class="container">
         <div class="section-heading reveal">
           <span class="eyebrow">Problem operacyjny</span>
-          <h2>Czy dane tej samej próbki żyją w kilku miejscach?</h2>
-          <p class="section-lead">Papier sam w sobie nie jest największym kosztem. Koszt powstaje wtedy, gdy człowiek przenosi te same informacje między etapami, a status procesu trzeba odtwarzać z telefonów, kartek i pamięci zespołu.</p>
+          <h2>Czy dane tej samej próbki są zapisane w kilku miejscach?</h2>
+          <p class="section-lead">Najwięcej czasu zabiera przenoszenie tych samych informacji między etapami oraz szukanie aktualnego statusu próbki.</p>
         </div>
 
         <div class="card-grid">
@@ -942,11 +942,11 @@
           <article class="problem-card reveal">
             <div class="card-number">02</div>
             <h3>Status jest w głowach ludzi</h3>
-            <p>„Gdzie jest próbka?” i „czy wynik już wyszedł?” uruchamiają telefon, spacer do innego pokoju albo szukanie po kilku źródłach.</p>
+            <p>Pytania „Gdzie jest próbka?” i „Czy wynik jest gotowy?” kończą się telefonem, wizytą w innym pokoju albo szukaniem w kilku miejscach.</p>
           </article>
           <article class="problem-card reveal">
             <div class="card-number">03</div>
-            <h3>Dokument końcowy zaczyna się od nowa</h3>
+            <h3>Dokument końcowy trzeba złożyć ręcznie</h3>
             <p>Na końcu procesu ktoś ponownie składa dane klienta, poboru, oznaczeń, autoryzacji i wysyłki w jeden komplet.</p>
           </article>
         </div>
@@ -962,8 +962,8 @@
       <div class="container">
         <div class="section-heading center reveal">
           <span class="eyebrow">Aktualny ELABS</span>
-          <h2>Zobacz, co dzieje się z próbką — ekran po ekranie.</h2>
-          <p class="section-lead">Poniżej są realne ekrany aktualnej wersji ELABS. Każdy pokazuje kolejny etap jednego procesu, a nie osobną prezentację funkcji.</p>
+          <h2>Zobacz drogę próbki w ELABS krok po kroku.</h2>
+          <p class="section-lead">Poniżej pokazujemy kolejne etapy pracy na aktualnych ekranach ELABS.</p>
         </div>
 
         <div class="product-flow">
@@ -973,31 +973,31 @@
           </article>
           <article class="product-shot reveal">
             <a href="assets/elabs-02-rejestr.png" target="_blank" rel="noopener" aria-label="Otwórz ekran rejestru ELABS w pełnym rozmiarze"><img src="assets/elabs-02-rejestr.png" alt="Aktualny ekran rejestru próbek po powrocie"></a>
-            <div class="product-shot-copy"><h3>Rejestr po powrocie</h3><p>Próbka przechodzi z poboru do laboratorium, dostaje czytelny status i trafia do właściwej pracowni.</p></div>
+            <div class="product-shot-copy"><h3>Po poborze próbka trafia do rejestru</h3><p>Próbka przechodzi z poboru do laboratorium, dostaje czytelny status i trafia do właściwej pracowni.</p></div>
           </article>
           <article class="product-shot reveal">
             <a href="assets/elabs-03-pracownia.png" target="_blank" rel="noopener" aria-label="Otwórz ekran pracowni ELABS w pełnym rozmiarze"><img src="assets/elabs-03-pracownia.png" alt="Aktualny ekran pracowni z etapami badania próbki"></a>
-            <div class="product-shot-copy"><h3>Pracownia pracuje na tej samej próbce</h3><p>Oczekiwanie, badanie i odczyt są widoczne bez ponownego składania danych z kilku miejsc.</p></div>
+            <div class="product-shot-copy"><h3>Pracownia widzi tę samą kartę próbki</h3><p>Oczekiwanie, badanie i odczyt są widoczne bez ponownego składania danych z kilku miejsc.</p></div>
           </article>
           <article class="product-shot reveal">
             <a href="assets/elabs-04-kierownik.png" target="_blank" rel="noopener" aria-label="Otwórz panel kierownika ELABS w pełnym rozmiarze"><img src="assets/elabs-04-kierownik.png" alt="Aktualny panel kierownika ELABS z autoryzacją i historią wyników"></a>
-            <div class="product-shot-copy"><h3>Kierownik autoryzuje wynik</h3><p>Dokumenty do wglądu, podpisy, historia i statystyki są zebrane w jednym panelu odpowiedzialności.</p></div>
+            <div class="product-shot-copy"><h3>Kierownik autoryzuje wynik</h3><p>Kierownik ma w jednym miejscu dokumenty, podpisy, historię i statystyki.</p></div>
           </article>
           <article class="product-shot reveal">
             <a href="assets/elabs-05-panel-klienta.png" target="_blank" rel="noopener" aria-label="Otwórz panel wyników klienta w pełnym rozmiarze"><img src="assets/elabs-05-panel-klienta.png" alt="Aktualny panel wyników ELABS dla klienta laboratorium"></a>
-            <div class="product-shot-copy"><h3>Klient odbiera swój dokument</h3><p>Panel wyników domyka obieg: klient wyszukuje swoje sprawozdania bez dostępu do danych innych firm.</p></div>
+            <div class="product-shot-copy"><h3>Klient odbiera swój dokument</h3><p>W panelu klient wyszukuje i pobiera swoje sprawozdania. Nie widzi danych innych firm.</p></div>
           </article>
         </div>
-        <div class="product-cta reveal"><a class="button button-primary" href="#kontakt">Przejdź ten proces na demo</a></div>
+        <div class="product-cta reveal"><a class="button button-primary" href="#kontakt">Zobacz pełny obieg na demo</a></div>
       </div>
     </section>
 
     <section class="section section-blue" id="pilot">
       <div class="container">
         <div class="section-heading center reveal">
-          <span class="eyebrow">Bezpieczny start B2B</span>
-          <h2>Nie kupujesz obietnicy. Najpierw widzisz własny proces.</h2>
-          <p class="section-lead">Zaczynamy od wąskiego miejsca, które da się policzyć i pokazać zespołowi. Dopiero potem podejmujesz decyzję o pilocie.</p>
+          <span class="eyebrow">Jak wygląda start</span>
+          <h2>Najpierw sprawdzamy ELABS na jednym obiegu.</h2>
+          <p class="section-lead">Na 20-minutowym demo przechodzimy jeden wynik od zgłoszenia do dokumentu. Jeśli widzimy miejsce, w którym ELABS może skrócić pracę, ustalamy zakres pilota i sposób pomiaru.</p>
         </div>
 
         <div class="pilot-grid">
@@ -1008,18 +1008,18 @@
           </article>
           <article class="pilot-card reveal">
             <span class="pilot-number">KROK 02</span>
-            <h3>Demo na podobnym przepływie</h3>
-            <p>Pokazuję działający ELABS i dokładnie te moduły, które odpowiadają zidentyfikowanemu wąskiemu gardłu.</p>
+            <h3>Demo na przykładzie podobnego obiegu</h3>
+            <p>Pokazuję działający ELABS oraz moduły dotyczące wybranego etapu pracy.</p>
           </article>
           <article class="pilot-card reveal">
             <span class="pilot-number">KROK 03</span>
             <h3>Mały pilot i pomiar</h3>
-            <p>Jeśli widzisz sens, ustalamy jeden proces, zakres danych, odpowiedzialności i miernik przed/po — bez pełnej rewolucji.</p>
+            <p>Jeśli widzisz sens, ustalamy zakres jednego obiegu, potrzebne dane, odpowiedzialności i sposób pomiaru. Nie trzeba od razu zmieniać całego środowiska pracy.</p>
           </article>
         </div>
 
         <div class="pilot-promise reveal">
-          <strong>Najpierw dowód, potem decyzja.</strong>
+          <strong>Po demo decydujesz, czy warto przejść do pilota.</strong>
           <span>Rozmowa i demo nie zobowiązują do wdrożenia. Zakres oraz koszt pilota powstają dopiero po mapie procesu.</span>
         </div>
       </div>
@@ -1031,8 +1031,8 @@
           <img class="founder-photo" src="IMG_1639_edited.jpg" alt="Adrian Sga, twórca ELABS">
           <div class="founder-copy">
             <p class="founder-role">Twórca ELABS</p>
-            <h3>Projektuję to z perspektywy procesu, nie prezentacji.</h3>
-            <p>Pracuję jako kierowca-próbkobiorca w laboratorium. Znam momenty, w których dane przechodzą z terenu do sekretariatu, pracowni, kierownika i klienta — dlatego ELABS powstał wokół całej drogi próbki.</p>
+            <h3>Projektuję ELABS na podstawie pracy laboratorium.</h3>
+            <p>Pracuję jako kierowca-próbkobiorca w laboratorium. Znam momenty, w których dane przechodzą z terenu do sekretariatu, pracowni, kierownika i klienta. Dlatego ELABS powstał wokół całej drogi próbki.</p>
           </div>
         </article>
 
@@ -1042,14 +1042,14 @@
           <div class="faq-list">
             <details class="faq-item">
               <summary>Czy musimy od razu wymieniać obecny LIMS albo Excel?</summary>
-              <div class="faq-answer">Nie zakładamy tego. Najpierw mapujemy jeden proces i sprawdzamy, gdzie ELABS może przejąć ręczne przekazania. Integracje lub migracje mają sens dopiero po audycie technicznym i dowodzie wartości.</div>
+              <div class="faq-answer">Najpierw przechodzimy jeden obieg i sprawdzamy, gdzie ELABS może zastąpić ręczne przenoszenie danych. Integracje lub migracje ustalamy dopiero po sprawdzeniu zakresu technicznego i pomiarze czasu.</div>
             </details>
             <details class="faq-item">
               <summary>Czy potrzebujemy specjalnego sprzętu?</summary>
               <div class="faq-answer">Do demo wystarczy przeglądarka. Docelowy sprzęt zależy od procesu: w terenie może to być telefon lub tablet, a druk QR jest opcją tylko tam, gdzie faktycznie usprawnia identyfikację.</div>
             </details>
             <details class="faq-item">
-              <summary>Czy pokażesz działający system, a nie samą prezentację?</summary>
+              <summary>Czy na demo zobaczę działający system?</summary>
               <div class="faq-answer">Tak. ELABS jest działającą aplikacją webową. Demo prowadzimy na danych demonstracyjnych i przechodzimy przez rzeczywisty przepływ od zgłoszenia do wyniku.</div>
             </details>
             <details class="faq-item">
@@ -1058,11 +1058,11 @@
             </details>
             <details class="faq-item">
               <summary>Skąd bierze się wynik kalkulatora?</summary>
-              <div class="faq-answer">Liczymy ten sam koszt dwiema drogami. Pierwsza używa liczby pracowników, godzin, dni i udziału czasu przy wynikach. Druga używa liczby wyników i średniego czasu na dokument. Pokazujemy ich średnią arytmetyczną — nie sumę. Obok widać miesięczny i roczny scenariusz ELABS przy założonym czasie ręcznej pracy.</div>
+              <div class="faq-answer">Liczymy ten sam koszt dwiema drogami. Pierwsza uwzględnia liczbę osób, godziny, dni i udział czasu przy wynikach. Druga korzysta z liczby wyników i średniego czasu na dokument. Pokazujemy średnią z obu wyliczeń. Obok widać miesięczny i roczny wariant ELABS przy założonym czasie pracy ręcznej.</div>
             </details>
             <details class="faq-item">
               <summary>Ile kosztuje ELABS?</summary>
-              <div class="faq-answer">Cena zależy od procesu i zakresu pilota. Po krótkim demo otrzymujesz konkretny zakres, miernik powodzenia i wycenę — zanim podejmiesz decyzję o wdrożeniu.</div>
+              <div class="faq-answer">Cena zależy od wybranego obiegu i zakresu pilota. Po demo otrzymujesz zakres, sposób oceny pilota i wycenę. Wtedy decydujesz, czy przechodzimy dalej.</div>
             </details>
           </div>
         </div>
@@ -1073,18 +1073,18 @@
       <div class="container contact-grid">
         <div class="contact-copy reveal">
           <span class="eyebrow eyebrow-on-dark">Następny krok</span>
-          <h2>Pokaż mi drogę jednej próbki.</h2>
+          <h2>Przejdźmy drogę jednej próbki.</h2>
           <p>W 20 minut przejdziemy jeden wynik od zgłoszenia do dokumentu i sprawdzimy, jaką część tej pracy może przejąć ELABS.</p>
           <ul class="contact-points">
-            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m5 12 4 4L19 6"/></svg> Bez przygotowywania prezentacji po Twojej stronie.</li>
-            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m5 12 4 4L19 6"/></svg> Bez przekazywania danych klientów na pierwszej rozmowie.</li>
-            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m5 12 4 4L19 6"/></svg> Kończymy konkretnym „pilot ma sens” albo „na razie nie”.</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m5 12 4 4L19 6"/></svg> Nie musisz przygotowywać prezentacji.</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m5 12 4 4L19 6"/></svg> Na pierwszej rozmowie nie potrzebujemy danych klientów.</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m5 12 4 4L19 6"/></svg> Po rozmowie wiesz, czy pilot ma sens.</li>
           </ul>
           <a class="direct-email" href="mailto:adrian.labsolutions@gmail.com">adrian.labsolutions@gmail.com</a>
         </div>
 
         <form class="contact-form reveal" id="contact-form" action="mailto:adrian.labsolutions@gmail.com" method="get">
-          <h3 class="form-title">Przygotuj wiadomość o demo</h3>
+          <h3 class="form-title">Napisz w sprawie demo</h3>
           <div class="field">
             <label for="contact-name">Imię i nazwisko</label>
             <input id="contact-name" name="name" type="text" autocomplete="name" required>
@@ -1102,10 +1102,10 @@
             <input id="contact-results" name="results" type="number" min="1" step="1" inputmode="numeric">
           </div>
           <button class="button button-primary" type="submit">
-            Przygotuj wiadomość
+            Otwórz wiadomość do ELABS
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 2 11 13M22 2l-7 20-4-9-9-4 20-7Z"/></svg>
           </button>
-          <p class="form-note">Przycisk otworzy gotową wiadomość w Twoim programie pocztowym. Strona nie zapisuje danych i nie udaje, że formularz został wysłany.</p>
+          <p class="form-note">Przycisk otworzy gotową wiadomość w Twoim programie pocztowym. Dane nie są zapisywane na stronie.</p>
           <p class="form-status" id="form-status" aria-live="polite"></p>
         </form>
       </div>
@@ -1243,7 +1243,7 @@
 
       const buildMailto = (data) => {
         const calculation = calculate();
-        const subject = `ELABS — demo procesu: ${data.company}`;
+        const subject = `ELABS: demo dla ${data.company}`;
         const body = [
           `Dzień dobry,`,
           ``,
@@ -1263,7 +1263,7 @@
           `- przyjęta wartość godziny pracy: ${calculation.hourlyCost} zł brutto`,
           `- scenariusz ELABS: ${formatMoney(calculation.elabsCost)} zł/mies. (${formatMoney(calculation.elabsAnnualCost)} zł/rok; ${number.format(calculation.elabsHours)} godz.)`,
           `- potencjalnie uwolniona wartość czasu miesięcznie: ${formatMoney(calculation.releasedValue)} zł`,
-          `- potencjał w skali roku: ${formatMoney(calculation.annualValue)} zł`,
+          `- szacowana wartość odzyskanego czasu w skali roku: ${formatMoney(calculation.annualValue)} zł`,
           `- redukcja ręcznej pracy: ${number.format(calculation.reduction)}%`,
           ``,
           `Proszę o propozycję terminu rozmowy.`
