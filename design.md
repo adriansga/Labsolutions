@@ -95,8 +95,8 @@ Kontrast tekstu i CTA minimum WCAG AA.
 
 | Sekcja | Cel | Główne komponenty | Status |
 |---|---|---|---|
-| Nawigacja + hero | obietnica i szybkie CTA prowadzące bezpośrednio do kalkulatora | nav, badge, h1, dwa CTA; bez ekranu produktu | APPROVED V6 |
-| Kalkulator bezpośrednio pod CTA | natychmiastowe policzenie skali i pokazanie stanu przed/po | suwaki: pracownicy + wyniki/miesiąc; dwie dynamiczne kolumny z kwotami miesiąc/rok; roczny potencjał jako liczba główna | APPROVED V6 |
+| Nawigacja + hero | obietnica i szybkie CTA prowadzące bezpośrednio do kalkulatora | nav, badge, h1, dwa CTA; bez ekranu produktu | IMPLEMENTED V6 |
+| Kalkulator bezpośrednio pod CTA | natychmiastowe policzenie skali i pokazanie stanu przed/po | suwaki: pracownicy + wyniki/miesiąc; dwie dynamiczne kolumny z kwotami miesiąc/rok; roczny potencjał jako liczba główna | IMPLEMENTED V6 |
 | Problem | nazwanie źródeł policzonego kosztu | 3 karty | IMPLEMENTED |
 | Mechanizm | pokazanie jednej drogi próbki | 5 kroków procesu | IMPLEMENTED |
 | Produkt | dowód realnego działania | aktualny pulpit + sekwencja: rejestr, pracownia, kierownik, panel klienta | IMPLEMENTED |
@@ -148,3 +148,5 @@ Dowód V3 z 2026-08-26: Playwright `5/5`, brak overflow przy 390/768/1440, scree
 Dowód V4 z 2026-08-26: kalkulator jest bezpośrednim następnikiem hero i pokazuje dynamiczne kolumny „Przed ELABS / Po wdrożeniu ELABS”. Playwright `5/5`, brak overflow przy 390/768/1440, screenshoty w `_SCRATCH/ELABS_LANDING_V4_2026-08-26/`; commit `bb5204e`, GitHub Pages run `32958181554` = success. Produkcja HTTP 200; wartości domyślne: przed `25 000–28 000 zł / 500–560 h / 30 min`, po `4 167 zł / 83,3 h / 5 min`, potencjał `20 833–23 833 zł/mies.` i `250 000–286 000 zł/rok`, redukcja `83,3–85,1%`. Po zmianie wszystkich założeń: `16 000–20 560 zł/mies.` i `192 000–246 720 zł/rok`. Karta Adriana i 5 ekranów produktu obecne, mobile bez overflow, błędy JS = 0.
 
 Dowód V5 z 2026-08-26: widełki zastąpiono jedną średnią arytmetyczną, a obie kolumny pokazują koszt miesięczny i roczny. Playwright `5/5`, brak overflow przy 390/768/1440, screenshoty w `_SCRATCH/ELABS_LANDING_V5_2026-08-26/`; commit `003f108`, GitHub Pages run `32961347990` = success. Produkcja HTTP 200; wartości domyślne: przed `26 500 zł/mies. / 318 000 zł/rok`, po `4 167 zł/mies. / 50 000 zł/rok`, potencjał `22 333 zł/mies. / 268 000 zł/rok`, `446,7 h` i `84,3%`. Po zmianie wszystkich założeń: przed `21 480 zł/mies. / 257 760 zł/rok`, po `3 200 zł/mies. / 38 400 zł/rok`, potencjał `18 280 zł/mies. / 219 360 zł/rok`. Karta Adriana i 5 ekranów produktu obecne, mobile bez overflow, błędy JS = 0.
+
+Dowód V6 z 2026-08-26: usunięto ekran produktu z hero, a kalkulator zaczyna się bezpośrednio po dwóch CTA; zmierzony odstęp CTA→nagłówek kalkulatora na mobile wynosi `64 px`. Roczny potencjał `268 000 zł` jest liczbą główną, miesięczny `22 333 zł` pomocniczą. Playwright `5/5`, brak overflow przy 390/768/1440, screenshoty w `_SCRATCH/ELABS_LANDING_V6_2026-08-26/`; commit `7279f9c`, GitHub Pages run `32962833496` = success. Produkcja HTTP 200, hero product visual = 0, późniejsza galeria = 5 ekranów, karta Adriana obecna, obrazy kompletne, błędy JS = 0.
