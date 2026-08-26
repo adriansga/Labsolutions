@@ -72,7 +72,7 @@ Kontrast tekstu i CTA minimum WCAG AA.
 - Kontener: maks. 1180 px, padding 20 px mobile / 32 px desktop.
 - Hero: 2 kolumny od 900 px, jedna kolumna poniżej.
 - Sekcje: 72 px mobile / 104 px desktop.
-- Kalkulator: panel danych + panel wyników od 860 px, jedna kolumna poniżej.
+- Kalkulator jest pierwszą sekcją po hero. Panel danych jest nad wynikiem, żeby pełne porównanie „Przed ELABS / Po wdrożeniu ELABS” miało na desktopie dwie równe kolumny; na mobile kolumny układają się pionowo.
 - Galeria produktu: pulpit jako szeroki ekran otwierający oraz pięć kolejnych ekranów w dwóch kolumnach; jedna kolumna na mobile.
 - Karty: 3 kolumny desktop, 2 tablet, 1 mobile.
 - Breakpoint menu: 820 px.
@@ -84,7 +84,8 @@ Kontrast tekstu i CTA minimum WCAG AA.
 |---|---|---|---|
 | Button | primary / secondary / ghost-on-dark | default / hover / focus / disabled | jeden primary w obrębie bloku |
 | Field | text / email / number / range | default / focus / invalid | zawsze etykieta i komunikat błędu |
-| Metric card | current range / team estimate / volume estimate / ELABS scenario / released capacity | default / updated | liczby aktualizowane w `aria-live`; dwóch estymacji tego samego kosztu nigdy nie sumujemy |
+| Comparison card | Przed ELABS / Po wdrożeniu ELABS | default / updated | te same wymiary i metryki: koszt, godziny, minuty na wynik; liczby aktualizowane w `aria-live` |
+| Savings summary | miesiąc / rok / odzyskane godziny / redukcja ręcznej pracy | default / updated | pokazuje potencjał wynikający z widełek, nie gwarantowaną oszczędność gotówkową |
 | Proof frame | desktop browser / process gallery | default | tylko realne, aktualne screenshoty ELABS bez danych klientów |
 | Process step | 1–5 | default | zachowuje kanoniczną kolejność próbki |
 | FAQ item | accordion | closed / open | natywny `details/summary` |
@@ -95,8 +96,8 @@ Kontrast tekstu i CTA minimum WCAG AA.
 | Sekcja | Cel | Główne komponenty | Status |
 |---|---|---|---|
 | Nawigacja + hero | obietnica i szybkie CTA | nav, badge, h1, CTA, proof frame | IMPLEMENTED |
-| Problem | nazwanie kosztów procesu | 3 karty | IMPLEMENTED |
-| Kalkulator | policzenie własnej skali | suwaki: pracownicy + wyniki/miesiąc; dwa niezależne oszacowania, widełki kosztu i scenariusz ELABS | IMPLEMENTED V3 |
+| Kalkulator bezpośrednio pod hero | natychmiastowe policzenie skali i pokazanie stanu przed/po | suwaki: pracownicy + wyniki/miesiąc; dwie dynamiczne kolumny i podsumowanie miesięczne/roczne | APPROVED V4 |
+| Problem | nazwanie źródeł policzonego kosztu | 3 karty | IMPLEMENTED |
 | Mechanizm | pokazanie jednej drogi próbki | 5 kroków procesu | IMPLEMENTED |
 | Produkt | dowód realnego działania | aktualny pulpit + sekwencja: rejestr, pracownia, kierownik, panel klienta | IMPLEMENTED |
 | Pilot | obniżenie ryzyka | 3 etapy pilota | IMPLEMENTED |
@@ -124,6 +125,8 @@ Kontrast tekstu i CTA minimum WCAG AA.
 - Estymacja z wolumenu: `wyniki × 30 min ÷ 60 × 50 zł/h`.
 - To dwa sposoby oszacowania tego samego kosztu, więc pokazujemy zakres od niższej do wyższej wartości; nigdy ich nie dodajemy ani nie mnożymy przez siebie.
 - Scenariusz ELABS: `wyniki × 5 min ÷ 60 × 50 zł/h`; potencjał uwolnienia pokazujemy jako różnicę względem obu obecnych estymacji.
+- Kolumna „Przed ELABS” pokazuje zakres kosztu i godzin z dwóch obecnych estymacji oraz bieżące minuty na wynik. Kolumna „Po wdrożeniu ELABS” pokazuje koszt, godziny i minuty scenariusza ELABS.
+- Pod kolumnami pokazujemy potencjalną wartość odzyskanego czasu miesięcznie i rocznie, odzyskane godziny oraz procentową redukcję ręcznej pracy. Słowo „potencjalna” i zastrzeżenie pilota pozostają widoczne.
 - Domyślne założenia (`70% czasu`, `8 h/dzień`, `20 dni/miesiąc`, `30 min/wynik`, `5 min/wynik w scenariuszu ELABS`, `50 zł brutto/h`) wynikają z roboczych ustaleń z wywiadów Adriana i pozostają jawne oraz edytowalne; nie przedstawiamy ich jako niezależnego benchmarku branżowego.
 - Przy domyślnych `5 osób + 1000 wyników` estymacje to `28 000 zł` i `25 000 zł`, czyli zakres `25 000–28 000 zł`. Scenariusz ELABS to `83,3 h / 4 167 zł`, a czas na wynik spada z 30 do 5 min, czyli 6× — nie 10–20×.
 - Produkcyjny screenshot może zostać skopiowany do repo jako statyczny dowód; używamy ostatniego zweryfikowanego zestawu po aktualizacji UI 25.08.2026 i nie ujawniamy danych klientów.
@@ -131,7 +134,7 @@ Kontrast tekstu i CTA minimum WCAG AA.
 ## 10. Weryfikacja
 
 - [x] Walidacja DOM / testy dwóch modeli i scenariusza ELABS
-- [x] Główny flow E2E: hero → kalkulator → aktualne ekrany → wiarygodność → CTA
+- [ ] Główny flow E2E V4: hero → kalkulator przed/po → problem → aktualne ekrany → wiarygodność → CTA
 - [x] Mobile 390 px
 - [x] Tablet 768 px
 - [x] Desktop 1440 px

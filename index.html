@@ -385,14 +385,14 @@
 
     .calculator-shell {
       overflow: hidden;
-      display: grid;
-      grid-template-columns: minmax(0, 1.05fr) minmax(340px, .75fr);
       border: 1px solid #cbd9e6;
       border-radius: var(--radius-lg);
       background: #fff;
       box-shadow: var(--shadow-lg);
     }
     .calculator-inputs { padding: clamp(28px, 5vw, 54px); }
+    .primary-controls { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(30px, 5vw, 64px); }
+    .primary-controls .calc-group + .calc-group { margin-top: 0; }
     .calculator-results {
       padding: clamp(28px, 5vw, 48px);
       color: #fff;
@@ -469,26 +469,33 @@
       background: #fff;
     }
     .assumption-note { margin-top: 13px; color: var(--muted); font-size: .76rem; }
-    .results-label { margin-bottom: 24px; color: #9fb4c7; font-size: .76rem; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; }
-    .metric-main { padding-bottom: 26px; border-bottom: 1px solid rgba(255, 255, 255, .13); }
-    .metric-main span { display: block; margin-bottom: 8px; color: #afc1d1; font-size: .85rem; }
-    .metric-main strong {
-      display: block;
-      color: #fff;
-      font-size: clamp(2.25rem, 5vw, 3.45rem);
-      line-height: 1;
-      letter-spacing: -.055em;
-      font-variant-numeric: tabular-nums;
-      white-space: nowrap;
+    .results-label { margin-bottom: 20px; color: #9fb4c7; font-size: .76rem; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; }
+    .comparison-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
+    .scenario-card {
+      min-width: 0;
+      padding: clamp(22px, 3vw, 32px);
+      border: 1px solid rgba(255, 255, 255, .13);
+      border-radius: var(--radius);
+      background: rgba(255, 255, 255, .045);
     }
-    .metric-main small { display: block; margin-top: 10px; color: #89a1b5; }
-    .metric-list { display: grid; gap: 20px; margin-top: 26px; }
-    .metric-row { display: flex; justify-content: space-between; gap: 18px; }
-    .metric-row span { color: #9fb4c7; font-size: .86rem; }
-    .metric-row strong { color: #fff; font-size: 1.05rem; font-variant-numeric: tabular-nums; text-align: right; }
-    .metric-row strong > span { display: block; color: #fff; font-size: 1.05rem; }
-    .metric-row strong small { display: block; margin-top: 3px; color: #9eeaf4; font-size: .75rem; font-weight: 650; }
-    .metric-row.elabs-row { margin: 2px -10px; padding: 12px 10px; border: 1px solid rgba(123, 224, 236, .18); border-radius: 11px; background: rgba(34, 184, 207, .08); }
+    .scenario-card-after { border-color: rgba(123, 224, 236, .3); background: rgba(34, 184, 207, .1); }
+    .scenario-badge { display: inline-flex; margin-bottom: 22px; padding: 7px 10px; border-radius: 999px; color: #c0cfdb; background: rgba(255, 255, 255, .07); font-size: .72rem; font-weight: 850; letter-spacing: .08em; text-transform: uppercase; }
+    .scenario-card-after .scenario-badge { color: #baf4f9; background: rgba(34, 184, 207, .16); }
+    .scenario-cost-label { display: block; margin-bottom: 7px; color: #a9bdcc; font-size: .82rem; }
+    .scenario-cost { display: block; color: #fff; font-size: clamp(2rem, 4vw, 3.15rem); line-height: 1; letter-spacing: -.05em; font-variant-numeric: tabular-nums; }
+    .scenario-metrics { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; margin-top: 26px; }
+    .scenario-metric { min-width: 0; padding-top: 15px; border-top: 1px solid rgba(255, 255, 255, .12); }
+    .scenario-metric span { display: block; margin-bottom: 5px; color: #91a9bb; font-size: .73rem; }
+    .scenario-metric strong { display: block; color: #fff; font-size: 1.03rem; font-variant-numeric: tabular-nums; }
+    .savings-summary { margin-top: 18px; padding: clamp(24px, 4vw, 36px); border: 1px solid rgba(123, 224, 236, .28); border-radius: var(--radius); background: linear-gradient(135deg, rgba(29, 111, 220, .2), rgba(34, 184, 207, .1)); }
+    .savings-main { display: flex; align-items: flex-end; justify-content: space-between; gap: 24px; }
+    .savings-main-copy span { display: block; margin-bottom: 7px; color: #b8cbd9; font-size: .82rem; }
+    .savings-value { display: block; color: #fff; font-size: clamp(2.05rem, 5vw, 3.6rem); line-height: 1; letter-spacing: -.055em; font-variant-numeric: tabular-nums; }
+    .savings-period { flex: none; padding-bottom: 5px; color: #9eeaf4; font-size: .9rem; font-weight: 750; }
+    .savings-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; margin-top: 28px; }
+    .savings-metric { padding-top: 16px; border-top: 1px solid rgba(255, 255, 255, .14); }
+    .savings-metric span { display: block; margin-bottom: 6px; color: #91a9bb; font-size: .74rem; }
+    .savings-metric strong { display: block; color: #fff; font-size: 1.04rem; font-variant-numeric: tabular-nums; }
     .calc-disclaimer {
       margin-top: 28px;
       padding: 16px;
@@ -648,7 +655,6 @@
       .contact-grid { grid-template-columns: 1fr; }
       .hero-copy { max-width: 780px; }
       .product-visual { width: min(100%, 520px); }
-      .calculator-shell { grid-template-columns: 1fr; }
       .founder-faq-grid { max-width: 760px; margin-inline: auto; }
       .founder-card { display: grid; grid-template-columns: 280px 1fr; }
       .founder-photo { height: 100%; min-height: 330px; }
@@ -672,6 +678,8 @@
       .card-grid,
       .pilot-grid { grid-template-columns: 1fr; }
       .problem-card { min-height: 0; }
+      .primary-controls { grid-template-columns: 1fr; gap: 34px; }
+      .comparison-grid { grid-template-columns: 1fr; }
       .proof-list { grid-template-columns: 1fr; padding: 14px 0; }
       .proof-list li { min-height: 46px; }
       .proof-list li + li { border-top: 1px solid var(--line); border-left: 0; }
@@ -696,7 +704,9 @@
       .number-wrap input { width: 100%; }
       .number-wrap { width: 100%; }
       .assumption-grid { grid-template-columns: 1fr; }
-      .metric-main strong { font-size: clamp(2.05rem, 10vw, 3.25rem); }
+      .scenario-metrics { grid-template-columns: 1fr; }
+      .savings-main { align-items: flex-start; flex-direction: column; gap: 8px; }
+      .savings-grid { grid-template-columns: 1fr; gap: 12px; }
       .product-shot-copy { min-height: 0; padding: 22px 20px 22px 70px; }
       .pilot-promise { align-items: flex-start; flex-direction: column; }
       .founder-card { display: block; }
@@ -734,8 +744,8 @@
       </button>
 
       <nav class="nav-links" id="main-nav" aria-label="Główna nawigacja">
-        <a href="#problem">Problem</a>
         <a href="#kalkulator">Kalkulator</a>
+        <a href="#problem">Problem</a>
         <a href="#system">System</a>
         <a href="#pilot">Pilot</a>
         <a class="button button-primary" href="#kontakt">Umów krótkie demo</a>
@@ -770,6 +780,150 @@
             <img src="assets/elabs-01-pulpit.png" alt="Aktualny pulpit ELABS z modułami ułożonymi w kolejności obiegu próbki">
           </div>
           <p class="screen-proof-note">Aktualny ekran produkcyjny ELABS · 25.08.2026</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-blue" id="kalkulator">
+      <div class="container">
+        <div class="section-heading center reveal">
+          <span class="eyebrow">Policz swój miesiąc</span>
+          <h2>Ile kosztuje ręczne generowanie wyników?</h2>
+          <p class="section-lead">Podaj liczbę pracowników i gotowych wyników miesięcznie. Od razu zobaczysz porównanie ręcznej pracy przed ELABS i po wdrożeniu cyfrowego obiegu.</p>
+        </div>
+
+        <div class="calculator-shell reveal">
+          <div class="calculator-inputs">
+            <h3 class="calculator-title">Twój obecny obieg</h3>
+            <p class="calculator-intro">Podaj średni miesiąc — nie rekordowy i nie najspokojniejszy.</p>
+            <p class="interview-note">Punkt startowy z rozmów: 70% dnia pracy przy wynikach. Druga estymacja zakłada 30 minut łącznej pracy na dokument. Kalkulator pokazuje oba rachunki osobno — nie dodaje ich.</p>
+
+            <div class="primary-controls">
+              <div class="calc-group">
+              <div class="calc-label-row">
+                <label for="employees-range">
+                  Pracownicy zaangażowani w wyniki
+                  <span class="calc-helper">Osoby, które składają, sprawdzają lub autoryzują dokumenty</span>
+                </label>
+                <div class="number-wrap">
+                  <input id="employees-number" type="number" min="1" max="50" step="1" value="5" inputmode="numeric" aria-label="Liczba pracowników zaangażowanych w wyniki">
+                  <span>os.</span>
+                </div>
+              </div>
+              <input id="employees-range" type="range" min="1" max="50" step="1" value="5" aria-label="Liczba pracowników zaangażowanych w wyniki — suwak">
+              <div class="range-scale"><span>1</span><span>50</span></div>
+              </div>
+
+              <div class="calc-group">
+              <div class="calc-label-row">
+                <label for="results-range">
+                  Gotowe wyniki miesięcznie
+                  <span class="calc-helper">Jeden wynik = jeden dokument końcowy przekazywany klientowi</span>
+                </label>
+                <div class="number-wrap">
+                  <input id="results-number" type="number" min="50" max="20000" step="50" value="1000" inputmode="numeric" aria-label="Liczba gotowych wyników miesięcznie">
+                  <span>szt.</span>
+                </div>
+              </div>
+              <input id="results-range" type="range" min="50" max="20000" step="50" value="1000" aria-label="Liczba gotowych wyników miesięcznie — suwak">
+              <div class="range-scale"><span>50</span><span>20 000</span></div>
+              </div>
+            </div>
+
+            <details class="assumptions">
+              <summary>Założenia kalkulatora — zobacz lub zmień</summary>
+              <div class="assumption-grid">
+                <div class="assumption-field">
+                  <label for="team-share">Część czasu zespołu przy wynikach (%)</label>
+                  <input id="team-share" type="number" min="10" max="100" step="1" value="70" inputmode="decimal">
+                </div>
+                <div class="assumption-field">
+                  <label for="hours-day">Godziny pracy dziennie</label>
+                  <input id="hours-day" type="number" min="1" max="16" step="0.5" value="8" inputmode="decimal">
+                </div>
+                <div class="assumption-field">
+                  <label for="workdays">Dni pracy w miesiącu</label>
+                  <input id="workdays" type="number" min="1" max="31" step="1" value="20" inputmode="numeric">
+                </div>
+                <div class="assumption-field">
+                  <label for="minutes-current">Łączne minuty pracy na wynik</label>
+                  <input id="minutes-current" type="number" min="1" max="180" step="1" value="30" inputmode="decimal">
+                </div>
+                <div class="assumption-field">
+                  <label for="minutes-elabs">Ręczna praca z ELABS na wynik (min)</label>
+                  <input id="minutes-elabs" type="number" min="0.5" max="60" step="0.5" value="5" inputmode="decimal">
+                </div>
+                <div class="assumption-field">
+                  <label for="hourly-cost">Wartość godziny pracy (zł brutto)</label>
+                  <input id="hourly-cost" type="number" min="10" max="300" step="1" value="50" inputmode="decimal">
+                </div>
+              </div>
+              <p class="assumption-note">70%, 30 min, 5 min i 50 zł/h to robocze założenia z rozmów, nie niezależny benchmark branżowy. Wszystkie możesz zmienić.</p>
+            </details>
+          </div>
+
+          <aside class="calculator-results" aria-live="polite" aria-atomic="true">
+            <p class="results-label">Porównanie Twojego miesiąca</p>
+            <div class="comparison-grid">
+              <article class="scenario-card scenario-card-before">
+                <span class="scenario-badge">Przed ELABS</span>
+                <span class="scenario-cost-label">Koszt ręcznej pracy miesięcznie</span>
+                <strong class="scenario-cost" id="before-cost">25 000–28 000 zł</strong>
+                <div class="scenario-metrics">
+                  <div class="scenario-metric">
+                    <span>Czas zespołu</span>
+                    <strong id="before-hours">500–560 godz.</strong>
+                  </div>
+                  <div class="scenario-metric">
+                    <span>Na jeden wynik</span>
+                    <strong id="before-minutes">30 min</strong>
+                  </div>
+                </div>
+              </article>
+
+              <article class="scenario-card scenario-card-after">
+                <span class="scenario-badge">Po wdrożeniu ELABS</span>
+                <span class="scenario-cost-label">Koszt ręcznej pracy miesięcznie</span>
+                <strong class="scenario-cost" id="after-cost">4 167 zł</strong>
+                <div class="scenario-metrics">
+                  <div class="scenario-metric">
+                    <span>Czas zespołu</span>
+                    <strong id="after-hours">83,3 godz.</strong>
+                  </div>
+                  <div class="scenario-metric">
+                    <span>Na jeden wynik</span>
+                    <strong id="after-minutes">5 min</strong>
+                  </div>
+                </div>
+              </article>
+            </div>
+
+            <div class="savings-summary">
+              <div class="savings-main">
+                <div class="savings-main-copy">
+                  <span>Potencjalna wartość odzyskanego czasu</span>
+                  <strong class="savings-value" id="monthly-savings">20 833–23 833 zł</strong>
+                </div>
+                <span class="savings-period">miesięcznie</span>
+              </div>
+              <div class="savings-grid">
+                <div class="savings-metric">
+                  <span>Potencjał w skali roku</span>
+                  <strong id="annual-savings">250 000–286 000 zł</strong>
+                </div>
+                <div class="savings-metric">
+                  <span>Odzyskany czas miesięcznie</span>
+                  <strong id="released-hours">416,7–476,7 godz.</strong>
+                </div>
+                <div class="savings-metric">
+                  <span>Mniej ręcznej pracy</span>
+                  <strong id="reduction-percent">83,3–85,1%</strong>
+                </div>
+              </div>
+            </div>
+            <p class="calc-disclaimer">„Przed” to zakres dwóch oszacowań tego samego kosztu: z czasu zespołu i z liczby wyników — nigdy ich suma. „Po” zakłada 5 minut ręcznej pracy na wynik. Pokazana różnica jest potencjałem do pomiaru w pilocie, nie gwarancją oszczędności gotówkowej.</p>
+            <a class="button button-primary" href="#kontakt">Pokaż mi ten proces na demo</a>
+          </aside>
         </div>
       </div>
     </section>
@@ -820,122 +974,6 @@
         <div class="problem-footer reveal">
           <strong>Pytanie kontrolne</strong>
           <p>Ile osób przygotowuje dokumenty i ile końcowych wyników wydajecie w miesiącu? Te dwie liczby wystarczą, żeby zobaczyć skalę czasu pracy.</p>
-        </div>
-      </div>
-    </section>
-
-    <section class="section section-blue" id="kalkulator">
-      <div class="container">
-        <div class="section-heading center reveal">
-          <span class="eyebrow">Policz swój miesiąc</span>
-          <h2>Ile kosztuje ręczne generowanie wyników?</h2>
-          <p class="section-lead">Podaj liczbę pracowników i gotowych wyników miesięcznie. Koszt policzymy dwiema drogami, żeby nie ukrywać różnicy między czasem zespołu a wolumenem dokumentów.</p>
-        </div>
-
-        <div class="calculator-shell reveal">
-          <div class="calculator-inputs">
-            <h3 class="calculator-title">Twój obecny obieg</h3>
-            <p class="calculator-intro">Podaj średni miesiąc — nie rekordowy i nie najspokojniejszy.</p>
-            <p class="interview-note">Punkt startowy z rozmów: 70% dnia pracy przy wynikach. Druga estymacja zakłada 30 minut łącznej pracy na dokument. Kalkulator pokazuje oba rachunki osobno — nie dodaje ich.</p>
-
-            <div class="calc-group">
-              <div class="calc-label-row">
-                <label for="employees-range">
-                  Pracownicy zaangażowani w wyniki
-                  <span class="calc-helper">Osoby, które składają, sprawdzają lub autoryzują dokumenty</span>
-                </label>
-                <div class="number-wrap">
-                  <input id="employees-number" type="number" min="1" max="50" step="1" value="5" inputmode="numeric" aria-label="Liczba pracowników zaangażowanych w wyniki">
-                  <span>os.</span>
-                </div>
-              </div>
-              <input id="employees-range" type="range" min="1" max="50" step="1" value="5" aria-label="Liczba pracowników zaangażowanych w wyniki — suwak">
-              <div class="range-scale"><span>1</span><span>50</span></div>
-            </div>
-
-            <div class="calc-group">
-              <div class="calc-label-row">
-                <label for="results-range">
-                  Gotowe wyniki miesięcznie
-                  <span class="calc-helper">Jeden wynik = jeden dokument końcowy przekazywany klientowi</span>
-                </label>
-                <div class="number-wrap">
-                  <input id="results-number" type="number" min="50" max="20000" step="50" value="1000" inputmode="numeric" aria-label="Liczba gotowych wyników miesięcznie">
-                  <span>szt.</span>
-                </div>
-              </div>
-              <input id="results-range" type="range" min="50" max="20000" step="50" value="1000" aria-label="Liczba gotowych wyników miesięcznie — suwak">
-              <div class="range-scale"><span>50</span><span>20 000</span></div>
-            </div>
-
-            <details class="assumptions">
-              <summary>Założenia kalkulatora — zobacz lub zmień</summary>
-              <div class="assumption-grid">
-                <div class="assumption-field">
-                  <label for="team-share">Część czasu zespołu przy wynikach (%)</label>
-                  <input id="team-share" type="number" min="10" max="100" step="1" value="70" inputmode="decimal">
-                </div>
-                <div class="assumption-field">
-                  <label for="hours-day">Godziny pracy dziennie</label>
-                  <input id="hours-day" type="number" min="1" max="16" step="0.5" value="8" inputmode="decimal">
-                </div>
-                <div class="assumption-field">
-                  <label for="workdays">Dni pracy w miesiącu</label>
-                  <input id="workdays" type="number" min="1" max="31" step="1" value="20" inputmode="numeric">
-                </div>
-                <div class="assumption-field">
-                  <label for="minutes-current">Łączne minuty pracy na wynik</label>
-                  <input id="minutes-current" type="number" min="1" max="180" step="1" value="30" inputmode="decimal">
-                </div>
-                <div class="assumption-field">
-                  <label for="minutes-elabs">Ręczna praca z ELABS na wynik (min)</label>
-                  <input id="minutes-elabs" type="number" min="0.5" max="60" step="0.5" value="5" inputmode="decimal">
-                </div>
-                <div class="assumption-field">
-                  <label for="hourly-cost">Wartość godziny pracy (zł brutto)</label>
-                  <input id="hourly-cost" type="number" min="10" max="300" step="1" value="50" inputmode="decimal">
-                </div>
-              </div>
-              <p class="assumption-note">70%, 30 min, 5 min i 50 zł/h to robocze założenia z rozmów, nie niezależny benchmark branżowy. Wszystkie możesz zmienić.</p>
-            </details>
-          </div>
-
-          <aside class="calculator-results" aria-live="polite" aria-atomic="true">
-            <p class="results-label">Obecny koszt generowania wyników</p>
-            <div class="metric-main">
-              <span>miesięczne widełki</span>
-              <strong id="current-cost-range">25 000–28 000 zł</strong>
-              <small>Dwa oszacowania tego samego kosztu — nie ich suma.</small>
-            </div>
-            <div class="metric-list">
-              <div class="metric-row">
-                <span>Z czasu zespołu</span>
-                <strong id="team-estimate">28 000 zł</strong>
-              </div>
-              <div class="metric-row">
-                <span>Z liczby wyników</span>
-                <strong id="volume-estimate">25 000 zł</strong>
-              </div>
-              <div class="metric-row">
-                <span>Obecna praca</span>
-                <strong id="current-hours-range">500–560 godz.</strong>
-              </div>
-              <div class="metric-row elabs-row">
-                <span>Scenariusz ELABS</span>
-                <strong><span id="elabs-hours">83,3 godz.</span><small id="elabs-cost">4 167 zł</small></strong>
-              </div>
-              <div class="metric-row">
-                <span>Potencjalnie uwolnione</span>
-                <strong><span id="released-hours">416,7–476,7 godz.</span><small id="released-value">20 833–23 833 zł</small></strong>
-              </div>
-              <div class="metric-row">
-                <span>Czas na jeden wynik</span>
-                <strong id="speed-multiplier">6× mniej czasu</strong>
-              </div>
-            </div>
-            <p class="calc-disclaimer">Pierwszy rachunek: pracownicy × godziny × dni × udział czasu × stawka. Drugi: wyniki × minuty na wynik × stawka. Zakres pokazuje różnicę między nimi. Scenariusz ELABS i uwolniona wartość są hipotezą do pomiaru w pilocie, nie gwarancją oszczędności.</p>
-            <a class="button button-primary" href="#kontakt">Pokaż mi ten proces na demo</a>
-          </aside>
         </div>
       </div>
     </section>
@@ -1174,6 +1212,12 @@
         const releasedHoursHigh = Math.max(0, currentHoursHigh - elabsHours);
         const releasedValueLow = releasedHoursLow * hourlyCost;
         const releasedValueHigh = releasedHoursHigh * hourlyCost;
+        const annualValueLow = releasedValueLow * 12;
+        const annualValueHigh = releasedValueHigh * 12;
+        const reductionFromLow = currentHoursLow > 0 ? Math.max(0, (currentHoursLow - elabsHours) / currentHoursLow * 100) : 0;
+        const reductionFromHigh = currentHoursHigh > 0 ? Math.max(0, (currentHoursHigh - elabsHours) / currentHoursHigh * 100) : 0;
+        const reductionLow = Math.min(reductionFromLow, reductionFromHigh);
+        const reductionHigh = Math.max(reductionFromLow, reductionFromHigh);
         const speedMultiplier = minutesCurrent / minutesElabs;
         const moneyRange = (low, high) => Math.round(low) === Math.round(high)
           ? `${formatMoney(low)} zł`
@@ -1181,22 +1225,26 @@
         const hoursRange = (low, high) => Math.abs(low - high) < .05
           ? `${number.format(low)} godz.`
           : `${number.format(low)}–${number.format(high)} godz.`;
+        const percentRange = (low, high) => Math.abs(low - high) < .05
+          ? `${number.format(low)}%`
+          : `${number.format(low)}–${number.format(high)}%`;
 
-        qs('#current-cost-range').textContent = moneyRange(currentCostLow, currentCostHigh);
-        qs('#team-estimate').textContent = `${formatMoney(teamCost)} zł`;
-        qs('#volume-estimate').textContent = `${formatMoney(volumeCost)} zł`;
-        qs('#current-hours-range').textContent = hoursRange(currentHoursLow, currentHoursHigh);
-        qs('#elabs-hours').textContent = `${number.format(elabsHours)} godz.`;
-        qs('#elabs-cost').textContent = `${formatMoney(elabsCost)} zł`;
+        qs('#before-cost').textContent = moneyRange(currentCostLow, currentCostHigh);
+        qs('#before-hours').textContent = hoursRange(currentHoursLow, currentHoursHigh);
+        qs('#before-minutes').textContent = `${number.format(minutesCurrent)} min/wynik`;
+        qs('#after-cost').textContent = `${formatMoney(elabsCost)} zł`;
+        qs('#after-hours').textContent = `${number.format(elabsHours)} godz.`;
+        qs('#after-minutes').textContent = `${number.format(minutesElabs)} min/wynik`;
+        qs('#monthly-savings').textContent = moneyRange(releasedValueLow, releasedValueHigh);
+        qs('#annual-savings').textContent = moneyRange(annualValueLow, annualValueHigh);
         qs('#released-hours').textContent = hoursRange(releasedHoursLow, releasedHoursHigh);
-        qs('#released-value').textContent = moneyRange(releasedValueLow, releasedValueHigh);
-        qs('#speed-multiplier').textContent = `${number.format(speedMultiplier)}× mniej czasu`;
+        qs('#reduction-percent').textContent = percentRange(reductionLow, reductionHigh);
         qs('#contact-results').value = String(results);
 
         setRangeProgress(controls.employeesRange);
         setRangeProgress(controls.resultsRange);
 
-        return { employees, results, teamShare, hoursDay, workdays, minutesCurrent, minutesElabs, hourlyCost, teamHours, teamCost, volumeHours, volumeCost, currentHoursLow, currentHoursHigh, currentCostLow, currentCostHigh, elabsHours, elabsCost, releasedHoursLow, releasedHoursHigh, releasedValueLow, releasedValueHigh, speedMultiplier };
+        return { employees, results, teamShare, hoursDay, workdays, minutesCurrent, minutesElabs, hourlyCost, teamHours, teamCost, volumeHours, volumeCost, currentHoursLow, currentHoursHigh, currentCostLow, currentCostHigh, elabsHours, elabsCost, releasedHoursLow, releasedHoursHigh, releasedValueLow, releasedValueHigh, annualValueLow, annualValueHigh, reductionLow, reductionHigh, speedMultiplier };
       };
 
       const bindPair = (range, numeric) => {
@@ -1247,7 +1295,9 @@
           `- założony czas obecny / ELABS: ${calculation.minutesCurrent} / ${calculation.minutesElabs} min na wynik`,
           `- przyjęta wartość godziny pracy: ${calculation.hourlyCost} zł brutto`,
           `- scenariusz ELABS: ${formatMoney(calculation.elabsCost)} zł (${number.format(calculation.elabsHours)} godz.)`,
-          `- potencjalnie uwolniona wartość czasu: ${formatMoney(calculation.releasedValueLow)}–${formatMoney(calculation.releasedValueHigh)} zł`,
+          `- potencjalnie uwolniona wartość czasu miesięcznie: ${formatMoney(calculation.releasedValueLow)}–${formatMoney(calculation.releasedValueHigh)} zł`,
+          `- potencjał w skali roku: ${formatMoney(calculation.annualValueLow)}–${formatMoney(calculation.annualValueHigh)} zł`,
+          `- redukcja ręcznej pracy: ${number.format(calculation.reductionLow)}–${number.format(calculation.reductionHigh)}%`,
           ``,
           `Proszę o propozycję terminu rozmowy.`
         ].join('\n');
