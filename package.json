@@ -1,0 +1,31 @@
+{
+  "name": "strona",
+  "version": "1.0.0",
+  "description": "Landing sprzedażowy ELABS z kalkulatorem kosztu ręcznego obiegu danych.",
+  "main": "playwright.config.js",
+  "directories": {
+    "doc": "docs",
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "playwright test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/adriansga/Labsolutions.git"
+  },
+  "keywords": [
+    "elabs",
+    "laboratorium",
+    "landing-page"
+  ],
+  "author": "Adrian Sga",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/adriansga/Labsolutions/issues"
+  },
+  "homepage": "https://adriansga.github.io/Labsolutions/",
+  "devDependencies": {
+    "@playwright/test": "1.60.0"
+  }
+}
