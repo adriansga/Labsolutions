@@ -59,7 +59,7 @@ test('główny flow landing → kalkulator → kontakt działa', async ({ page }
     email: 'jan@example.com',
     results: '800'
   }));
-  expect(mailto).toContain('mailto:adrian.labsolutions@gmail.com');
+  expect(mailto).toContain('mailto:kontakt@labsolutions.pl');
   expect(decodeURIComponent(mailto)).toContain('Laboratorium Testowe');
   expect(decodeURIComponent(mailto)).toContain('21 480 zł/mies.');
   expect(decodeURIComponent(mailto)).toContain('Pracownicy zaangażowani w wyniki: 4');
@@ -83,7 +83,7 @@ test('publiczne podstrony nie zawierają półpauz ani starej oferty', async ({ 
   }
 
   await page.goto('/polityka-prywatnosci.html', { waitUntil: 'networkidle' });
-  await expect(page.locator('body')).toContainText('adrian.labsolutions@gmail.com');
+  await expect(page.locator('body')).toContainText('kontakt@labsolutions.pl');
   await expect(page.locator('body')).not.toContainText('Formspree');
   await expect(page.locator('body')).not.toContainText('Microsoft Clarity');
   await expect(page.locator('body')).not.toContainText('[NIP]');
