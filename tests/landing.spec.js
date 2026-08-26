@@ -1,7 +1,7 @@
 const { test, expect } = require('@playwright/test');
 const path = require('path');
 
-const screenshotDir = '/mnt/g/Mój dysk/.AI/_SCRATCH/ELABS_LANDING_2026-08-26';
+const screenshotDir = '/mnt/g/Mój dysk/.AI/_SCRATCH/ELABS_LANDING_V2_2026-08-26';
 
 test('główny flow landing → kalkulator → kontakt działa', async ({ page }) => {
   const pageErrors = [];
@@ -11,29 +11,40 @@ test('główny flow landing → kalkulator → kontakt działa', async ({ page }
   await page.goto('/', { waitUntil: 'networkidle' });
 
   await expect(page).toHaveTitle(/ELABS/);
-  await expect(page.locator('h1')).toContainText('Dane próbki wpisujesz raz');
-  await expect(page.locator('#monthly-cost')).toHaveText('2 025 zł');
-  await expect(page.locator('#annual-cost')).toHaveText('24 300 zł');
-  await expect(page.locator('#monthly-hours')).toHaveText('45 godz.');
+  await expect(page.locator('h1')).toContainText('Od próbki do gotowego wyniku');
+  await expect(page.locator('#monthly-cost')).toHaveText('18 333 zł');
+  await expect(page.locator('#annual-cost')).toHaveText('220 000 zł');
+  await expect(page.locator('#monthly-hours')).toHaveText('333,3 godz.');
+  await expect(page.locator('#hours-per-employee')).toHaveText('111,1 godz.');
+  await expect(page.locator('#fte-equivalent')).toHaveText('2 etatu');
+  await expect(page.locator('#team-load')).toHaveText('66,1%');
 
-  await page.locator('#samples-number').fill('1000');
-  await page.locator('#rewrites-number').fill('4');
+  await page.locator('#employees-number').fill('5');
+  await page.locator('#results-number').fill('1000');
   await page.locator('.assumptions summary').click();
-  await page.locator('#minutes').fill('2');
+  await page.locator('#minutes').fill('12');
   await page.locator('#hourly-cost').fill('60');
-  await expect(page.locator('#monthly-cost')).toHaveText('8 000 zł');
-  await expect(page.locator('#annual-cost')).toHaveText('96 000 zł');
-  await expect(page.locator('#monthly-hours')).toHaveText('133,3 godz.');
+  await page.locator('#monthly-capacity').fill('160');
+  await expect(page.locator('#monthly-cost')).toHaveText('12 000 zł');
+  await expect(page.locator('#annual-cost')).toHaveText('144 000 zł');
+  await expect(page.locator('#monthly-hours')).toHaveText('200 godz.');
+  await expect(page.locator('#hours-per-employee')).toHaveText('40 godz.');
+  await expect(page.locator('#fte-equivalent')).toHaveText('1,3 etatu');
+  await expect(page.locator('#team-load')).toHaveText('25%');
 
   const mailto = await page.evaluate(() => window.ELABS.buildMailto({
     name: 'Jan Kowalski',
     company: 'Laboratorium Testowe',
     email: 'jan@example.com',
-    samples: '1000'
+    results: '1000'
   }));
   expect(mailto).toContain('mailto:adrian.labsolutions@gmail.com');
   expect(decodeURIComponent(mailto)).toContain('Laboratorium Testowe');
-  expect(decodeURIComponent(mailto)).toContain('8 000 zł');
+  expect(decodeURIComponent(mailto)).toContain('12 000 zł');
+  expect(decodeURIComponent(mailto)).toContain('Pracownicy zaangażowani w wyniki: 5');
+
+  await expect(page.locator('.product-shot')).toHaveCount(5);
+  await expect(page.locator('.founder-card')).toHaveCount(0);
 
   const brokenImages = await page.locator('img').evaluateAll((images) => images
     .filter((image) => !image.complete || image.naturalWidth === 0)
