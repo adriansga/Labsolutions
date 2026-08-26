@@ -70,7 +70,7 @@ Kontrast tekstu i CTA minimum WCAG AA.
 ## 5. Layout i responsywność
 
 - Kontener: maks. 1180 px, padding 20 px mobile / 32 px desktop.
-- Hero: 2 kolumny od 900 px, jedna kolumna poniżej.
+- Hero: jedna kolumna z komunikatem i dwoma CTA; bez ekranu produktu. Kalkulator jest następnym blokiem i zaczyna się wizualnie bezpośrednio pod przyciskami.
 - Sekcje: 72 px mobile / 104 px desktop.
 - Kalkulator jest pierwszą sekcją po hero. Panel danych jest nad wynikiem, żeby pełne porównanie „Przed ELABS / Po wdrożeniu ELABS” miało na desktopie dwie równe kolumny; na mobile kolumny układają się pionowo.
 - Galeria produktu: pulpit jako szeroki ekran otwierający oraz pięć kolejnych ekranów w dwóch kolumnach; jedna kolumna na mobile.
@@ -85,7 +85,7 @@ Kontrast tekstu i CTA minimum WCAG AA.
 | Button | primary / secondary / ghost-on-dark | default / hover / focus / disabled | jeden primary w obrębie bloku |
 | Field | text / email / number / range | default / focus / invalid | zawsze etykieta i komunikat błędu |
 | Comparison card | Przed ELABS / Po wdrożeniu ELABS | default / updated | te same wymiary i metryki: jedna średnia kwota miesięczna, kwota roczna bezpośrednio pod nią, godziny i minuty na wynik; liczby aktualizowane w `aria-live` |
-| Savings summary | miesiąc / rok / odzyskane godziny / redukcja ręcznej pracy | default / updated | pokazuje jedną średnią wartość potencjału, nie gwarantowaną oszczędność gotówkową |
+| Savings summary | rok / miesiąc / odzyskane godziny / redukcja ręcznej pracy | default / updated | roczny potencjał jest liczbą główną, miesięczny pomocniczą; pokazuje jedną średnią wartość, nie gwarantowaną oszczędność gotówkową |
 | Proof frame | desktop browser / process gallery | default | tylko realne, aktualne screenshoty ELABS bez danych klientów |
 | Process step | 1–5 | default | zachowuje kanoniczną kolejność próbki |
 | FAQ item | accordion | closed / open | natywny `details/summary` |
@@ -95,8 +95,8 @@ Kontrast tekstu i CTA minimum WCAG AA.
 
 | Sekcja | Cel | Główne komponenty | Status |
 |---|---|---|---|
-| Nawigacja + hero | obietnica i szybkie CTA | nav, badge, h1, CTA, proof frame | IMPLEMENTED |
-| Kalkulator bezpośrednio pod hero | natychmiastowe policzenie skali i pokazanie stanu przed/po | suwaki: pracownicy + wyniki/miesiąc; dwie dynamiczne kolumny z kwotami miesiąc/rok i uśrednione podsumowanie | IMPLEMENTED V5 |
+| Nawigacja + hero | obietnica i szybkie CTA prowadzące bezpośrednio do kalkulatora | nav, badge, h1, dwa CTA; bez ekranu produktu | APPROVED V6 |
+| Kalkulator bezpośrednio pod CTA | natychmiastowe policzenie skali i pokazanie stanu przed/po | suwaki: pracownicy + wyniki/miesiąc; dwie dynamiczne kolumny z kwotami miesiąc/rok; roczny potencjał jako liczba główna | APPROVED V6 |
 | Problem | nazwanie źródeł policzonego kosztu | 3 karty | IMPLEMENTED |
 | Mechanizm | pokazanie jednej drogi próbki | 5 kroków procesu | IMPLEMENTED |
 | Produkt | dowód realnego działania | aktualny pulpit + sekwencja: rejestr, pracownia, kierownik, panel klienta | IMPLEMENTED |

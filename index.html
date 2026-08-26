@@ -125,6 +125,7 @@
       margin-inline: auto;
     }
     .section { padding: 104px 0; }
+    .calculator-section { padding-top: 42px; }
     .section-tight { padding: 64px 0; }
     .section-white { background: var(--surface); }
     .section-blue { background: var(--canvas-blue); }
@@ -257,7 +258,7 @@
       position: relative;
       isolation: isolate;
       overflow: hidden;
-      padding: 88px 0 72px;
+      padding: 88px 0 34px;
       color: #d6e3ee;
       background: var(--navy-950);
     }
@@ -285,11 +286,9 @@
     }
     .hero-grid {
       display: grid;
-      grid-template-columns: minmax(0, 1fr) minmax(460px, .92fr);
-      align-items: center;
-      gap: clamp(48px, 7vw, 88px);
+      grid-template-columns: minmax(0, 1fr);
     }
-    .hero-copy { max-width: 710px; }
+    .hero-copy { max-width: 850px; }
     .hero-sub {
       max-width: 665px;
       margin-bottom: 32px;
@@ -299,25 +298,6 @@
     }
     .hero-sub strong { color: #fff; font-weight: 650; }
     .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; }
-    .hero-note {
-      margin-top: 20px;
-      color: #8097ab;
-      font-size: .84rem;
-    }
-
-    .product-visual { position: relative; max-width: 590px; margin-inline: auto; }
-    .device {
-      position: relative;
-      overflow: hidden;
-      width: 100%;
-      border: 6px solid rgba(255, 255, 255, .92);
-      border-radius: 24px;
-      background: #fff;
-      box-shadow: var(--shadow-lg);
-    }
-    .device img { width: 100%; height: auto; aspect-ratio: 1.44 / 1; object-fit: cover; object-position: top; }
-    .screen-proof-note { margin-top: 14px; color: #8097ab; font-size: .75rem; text-align: right; }
-
     .proof-strip { border-bottom: 1px solid var(--line); background: #fff; }
     .proof-list {
       min-height: 82px;
@@ -653,11 +633,9 @@
     .reveal.is-visible { opacity: 1; transform: none; }
 
     @media (max-width: 980px) {
-      .hero-grid,
       .founder-faq-grid,
       .contact-grid { grid-template-columns: 1fr; }
-      .hero-copy { max-width: 780px; }
-      .product-visual { width: min(100%, 520px); }
+      .hero-copy { max-width: 850px; }
       .founder-faq-grid { max-width: 760px; margin-inline: auto; }
       .founder-card { display: grid; grid-template-columns: 280px 1fr; }
       .founder-photo { height: 100%; min-height: 330px; }
@@ -697,12 +675,11 @@
       .section { padding: 74px 0; }
       .section-tight { padding: 48px 0; }
       .brand-mark { width: 38px; height: 38px; border-radius: 11px; }
-      .hero { padding: 68px 0 58px; }
+      .hero { padding: 68px 0 28px; }
+      .calculator-section { padding-top: 36px; }
       h1 { font-size: clamp(2.55rem, 12vw, 3.45rem); }
       .hero-actions { display: grid; }
       .hero-actions .button { width: 100%; }
-      .product-visual { margin-top: 6px; }
-      .device { margin-inline: auto; }
       .calc-label-row { display: grid; gap: 10px; }
       .number-wrap input { width: 100%; }
       .number-wrap { width: 100%; }
@@ -775,19 +752,11 @@
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
             </a>
           </div>
-          <p class="hero-note">Wpisz liczbę pracowników i wyników. W 30 sekund zobaczysz koszt miesiąca.</p>
-        </div>
-
-        <div class="product-visual reveal" aria-label="Podgląd działającej aplikacji ELABS">
-          <div class="device">
-            <img src="assets/elabs-01-pulpit.png" alt="Aktualny pulpit ELABS z modułami ułożonymi w kolejności obiegu próbki">
-          </div>
-          <p class="screen-proof-note">Aktualny ekran produkcyjny ELABS · 25.08.2026</p>
         </div>
       </div>
     </section>
 
-    <section class="section section-blue" id="kalkulator">
+    <section class="section section-blue calculator-section" id="kalkulator">
       <div class="container">
         <div class="section-heading center reveal">
           <span class="eyebrow">Policz swój miesiąc</span>
@@ -912,15 +881,15 @@
             <div class="savings-summary">
               <div class="savings-main">
                 <div class="savings-main-copy">
-                  <span>Potencjalna wartość odzyskanego czasu</span>
-                  <strong class="savings-value" id="monthly-savings">22 333 zł</strong>
+                  <span>Potencjalna wartość odzyskanego czasu w skali roku</span>
+                  <strong class="savings-value" id="annual-savings">268 000 zł</strong>
                 </div>
-                <span class="savings-period">miesięcznie</span>
+                <span class="savings-period">rocznie</span>
               </div>
               <div class="savings-grid">
                 <div class="savings-metric">
-                  <span>Potencjał w skali roku</span>
-                  <strong id="annual-savings">268 000 zł</strong>
+                  <span>Potencjał miesięcznie</span>
+                  <strong id="monthly-savings">22 333 zł</strong>
                 </div>
                 <div class="savings-metric">
                   <span>Odzyskany czas miesięcznie</span>

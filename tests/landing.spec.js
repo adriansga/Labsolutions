@@ -1,7 +1,7 @@
 const { test, expect } = require('@playwright/test');
 const path = require('path');
 
-const screenshotDir = '/mnt/g/Mój dysk/.AI/_SCRATCH/ELABS_LANDING_V5_2026-08-26';
+const screenshotDir = '/mnt/g/Mój dysk/.AI/_SCRATCH/ELABS_LANDING_V6_2026-08-26';
 
 test('główny flow landing → kalkulator → kontakt działa', async ({ page }) => {
   const pageErrors = [];
@@ -13,6 +13,13 @@ test('główny flow landing → kalkulator → kontakt działa', async ({ page }
   await expect(page).toHaveTitle(/ELABS/);
   await expect(page.locator('h1')).toContainText('bez przepisywania');
   await expect(page.locator('#main > .hero + #kalkulator')).toHaveCount(1);
+  await expect(page.locator('.product-visual')).toHaveCount(0);
+  const calculatorGap = await page.evaluate(() => {
+    const actions = document.querySelector('.hero-actions').getBoundingClientRect();
+    const heading = document.querySelector('#kalkulator .section-heading').getBoundingClientRect();
+    return heading.top - actions.bottom;
+  });
+  expect(calculatorGap).toBeLessThan(120);
   await expect(page.locator('#before-cost')).toHaveText('26 500 zł');
   await expect(page.locator('#before-annual')).toHaveText('318 000 zł');
   await expect(page.locator('#before-hours')).toHaveText('530 godz.');
@@ -70,6 +77,13 @@ test('główny flow landing → kalkulator → kontakt działa', async ({ page }
 test('menu mobile, FAQ i formularz mają poprawne stany', async ({ page }) => {
   await page.setViewportSize({ width: 390, height: 844 });
   await page.goto('/', { waitUntil: 'networkidle' });
+
+  const calculatorGap = await page.evaluate(() => {
+    const actions = document.querySelector('.hero-actions').getBoundingClientRect();
+    const heading = document.querySelector('#kalkulator .section-heading').getBoundingClientRect();
+    return heading.top - actions.bottom;
+  });
+  expect(calculatorGap).toBeLessThan(100);
 
   const menuButton = page.locator('.menu-button');
   await expect(menuButton).toHaveAttribute('aria-expanded', 'false');
