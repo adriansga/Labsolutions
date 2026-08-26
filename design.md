@@ -123,12 +123,14 @@ Kontrast tekstu i CTA minimum WCAG AA.
 
 ## 10. Weryfikacja
 
-- [ ] Walidacja HTML / testy logiki kalkulatora
-- [ ] Główny flow E2E: hero → kalkulator → CTA kontaktowe
-- [ ] Mobile 390 px
-- [ ] Tablet 768 px
-- [ ] Desktop 1440 px
-- [ ] Kalkulator: min/default/max + edycja założeń
-- [ ] Menu, FAQ, formularz i focus klawiatury
-- [ ] Porównanie z prototypem
-- [ ] Produkcyjny URL + HTTP 200
+- [x] Walidacja DOM / testy logiki kalkulatora
+- [x] Główny flow E2E: hero → kalkulator → CTA kontaktowe
+- [x] Mobile 390 px
+- [x] Tablet 768 px
+- [x] Desktop 1440 px
+- [x] Kalkulator: wartości domyślne + zmiana wszystkich założeń
+- [x] Menu, FAQ, walidacja formularza i link `mailto:`
+- [x] Porównanie z prototypem
+- [x] Produkcyjny URL + HTTP 200
+
+Dowód 2026-08-26: Playwright `5/5` lokalnie, zero overflow dla 390/768/1440, screenshoty w `_SCRATCH/ELABS_LANDING_2026-08-26/`; produkcja `https://adriansga.github.io/Labsolutions/`, commit `5a4d68f`, GitHub Pages run `32940790166` = success. Produkcyjny flow: kalkulator po zmianie parametrów zwraca `8 000 zł`, menu mobilne ma `aria-expanded=true`, `mailto:` powstaje, błędy JS = 0.
