@@ -96,11 +96,11 @@ Kontrast tekstu i CTA minimum WCAG AA.
 |---|---|---|---|
 | Nawigacja + hero | obietnica i szybkie CTA | nav, badge, h1, CTA, proof frame | IMPLEMENTED |
 | Problem | nazwanie kosztów procesu | 3 karty | IMPLEMENTED |
-| Kalkulator | policzenie własnej skali | suwaki: pracownicy + wyniki/miesiąc; dwa niezależne oszacowania, widełki kosztu i scenariusz ELABS | TO UPDATE V3 |
+| Kalkulator | policzenie własnej skali | suwaki: pracownicy + wyniki/miesiąc; dwa niezależne oszacowania, widełki kosztu i scenariusz ELABS | IMPLEMENTED V3 |
 | Mechanizm | pokazanie jednej drogi próbki | 5 kroków procesu | IMPLEMENTED |
 | Produkt | dowód realnego działania | aktualny pulpit + sekwencja: rejestr, pracownia, kierownik, panel klienta | IMPLEMENTED |
 | Pilot | obniżenie ryzyka | 3 etapy pilota | IMPLEMENTED |
-| Wiarygodność + FAQ | odpowiedzi na obiekcje | przywrócona karta Adriana + `details` | TO UPDATE V3 |
+| Wiarygodność + FAQ | odpowiedzi na obiekcje | przywrócona karta Adriana + `details` | IMPLEMENTED V3 |
 | Kontakt | rozpoczęcie rozmowy | formularz mailto + e-mail bezpośredni | IMPLEMENTED |
 
 ## 8. Dostępność
@@ -130,14 +130,14 @@ Kontrast tekstu i CTA minimum WCAG AA.
 
 ## 10. Weryfikacja
 
-- [ ] Walidacja DOM / testy dwóch modeli i scenariusza ELABS
-- [ ] Główny flow E2E: hero → kalkulator → aktualne ekrany → wiarygodność → CTA
-- [ ] Mobile 390 px
-- [ ] Tablet 768 px
-- [ ] Desktop 1440 px
-- [ ] Kalkulator: wartości domyślne + zmiana wszystkich założeń
-- [ ] Menu, FAQ, walidacja formularza i link `mailto:`
-- [ ] Porównanie z prototypem
-- [ ] Produkcyjny URL + HTTP 200, sekcja Adriana i kluczowa interakcja
+- [x] Walidacja DOM / testy dwóch modeli i scenariusza ELABS
+- [x] Główny flow E2E: hero → kalkulator → aktualne ekrany → wiarygodność → CTA
+- [x] Mobile 390 px
+- [x] Tablet 768 px
+- [x] Desktop 1440 px
+- [x] Kalkulator: wartości domyślne + zmiana wszystkich założeń
+- [x] Menu, FAQ, walidacja formularza i link `mailto:`
+- [x] Porównanie z prototypem
+- [x] Produkcyjny URL + HTTP 200, sekcja Adriana i kluczowa interakcja
 
-Poprzedni dowód V2: Playwright `5/5`, commit `f316132`, GitHub Pages run `32942826406`. Dowód V3 uzupełnić po implementacji i kontroli produkcyjnej.
+Dowód V3 z 2026-08-26: Playwright `5/5`, brak overflow przy 390/768/1440, screenshoty w `_SCRATCH/ELABS_LANDING_V3_2026-08-26/`; commit `82f8abb`, GitHub Pages run `32951454882` = success. Produkcja HTTP 200; domyślne `25 000–28 000 zł`, zespół `28 000 zł`, wolumen `25 000 zł`, ELABS `4 167 zł`, potencjalnie uwolniona wartość `20 833–23 833 zł`, `6× mniej czasu`. Po zmianie wszystkich założeń: `19 200–23 760 zł`, ELABS `3 200 zł`. Karta Adriana i zdjęcie obecne, mobile bez overflow, błędy JS = 0.

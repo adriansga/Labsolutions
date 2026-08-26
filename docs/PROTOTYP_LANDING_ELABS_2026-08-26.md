@@ -79,7 +79,7 @@
 - Kalkulator: minimum, wartości domyślne, maksimum i ręczne wpisanie liczby pracowników oraz wyników.
 - Założenia: zwinięte i rozwinięte; zmiana udziału czasu, godzin/dnia, dni/miesiąc, minut na wynik, minut ELABS i stawki aktualizuje wynik.
 - Koszt z czasu zespołu i koszt z wolumenu są dwiema niezależnymi estymacjami tego samego procesu; interfejs pokazuje ich zakres, nigdy sumę.
-- Przy `5 osób / 1000 wyników` wartości bazowe to: `28 000 zł` z czasu zespołu, `25 000 zł` z wolumenu, obecny zakres `25 000–28 000 zł`, ELABS `4 167 zł`, `6×` krótszy czas.
+- Przy `5 osób / 1000 wyników` wartości bazowe to: `28 000 zł` z czasu zespołu, `25 000 zł` z wolumenu, obecny zakres `25 000–28 000 zł`, ELABS `4 167 zł` i `6× mniej czasu` na wynik.
 - Nawigacja: menu mobilne otwiera się, zamyka i nie blokuje dalszego scrollowania.
 - FAQ: pojedynczy otwarty element, poprawne `aria-expanded`.
 - Kontakt: wymagane pola; po poprawnym wypełnieniu powstaje prawdziwy link `mailto:` z danymi, bez fałszywego komunikatu o wysłaniu.
