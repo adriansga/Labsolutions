@@ -483,6 +483,9 @@
     .scenario-card-after .scenario-badge { color: #baf4f9; background: rgba(34, 184, 207, .16); }
     .scenario-cost-label { display: block; margin-bottom: 7px; color: #a9bdcc; font-size: .82rem; }
     .scenario-cost { display: block; color: #fff; font-size: clamp(2rem, 4vw, 3.15rem); line-height: 1; letter-spacing: -.05em; font-variant-numeric: tabular-nums; }
+    .scenario-annual { display: flex; align-items: baseline; justify-content: space-between; gap: 14px; margin-top: 13px; padding-top: 13px; border-top: 1px solid rgba(255, 255, 255, .12); }
+    .scenario-annual span { color: #91a9bb; font-size: .75rem; }
+    .scenario-annual strong { color: #d9e7f1; font-size: 1rem; font-variant-numeric: tabular-nums; text-align: right; }
     .scenario-metrics { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; margin-top: 26px; }
     .scenario-metric { min-width: 0; padding-top: 15px; border-top: 1px solid rgba(255, 255, 255, .12); }
     .scenario-metric span { display: block; margin-bottom: 5px; color: #91a9bb; font-size: .73rem; }
@@ -796,7 +799,7 @@
           <div class="calculator-inputs">
             <h3 class="calculator-title">Twój obecny obieg</h3>
             <p class="calculator-intro">Podaj średni miesiąc — nie rekordowy i nie najspokojniejszy.</p>
-            <p class="interview-note">Punkt startowy z rozmów: 70% dnia pracy przy wynikach. Druga estymacja zakłada 30 minut łącznej pracy na dokument. Kalkulator pokazuje oba rachunki osobno — nie dodaje ich.</p>
+            <p class="interview-note">Punkt startowy z rozmów: 70% dnia pracy przy wynikach. Druga estymacja zakłada 30 minut łącznej pracy na dokument. Kalkulator uśrednia oba rachunki — nie dodaje ich.</p>
 
             <div class="primary-controls">
               <div class="calc-group">
@@ -868,11 +871,15 @@
               <article class="scenario-card scenario-card-before">
                 <span class="scenario-badge">Przed ELABS</span>
                 <span class="scenario-cost-label">Koszt ręcznej pracy miesięcznie</span>
-                <strong class="scenario-cost" id="before-cost">25 000–28 000 zł</strong>
+                <strong class="scenario-cost" id="before-cost">26 500 zł</strong>
+                <div class="scenario-annual">
+                  <span>W skali roku</span>
+                  <strong id="before-annual">318 000 zł</strong>
+                </div>
                 <div class="scenario-metrics">
                   <div class="scenario-metric">
-                    <span>Czas zespołu</span>
-                    <strong id="before-hours">500–560 godz.</strong>
+                    <span>Średni czas zespołu</span>
+                    <strong id="before-hours">530 godz.</strong>
                   </div>
                   <div class="scenario-metric">
                     <span>Na jeden wynik</span>
@@ -885,6 +892,10 @@
                 <span class="scenario-badge">Po wdrożeniu ELABS</span>
                 <span class="scenario-cost-label">Koszt ręcznej pracy miesięcznie</span>
                 <strong class="scenario-cost" id="after-cost">4 167 zł</strong>
+                <div class="scenario-annual">
+                  <span>W skali roku</span>
+                  <strong id="after-annual">50 000 zł</strong>
+                </div>
                 <div class="scenario-metrics">
                   <div class="scenario-metric">
                     <span>Czas zespołu</span>
@@ -902,26 +913,26 @@
               <div class="savings-main">
                 <div class="savings-main-copy">
                   <span>Potencjalna wartość odzyskanego czasu</span>
-                  <strong class="savings-value" id="monthly-savings">20 833–23 833 zł</strong>
+                  <strong class="savings-value" id="monthly-savings">22 333 zł</strong>
                 </div>
                 <span class="savings-period">miesięcznie</span>
               </div>
               <div class="savings-grid">
                 <div class="savings-metric">
                   <span>Potencjał w skali roku</span>
-                  <strong id="annual-savings">250 000–286 000 zł</strong>
+                  <strong id="annual-savings">268 000 zł</strong>
                 </div>
                 <div class="savings-metric">
                   <span>Odzyskany czas miesięcznie</span>
-                  <strong id="released-hours">416,7–476,7 godz.</strong>
+                  <strong id="released-hours">446,7 godz.</strong>
                 </div>
                 <div class="savings-metric">
                   <span>Mniej ręcznej pracy</span>
-                  <strong id="reduction-percent">83,3–85,1%</strong>
+                  <strong id="reduction-percent">84,3%</strong>
                 </div>
               </div>
             </div>
-            <p class="calc-disclaimer">„Przed” to zakres dwóch oszacowań tego samego kosztu: z czasu zespołu i z liczby wyników — nigdy ich suma. „Po” zakłada 5 minut ręcznej pracy na wynik. Pokazana różnica jest potencjałem do pomiaru w pilocie, nie gwarancją oszczędności gotówkowej.</p>
+            <p class="calc-disclaimer">„Przed” to średnia arytmetyczna dwóch oszacowań tego samego kosztu: z czasu zespołu i z liczby wyników — nigdy ich suma. „Po” zakłada 5 minut ręcznej pracy na wynik. Pokazana różnica jest potencjałem do pomiaru w pilocie, nie gwarancją oszczędności gotówkowej.</p>
             <a class="button button-primary" href="#kontakt">Pokaż mi ten proces na demo</a>
           </aside>
         </div>
@@ -1078,7 +1089,7 @@
             </details>
             <details class="faq-item">
               <summary>Skąd bierze się wynik kalkulatora?</summary>
-              <div class="faq-answer">Liczymy ten sam koszt dwiema drogami. Pierwsza używa liczby pracowników, godzin, dni i udziału czasu przy wynikach. Druga używa liczby wyników i średniego czasu na dokument. Pokazujemy zakres między nimi — nie sumę. Osobno widać scenariusz ELABS przy założonym czasie ręcznej pracy.</div>
+              <div class="faq-answer">Liczymy ten sam koszt dwiema drogami. Pierwsza używa liczby pracowników, godzin, dni i udziału czasu przy wynikach. Druga używa liczby wyników i średniego czasu na dokument. Pokazujemy ich średnią arytmetyczną — nie sumę. Obok widać miesięczny i roczny scenariusz ELABS przy założonym czasie ręcznej pracy.</div>
             </details>
             <details class="faq-item">
               <summary>Ile kosztuje ELABS?</summary>
@@ -1202,49 +1213,36 @@
         const teamCost = teamHours * hourlyCost;
         const volumeHours = results * minutesCurrent / 60;
         const volumeCost = volumeHours * hourlyCost;
-        const currentHoursLow = Math.min(teamHours, volumeHours);
-        const currentHoursHigh = Math.max(teamHours, volumeHours);
-        const currentCostLow = Math.min(teamCost, volumeCost);
-        const currentCostHigh = Math.max(teamCost, volumeCost);
+        const currentHoursAverage = (teamHours + volumeHours) / 2;
+        const currentCostAverage = (teamCost + volumeCost) / 2;
+        const currentAnnualCost = currentCostAverage * 12;
         const elabsHours = results * minutesElabs / 60;
         const elabsCost = elabsHours * hourlyCost;
-        const releasedHoursLow = Math.max(0, currentHoursLow - elabsHours);
-        const releasedHoursHigh = Math.max(0, currentHoursHigh - elabsHours);
-        const releasedValueLow = releasedHoursLow * hourlyCost;
-        const releasedValueHigh = releasedHoursHigh * hourlyCost;
-        const annualValueLow = releasedValueLow * 12;
-        const annualValueHigh = releasedValueHigh * 12;
-        const reductionFromLow = currentHoursLow > 0 ? Math.max(0, (currentHoursLow - elabsHours) / currentHoursLow * 100) : 0;
-        const reductionFromHigh = currentHoursHigh > 0 ? Math.max(0, (currentHoursHigh - elabsHours) / currentHoursHigh * 100) : 0;
-        const reductionLow = Math.min(reductionFromLow, reductionFromHigh);
-        const reductionHigh = Math.max(reductionFromLow, reductionFromHigh);
+        const elabsAnnualCost = elabsCost * 12;
+        const releasedHours = Math.max(0, currentHoursAverage - elabsHours);
+        const releasedValue = releasedHours * hourlyCost;
+        const annualValue = releasedValue * 12;
+        const reduction = currentHoursAverage > 0 ? Math.max(0, releasedHours / currentHoursAverage * 100) : 0;
         const speedMultiplier = minutesCurrent / minutesElabs;
-        const moneyRange = (low, high) => Math.round(low) === Math.round(high)
-          ? `${formatMoney(low)} zł`
-          : `${formatMoney(low)}–${formatMoney(high)} zł`;
-        const hoursRange = (low, high) => Math.abs(low - high) < .05
-          ? `${number.format(low)} godz.`
-          : `${number.format(low)}–${number.format(high)} godz.`;
-        const percentRange = (low, high) => Math.abs(low - high) < .05
-          ? `${number.format(low)}%`
-          : `${number.format(low)}–${number.format(high)}%`;
 
-        qs('#before-cost').textContent = moneyRange(currentCostLow, currentCostHigh);
-        qs('#before-hours').textContent = hoursRange(currentHoursLow, currentHoursHigh);
+        qs('#before-cost').textContent = `${formatMoney(currentCostAverage)} zł`;
+        qs('#before-annual').textContent = `${formatMoney(currentAnnualCost)} zł`;
+        qs('#before-hours').textContent = `${number.format(currentHoursAverage)} godz.`;
         qs('#before-minutes').textContent = `${number.format(minutesCurrent)} min/wynik`;
         qs('#after-cost').textContent = `${formatMoney(elabsCost)} zł`;
+        qs('#after-annual').textContent = `${formatMoney(elabsAnnualCost)} zł`;
         qs('#after-hours').textContent = `${number.format(elabsHours)} godz.`;
         qs('#after-minutes').textContent = `${number.format(minutesElabs)} min/wynik`;
-        qs('#monthly-savings').textContent = moneyRange(releasedValueLow, releasedValueHigh);
-        qs('#annual-savings').textContent = moneyRange(annualValueLow, annualValueHigh);
-        qs('#released-hours').textContent = hoursRange(releasedHoursLow, releasedHoursHigh);
-        qs('#reduction-percent').textContent = percentRange(reductionLow, reductionHigh);
+        qs('#monthly-savings').textContent = `${formatMoney(releasedValue)} zł`;
+        qs('#annual-savings').textContent = `${formatMoney(annualValue)} zł`;
+        qs('#released-hours').textContent = `${number.format(releasedHours)} godz.`;
+        qs('#reduction-percent').textContent = `${number.format(reduction)}%`;
         qs('#contact-results').value = String(results);
 
         setRangeProgress(controls.employeesRange);
         setRangeProgress(controls.resultsRange);
 
-        return { employees, results, teamShare, hoursDay, workdays, minutesCurrent, minutesElabs, hourlyCost, teamHours, teamCost, volumeHours, volumeCost, currentHoursLow, currentHoursHigh, currentCostLow, currentCostHigh, elabsHours, elabsCost, releasedHoursLow, releasedHoursHigh, releasedValueLow, releasedValueHigh, annualValueLow, annualValueHigh, reductionLow, reductionHigh, speedMultiplier };
+        return { employees, results, teamShare, hoursDay, workdays, minutesCurrent, minutesElabs, hourlyCost, teamHours, teamCost, volumeHours, volumeCost, currentHoursAverage, currentCostAverage, currentAnnualCost, elabsHours, elabsCost, elabsAnnualCost, releasedHours, releasedValue, annualValue, reduction, speedMultiplier };
       };
 
       const bindPair = (range, numeric) => {
@@ -1291,13 +1289,13 @@
           `Wynik kalkulatora na stronie:`,
           `- estymacja z czasu zespołu: ${formatMoney(calculation.teamCost)} zł (${number.format(calculation.teamHours)} godz.)`,
           `- estymacja z wolumenu: ${formatMoney(calculation.volumeCost)} zł (${number.format(calculation.volumeHours)} godz.)`,
-          `- obecny zakres kosztu: ${formatMoney(calculation.currentCostLow)}–${formatMoney(calculation.currentCostHigh)} zł`,
+          `- obecny średni koszt: ${formatMoney(calculation.currentCostAverage)} zł/mies. (${formatMoney(calculation.currentAnnualCost)} zł/rok)`,
           `- założony czas obecny / ELABS: ${calculation.minutesCurrent} / ${calculation.minutesElabs} min na wynik`,
           `- przyjęta wartość godziny pracy: ${calculation.hourlyCost} zł brutto`,
-          `- scenariusz ELABS: ${formatMoney(calculation.elabsCost)} zł (${number.format(calculation.elabsHours)} godz.)`,
-          `- potencjalnie uwolniona wartość czasu miesięcznie: ${formatMoney(calculation.releasedValueLow)}–${formatMoney(calculation.releasedValueHigh)} zł`,
-          `- potencjał w skali roku: ${formatMoney(calculation.annualValueLow)}–${formatMoney(calculation.annualValueHigh)} zł`,
-          `- redukcja ręcznej pracy: ${number.format(calculation.reductionLow)}–${number.format(calculation.reductionHigh)}%`,
+          `- scenariusz ELABS: ${formatMoney(calculation.elabsCost)} zł/mies. (${formatMoney(calculation.elabsAnnualCost)} zł/rok; ${number.format(calculation.elabsHours)} godz.)`,
+          `- potencjalnie uwolniona wartość czasu miesięcznie: ${formatMoney(calculation.releasedValue)} zł`,
+          `- potencjał w skali roku: ${formatMoney(calculation.annualValue)} zł`,
+          `- redukcja ręcznej pracy: ${number.format(calculation.reduction)}%`,
           ``,
           `Proszę o propozycję terminu rozmowy.`
         ].join('\n');

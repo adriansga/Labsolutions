@@ -84,8 +84,8 @@ Kontrast tekstu i CTA minimum WCAG AA.
 |---|---|---|---|
 | Button | primary / secondary / ghost-on-dark | default / hover / focus / disabled | jeden primary w obrębie bloku |
 | Field | text / email / number / range | default / focus / invalid | zawsze etykieta i komunikat błędu |
-| Comparison card | Przed ELABS / Po wdrożeniu ELABS | default / updated | te same wymiary i metryki: koszt, godziny, minuty na wynik; liczby aktualizowane w `aria-live` |
-| Savings summary | miesiąc / rok / odzyskane godziny / redukcja ręcznej pracy | default / updated | pokazuje potencjał wynikający z widełek, nie gwarantowaną oszczędność gotówkową |
+| Comparison card | Przed ELABS / Po wdrożeniu ELABS | default / updated | te same wymiary i metryki: jedna średnia kwota miesięczna, kwota roczna bezpośrednio pod nią, godziny i minuty na wynik; liczby aktualizowane w `aria-live` |
+| Savings summary | miesiąc / rok / odzyskane godziny / redukcja ręcznej pracy | default / updated | pokazuje jedną średnią wartość potencjału, nie gwarantowaną oszczędność gotówkową |
 | Proof frame | desktop browser / process gallery | default | tylko realne, aktualne screenshoty ELABS bez danych klientów |
 | Process step | 1–5 | default | zachowuje kanoniczną kolejność próbki |
 | FAQ item | accordion | closed / open | natywny `details/summary` |
@@ -96,7 +96,7 @@ Kontrast tekstu i CTA minimum WCAG AA.
 | Sekcja | Cel | Główne komponenty | Status |
 |---|---|---|---|
 | Nawigacja + hero | obietnica i szybkie CTA | nav, badge, h1, CTA, proof frame | IMPLEMENTED |
-| Kalkulator bezpośrednio pod hero | natychmiastowe policzenie skali i pokazanie stanu przed/po | suwaki: pracownicy + wyniki/miesiąc; dwie dynamiczne kolumny i podsumowanie miesięczne/roczne | IMPLEMENTED V4 |
+| Kalkulator bezpośrednio pod hero | natychmiastowe policzenie skali i pokazanie stanu przed/po | suwaki: pracownicy + wyniki/miesiąc; dwie dynamiczne kolumny z kwotami miesiąc/rok i uśrednione podsumowanie | APPROVED V5 |
 | Problem | nazwanie źródeł policzonego kosztu | 3 karty | IMPLEMENTED |
 | Mechanizm | pokazanie jednej drogi próbki | 5 kroków procesu | IMPLEMENTED |
 | Produkt | dowód realnego działania | aktualny pulpit + sekwencja: rejestr, pracownia, kierownik, panel klienta | IMPLEMENTED |
@@ -123,12 +123,12 @@ Kontrast tekstu i CTA minimum WCAG AA.
 - Dwa suwaki to: liczba pracowników zaangażowanych w wyniki i łączna liczba wyników miesięcznie.
 - Estymacja z czasu zespołu: `pracownicy × 8 h × 20 dni × 70% × 50 zł/h`.
 - Estymacja z wolumenu: `wyniki × 30 min ÷ 60 × 50 zł/h`.
-- To dwa sposoby oszacowania tego samego kosztu, więc pokazujemy zakres od niższej do wyższej wartości; nigdy ich nie dodajemy ani nie mnożymy przez siebie.
+- To dwa sposoby oszacowania tego samego kosztu. W interfejsie pokazujemy jedną średnią arytmetyczną `(estymacja zespołu + estymacja wolumenu) ÷ 2`; nigdy nie przedstawiamy ich sumy jako kosztu.
 - Scenariusz ELABS: `wyniki × 5 min ÷ 60 × 50 zł/h`; potencjał uwolnienia pokazujemy jako różnicę względem obu obecnych estymacji.
-- Kolumna „Przed ELABS” pokazuje zakres kosztu i godzin z dwóch obecnych estymacji oraz bieżące minuty na wynik. Kolumna „Po wdrożeniu ELABS” pokazuje koszt, godziny i minuty scenariusza ELABS.
-- Pod kolumnami pokazujemy potencjalną wartość odzyskanego czasu miesięcznie i rocznie, odzyskane godziny oraz procentową redukcję ręcznej pracy. Słowo „potencjalna” i zastrzeżenie pilota pozostają widoczne.
+- Kolumna „Przed ELABS” pokazuje średni koszt miesięczny, koszt roczny bezpośrednio pod nim, średnią liczbę godzin i bieżące minuty na wynik. Kolumna „Po wdrożeniu ELABS” pokazuje analogicznie koszt miesięczny, roczny, godziny i minuty scenariusza ELABS.
+- Pod kolumnami pokazujemy jedną średnią potencjalną wartość odzyskanego czasu miesięcznie i rocznie, średnie odzyskane godziny oraz procentową redukcję ręcznej pracy. Słowo „potencjalna” i zastrzeżenie pilota pozostają widoczne.
 - Domyślne założenia (`70% czasu`, `8 h/dzień`, `20 dni/miesiąc`, `30 min/wynik`, `5 min/wynik w scenariuszu ELABS`, `50 zł brutto/h`) wynikają z roboczych ustaleń z wywiadów Adriana i pozostają jawne oraz edytowalne; nie przedstawiamy ich jako niezależnego benchmarku branżowego.
-- Przy domyślnych `5 osób + 1000 wyników` estymacje to `28 000 zł` i `25 000 zł`, czyli zakres `25 000–28 000 zł`. Scenariusz ELABS to `83,3 h / 4 167 zł`, a czas na wynik spada z 30 do 5 min, czyli 6× — nie 10–20×.
+- Przy domyślnych `5 osób + 1000 wyników` estymacje to `28 000 zł` i `25 000 zł`, czyli średnio `26 500 zł/mies.` oraz `318 000 zł/rok`. Scenariusz ELABS to `4 167 zł/mies.`, `50 000 zł/rok` i `83,3 h`, a czas na wynik spada z 30 do 5 min, czyli 6× — nie 10–20×.
 - Produkcyjny screenshot może zostać skopiowany do repo jako statyczny dowód; używamy ostatniego zweryfikowanego zestawu po aktualizacji UI 25.08.2026 i nie ujawniamy danych klientów.
 
 ## 10. Weryfikacja

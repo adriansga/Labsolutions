@@ -1,7 +1,7 @@
 const { test, expect } = require('@playwright/test');
 const path = require('path');
 
-const screenshotDir = '/mnt/g/Mój dysk/.AI/_SCRATCH/ELABS_LANDING_V4_2026-08-26';
+const screenshotDir = '/mnt/g/Mój dysk/.AI/_SCRATCH/ELABS_LANDING_V5_2026-08-26';
 
 test('główny flow landing → kalkulator → kontakt działa', async ({ page }) => {
   const pageErrors = [];
@@ -13,16 +13,18 @@ test('główny flow landing → kalkulator → kontakt działa', async ({ page }
   await expect(page).toHaveTitle(/ELABS/);
   await expect(page.locator('h1')).toContainText('bez przepisywania');
   await expect(page.locator('#main > .hero + #kalkulator')).toHaveCount(1);
-  await expect(page.locator('#before-cost')).toHaveText('25 000–28 000 zł');
-  await expect(page.locator('#before-hours')).toHaveText('500–560 godz.');
+  await expect(page.locator('#before-cost')).toHaveText('26 500 zł');
+  await expect(page.locator('#before-annual')).toHaveText('318 000 zł');
+  await expect(page.locator('#before-hours')).toHaveText('530 godz.');
   await expect(page.locator('#before-minutes')).toHaveText('30 min/wynik');
   await expect(page.locator('#after-cost')).toHaveText('4 167 zł');
+  await expect(page.locator('#after-annual')).toHaveText('50 000 zł');
   await expect(page.locator('#after-hours')).toHaveText('83,3 godz.');
   await expect(page.locator('#after-minutes')).toHaveText('5 min/wynik');
-  await expect(page.locator('#monthly-savings')).toHaveText('20 833–23 833 zł');
-  await expect(page.locator('#annual-savings')).toHaveText('250 000–286 000 zł');
-  await expect(page.locator('#released-hours')).toHaveText('416,7–476,7 godz.');
-  await expect(page.locator('#reduction-percent')).toHaveText('83,3–85,1%');
+  await expect(page.locator('#monthly-savings')).toHaveText('22 333 zł');
+  await expect(page.locator('#annual-savings')).toHaveText('268 000 zł');
+  await expect(page.locator('#released-hours')).toHaveText('446,7 godz.');
+  await expect(page.locator('#reduction-percent')).toHaveText('84,3%');
 
   await page.locator('#employees-number').fill('4');
   await page.locator('#results-number').fill('800');
@@ -33,14 +35,16 @@ test('główny flow landing → kalkulator → kontakt działa', async ({ page }
   await page.locator('#minutes-current').fill('24');
   await page.locator('#minutes-elabs').fill('4');
   await page.locator('#hourly-cost').fill('60');
-  await expect(page.locator('#before-cost')).toHaveText('19 200–23 760 zł');
-  await expect(page.locator('#before-hours')).toHaveText('320–396 godz.');
+  await expect(page.locator('#before-cost')).toHaveText('21 480 zł');
+  await expect(page.locator('#before-annual')).toHaveText('257 760 zł');
+  await expect(page.locator('#before-hours')).toHaveText('358 godz.');
   await expect(page.locator('#after-cost')).toHaveText('3 200 zł');
+  await expect(page.locator('#after-annual')).toHaveText('38 400 zł');
   await expect(page.locator('#after-hours')).toHaveText('53,3 godz.');
-  await expect(page.locator('#monthly-savings')).toHaveText('16 000–20 560 zł');
-  await expect(page.locator('#annual-savings')).toHaveText('192 000–246 720 zł');
-  await expect(page.locator('#released-hours')).toHaveText('266,7–342,7 godz.');
-  await expect(page.locator('#reduction-percent')).toHaveText('83,3–86,5%');
+  await expect(page.locator('#monthly-savings')).toHaveText('18 280 zł');
+  await expect(page.locator('#annual-savings')).toHaveText('219 360 zł');
+  await expect(page.locator('#released-hours')).toHaveText('304,7 godz.');
+  await expect(page.locator('#reduction-percent')).toHaveText('85,1%');
 
   const mailto = await page.evaluate(() => window.ELABS.buildMailto({
     name: 'Jan Kowalski',
@@ -50,7 +54,7 @@ test('główny flow landing → kalkulator → kontakt działa', async ({ page }
   }));
   expect(mailto).toContain('mailto:adrian.labsolutions@gmail.com');
   expect(decodeURIComponent(mailto)).toContain('Laboratorium Testowe');
-  expect(decodeURIComponent(mailto)).toContain('19 200–23 760 zł');
+  expect(decodeURIComponent(mailto)).toContain('21 480 zł/mies.');
   expect(decodeURIComponent(mailto)).toContain('Pracownicy zaangażowani w wyniki: 4');
 
   await expect(page.locator('.product-shot')).toHaveCount(5);
