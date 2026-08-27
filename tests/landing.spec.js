@@ -1,7 +1,7 @@
 const { test, expect } = require('@playwright/test');
 const path = require('path');
 
-const screenshotDir = '/mnt/g/Mój dysk/.AI/_SCRATCH/ELABS_LANDING_FINAL_COPY_2026-08-26';
+const screenshotDir = '/mnt/g/Mój dysk/.AI/_SCRATCH/LABSOLUTIONS_URL_LOGO_2026-08-27';
 
 test('główny flow landing → kalkulator → kontakt działa', async ({ page }) => {
   const pageErrors = [];
@@ -12,6 +12,8 @@ test('główny flow landing → kalkulator → kontakt działa', async ({ page }
 
   await expect(page).toHaveTitle(/ELABS/);
   await expect(page.locator('h1')).toContainText('bez przepisywania');
+  await expect(page.locator('.brand-name')).toHaveText('ELABS');
+  await expect(page.locator('.brand-domain')).toHaveText('labsolutions.pl');
   await expect(page.locator('#main > .hero + #kalkulator')).toHaveCount(1);
   await expect(page.locator('.product-visual')).toHaveCount(0);
   const calculatorGap = await page.evaluate(() => {
@@ -35,23 +37,16 @@ test('główny flow landing → kalkulator → kontakt działa', async ({ page }
 
   await page.locator('#employees-number').fill('4');
   await page.locator('#results-number').fill('800');
-  await page.locator('.assumptions summary').click();
-  await page.locator('#team-share').fill('60');
-  await page.locator('#hours-day').fill('7.5');
-  await page.locator('#workdays').fill('22');
-  await page.locator('#minutes-current').fill('24');
-  await page.locator('#minutes-elabs').fill('4');
-  await page.locator('#hourly-cost').fill('60');
-  await expect(page.locator('#before-cost')).toHaveText('21 480 zł');
-  await expect(page.locator('#before-annual')).toHaveText('257 760 zł');
-  await expect(page.locator('#before-hours')).toHaveText('358 godz.');
-  await expect(page.locator('#after-cost')).toHaveText('3 200 zł');
-  await expect(page.locator('#after-annual')).toHaveText('38 400 zł');
-  await expect(page.locator('#after-hours')).toHaveText('53,3 godz.');
-  await expect(page.locator('#monthly-savings')).toHaveText('18 280 zł');
-  await expect(page.locator('#annual-savings')).toHaveText('219 360 zł');
-  await expect(page.locator('#released-hours')).toHaveText('304,7 godz.');
-  await expect(page.locator('#reduction-percent')).toHaveText('85,1%');
+  await expect(page.locator('#before-cost')).toHaveText('21 200 zł');
+  await expect(page.locator('#before-annual')).toHaveText('254 400 zł');
+  await expect(page.locator('#before-hours')).toHaveText('424 godz.');
+  await expect(page.locator('#after-cost')).toHaveText('3 333 zł');
+  await expect(page.locator('#after-annual')).toHaveText('40 000 zł');
+  await expect(page.locator('#after-hours')).toHaveText('66,7 godz.');
+  await expect(page.locator('#monthly-savings')).toHaveText('17 867 zł');
+  await expect(page.locator('#annual-savings')).toHaveText('214 400 zł');
+  await expect(page.locator('#released-hours')).toHaveText('357,3 godz.');
+  await expect(page.locator('#reduction-percent')).toHaveText('84,3%');
 
   const mailto = await page.evaluate(() => window.ELABS.buildMailto({
     name: 'Jan Kowalski',
@@ -61,7 +56,7 @@ test('główny flow landing → kalkulator → kontakt działa', async ({ page }
   }));
   expect(mailto).toContain('mailto:kontakt@labsolutions.pl');
   expect(decodeURIComponent(mailto)).toContain('Laboratorium Testowe');
-  expect(decodeURIComponent(mailto)).toContain('21 480 zł/mies.');
+  expect(decodeURIComponent(mailto)).toContain('21 200 zł/mies.');
   expect(decodeURIComponent(mailto)).toContain('Pracownicy zaangażowani w wyniki: 4');
 
   await expect(page.locator('.product-shot')).toHaveCount(5);
@@ -72,6 +67,17 @@ test('główny flow landing → kalkulator → kontakt działa', async ({ page }
     .map((image) => image.getAttribute('src')));
   expect(brokenImages).toEqual([]);
   expect(pageErrors).toEqual([]);
+});
+
+test('bezpośrednie wejście przez index.html zachowuje czysty adres i parametry', async ({ page }) => {
+  await page.goto('/index.html?source=test#kalkulator', { waitUntil: 'networkidle' });
+  const location = await page.evaluate(() => ({
+    pathname: window.location.pathname,
+    search: window.location.search,
+    hash: window.location.hash
+  }));
+  expect(location).toEqual({ pathname: '/', search: '?source=test', hash: '#kalkulator' });
+  await expect(page.locator('.brand-domain')).toHaveText('labsolutions.pl');
 });
 
 test('publiczne podstrony nie zawierają półpauz ani starej oferty', async ({ page }) => {

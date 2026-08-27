@@ -11,7 +11,7 @@
   <link rel="canonical" href="https://labsolutions.pl/">
   <link rel="icon" type="image/svg+xml" href="favicon.svg?v=2">
   <script>
-    // Utrzymuj czysty adres: labsolutions.pl zamiast labsolutions.pl/index.html
+    // Utrzymuj czysty adres: labsolutions.pl zamiast labsolutions.pl/index.html.
     if (location.pathname.endsWith('/index.html')) {
       history.replaceState(null, '', location.pathname.slice(0, -'index.html'.length) + location.search + location.hash);
     }
@@ -705,7 +705,7 @@
       .number-wrap input { width: 100%; }
       .number-wrap { width: 100%; }
       .assumption-grid { grid-template-columns: 1fr; }
-      /* Porównanie Przed/Po zostaje obok siebie na telefonie (jak na PC) — dociążone, by zmieściło się bez overflow */
+      /* Porównanie Przed/Po zostaje obok siebie na telefonie, z ciaśniejszym układem bez overflow. */
       .comparison-grid { gap: 8px; }
       .scenario-card { padding: 14px 12px; }
       .scenario-badge { margin-bottom: 12px; padding: 5px 9px; font-size: .64rem; letter-spacing: .02em; }

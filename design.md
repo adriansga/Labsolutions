@@ -1,7 +1,7 @@
 # DESIGN SYSTEM — ELABS LANDING
 
 > Status: APPROVED
-> Ostatnia aktualizacja: 2026-08-26
+> Ostatnia aktualizacja: 2026-08-27
 > Właściciel kierunku: Adrian / CTO
 > Prototyp/referencje: `docs/PROTOTYP_LANDING_ELABS_2026-08-26.md`
 
@@ -92,12 +92,15 @@ Kontrast tekstu i CTA minimum WCAG AA.
 | Process step | 1–5 | default | zachowuje kanoniczną kolejność próbki |
 | FAQ item | accordion | closed / open | natywny `details/summary` |
 | Mobile nav | button + panel | closed / open | `aria-expanded`, zamknięcie po wyborze linku |
+| Brand lockup | znak ELABS / nazwa / domena | desktop / mobile | `ELABS` pozostaje nazwą główną, a `labsolutions.pl` jest mniejszym tekstem pomocniczym w kolorze `--muted` |
+| Clean URL | `/` / bezpośrednie `/index.html` | wejście / link wewnętrzny | kanoniczny adres to `https://labsolutions.pl/`; bezpośrednie `/index.html` jest czyszczone przez `history.replaceState` z zachowaniem query i hash |
 
 ## 7. Inwentarz ekranu
 
 | Sekcja | Cel | Główne komponenty | Status |
 |---|---|---|---|
 | Nawigacja + hero | obietnica i szybkie CTA prowadzące bezpośrednio do kalkulatora | nav, badge, h1, dwa CTA; bez ekranu produktu | IMPLEMENTED V7 |
+| Branding domeny + czysty adres | spójne połączenie marki ELABS z domeną i brak technicznego `/index.html` w pasku adresu | dwuliniowe logo, canonical `/`, oczyszczenie bezpośredniego wejścia | IMPLEMENTED V8 |
 | Kalkulator bezpośrednio pod CTA | natychmiastowe policzenie skali i pokazanie stanu przed/po | suwaki: pracownicy + wyniki/miesiąc; dwie dynamiczne kolumny z kwotami miesiąc/rok; roczna wartość odzyskanego czasu jako liczba główna | IMPLEMENTED V7 |
 | Problem | nazwanie źródeł policzonego kosztu | 3 karty | IMPLEMENTED |
 | Mechanizm | pokazanie jednej drogi próbki | 5 kroków procesu | IMPLEMENTED |
@@ -156,3 +159,5 @@ Dowód V5 z 2026-08-26: widełki zastąpiono jedną średnią arytmetyczną, a o
 Dowód V6 z 2026-08-26: usunięto ekran produktu z hero, a kalkulator zaczyna się bezpośrednio po dwóch CTA; zmierzony odstęp CTA→nagłówek kalkulatora na mobile wynosi `64 px`. Roczny potencjał `268 000 zł` jest liczbą główną, miesięczny `22 333 zł` pomocniczą. Playwright `5/5`, brak overflow przy 390/768/1440, screenshoty w `_SCRATCH/ELABS_LANDING_V6_2026-08-26/`; commit `7279f9c`, GitHub Pages run `32962833496` = success. Produkcja HTTP 200, hero product visual = 0, późniejsza galeria = 5 ekranów, karta Adriana obecna, obrazy kompletne, błędy JS = 0.
 
 Dowód V7 z 2026-08-26: finalny audyt copy CSO/CMO usunął półpauzy i nieaktualne obietnice ze wszystkich publicznych plików HTML. Uproszczono język, zachowując kalkulator przed/po, pięć ekranów produktu i kartę Adriana. Polityka prywatności oraz informacje prawne opisują faktyczne działanie statycznej strony i kontakt `mailto:`. Playwright `6/6`, skan półpauz `0`, skan starego copy `0`, brak overflow przy 390/768/1440; screenshoty w `_SCRATCH/ELABS_LANDING_FINAL_COPY_2026-08-26/`. Commit `0f7c601`, GitHub Pages run `32978395067` = success. Produkcja: wszystkie 5 publicznych adresów HTTP 200, wartości kalkulatora zgodne, karta Adriana = 1, ekrany produktu = 5, hero visual = 0, overflow = 0, błędy JS = 0.
+
+Zakres V8 z 2026-08-27: logo w nawigacji ma drugi, dyskretny wiersz `labsolutions.pl`, a kanoniczny adres pozostaje rootem domeny. Bezpośrednie wejście na `/index.html` czyści pasek adresu do `/` bez przeładowania i zachowuje parametry query oraz kotwicę. Testy mają osobny przypadek dla URL i podpisu domeny oraz są dostosowane do dwóch publicznych suwaków przy stałych, nieedytowalnych założeniach kalkulatora.
