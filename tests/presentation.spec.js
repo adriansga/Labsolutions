@@ -2,7 +2,7 @@ const { test, expect } = require('@playwright/test');
 const fs = require('fs');
 const path = require('path');
 
-const screenshotDir = '/mnt/g/Mój dysk/.AI/_SCRATCH/LABSOLUTIONS_ELABS_FILM_PAGE_2026-10-18';
+const screenshotDir = '/mnt/g/Mój dysk/.AI/_SCRATCH/LABSOLUTIONS_ELABS_AUTOPLAY_2026-10-18';
 fs.mkdirSync(screenshotDir, { recursive: true });
 
 test('podstrona prezentacji ma pełny film i właściwe metadane', async ({ page }) => {
@@ -16,7 +16,7 @@ test('podstrona prezentacji ma pełny film i właściwe metadane', async ({ page
     if (!expectedMetadataAbort) failedRequests.push(failure);
   });
 
-  await page.goto('/prezentacjaelabs/', { waitUntil: 'networkidle' });
+  await page.goto('/prezentacjaelabs/', { waitUntil: 'domcontentloaded' });
 
   await expect(page).toHaveTitle('Prezentacja ELABS | Od zgłoszenia do wyniku');
   await expect(page.locator('meta[name="robots"]')).toHaveAttribute('content', 'noindex,nofollow,noarchive');
@@ -26,8 +26,10 @@ test('podstrona prezentacji ma pełny film i właściwe metadane', async ({ page
 
   const video = page.locator('video');
   await expect(video).toHaveAttribute('controls', '');
+  await expect(video).toHaveAttribute('autoplay', '');
+  await expect(video).toHaveAttribute('muted', '');
   await expect(video).toHaveAttribute('playsinline', '');
-  await expect(video).toHaveAttribute('preload', 'metadata');
+  await expect(video).toHaveAttribute('preload', 'auto');
   await expect(video).toHaveAttribute('poster', 'poster.svg');
   await expect(video.locator('source')).toHaveAttribute('src', '../media/elabs-prezentacja-v10-web.mp4');
   await video.evaluate((element) => new Promise((resolve, reject) => {
@@ -38,6 +40,10 @@ test('podstrona prezentacji ma pełny film i właściwe metadane', async ({ page
   const duration = await video.evaluate((element) => element.duration);
   expect(duration).toBeGreaterThan(1109);
   expect(duration).toBeLessThan(1111);
+  await expect.poll(() => video.evaluate((element) => element.currentTime), { timeout: 10_000 }).toBeGreaterThan(0.05);
+  expect(await video.evaluate((element) => ({ paused: element.paused, muted: element.muted }))).toEqual({ paused: false, muted: true });
+  await expect(page.locator('.sound-cta')).toBeVisible();
+  await expect(page.locator('.sound-cta')).toHaveText('Włącz dźwięk i zacznij od początku');
 
   const publicHtml = await page.locator('html').evaluate((element) => element.outerHTML);
   expect(publicHtml).not.toContain('—');
@@ -45,8 +51,18 @@ test('podstrona prezentacji ma pełny film i właściwe metadane', async ({ page
   expect(failedRequests).toEqual([]);
 });
 
+test('włączenie dźwięku zaczyna film od początku', async ({ page }) => {
+  await page.goto('/prezentacjaelabs/', { waitUntil: 'domcontentloaded' });
+  const video = page.locator('video');
+  await expect.poll(() => video.evaluate((element) => element.currentTime), { timeout: 10_000 }).toBeGreaterThan(0.05);
+  await page.locator('.sound-cta').click();
+  await expect(page.locator('.sound-cta')).toBeHidden();
+  expect(await video.evaluate((element) => ({ paused: element.paused, muted: element.muted, currentTime: element.currentTime }))).toMatchObject({ paused: false, muted: false });
+  expect(await video.evaluate((element) => element.currentTime)).toBeLessThan(2);
+});
+
 test('rozdział ustawia film we właściwym miejscu', async ({ page }) => {
-  await page.goto('/prezentacjaelabs/', { waitUntil: 'networkidle' });
+  await page.goto('/prezentacjaelabs/', { waitUntil: 'domcontentloaded' });
   const video = page.locator('video');
   await video.evaluate((element) => new Promise((resolve, reject) => {
     if (element.readyState >= 1) return resolve();
@@ -71,7 +87,7 @@ for (const viewport of [
 ]) {
   test(`prezentacja ${viewport.name} bez overflow`, async ({ page }) => {
     await page.setViewportSize({ width: viewport.width, height: viewport.height });
-    await page.goto('/prezentacjaelabs/', { waitUntil: 'networkidle' });
+    await page.goto('/prezentacjaelabs/', { waitUntil: 'domcontentloaded' });
 
     const metrics = await page.evaluate(() => {
       const player = document.querySelector('video').getBoundingClientRect();
@@ -79,12 +95,14 @@ for (const viewport of [
         scrollWidth: document.documentElement.scrollWidth,
         clientWidth: document.documentElement.clientWidth,
         playerRatio: player.width / player.height,
+        playerWidth: player.width,
         chapterTargets: [...document.querySelectorAll('.chapter')].map((element) => element.getBoundingClientRect().height)
       };
     });
     expect(metrics.scrollWidth).toBeLessThanOrEqual(metrics.clientWidth);
     expect(metrics.playerRatio).toBeGreaterThan(1.76);
     expect(metrics.playerRatio).toBeLessThan(1.79);
+    expect(metrics.playerWidth).toBeGreaterThanOrEqual(viewport.width * 0.94);
     expect(metrics.chapterTargets.every((height) => height >= 44)).toBe(true);
 
     await page.screenshot({

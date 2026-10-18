@@ -58,6 +58,17 @@
       transform: translateY(-160%);
     }
     .skip-link:focus { transform: translateY(0); }
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
     .container { width: min(1180px, calc(100% - 40px)); margin-inline: auto; }
 
     .hero {
@@ -68,7 +79,7 @@
         radial-gradient(circle at 86% 0%, rgba(34, 184, 207, .26), transparent 34%),
         radial-gradient(circle at 4% 84%, rgba(29, 111, 220, .2), transparent 31%),
         linear-gradient(145deg, var(--navy-950), #0b2842 67%, #0b3653);
-      padding-bottom: 76px;
+      padding-bottom: 72px;
     }
     .hero::after {
       content: "";
@@ -119,8 +130,8 @@
     .hero-copy {
       position: relative;
       z-index: 2;
-      max-width: 900px;
-      margin: 78px auto 42px;
+      max-width: 860px;
+      margin: 24px auto 24px;
       text-align: center;
     }
     .eyebrow {
@@ -132,16 +143,16 @@
       text-transform: uppercase;
     }
     h1 {
-      max-width: 900px;
+      max-width: 860px;
       margin: 0 auto;
-      font-size: clamp(2.6rem, 7vw, 5.1rem);
-      line-height: .98;
+      font-size: clamp(2.35rem, 5.5vw, 4.4rem);
+      line-height: 1;
       letter-spacing: -.055em;
       text-wrap: balance;
     }
     .lead {
       max-width: 770px;
-      margin: 26px auto 0;
+      margin: 16px auto 0;
       color: #c4d6e4;
       font-size: clamp(1.05rem, 2vw, 1.28rem);
       text-wrap: pretty;
@@ -149,13 +160,13 @@
     .video-shell {
       position: relative;
       z-index: 3;
-      width: min(1240px, calc(100% - 40px));
+      width: min(1520px, calc(100% - 24px));
       margin: 0 auto -190px;
-      padding: 10px;
-      border: 1px solid rgba(255,255,255,.14);
-      border-radius: 26px;
-      background: rgba(255,255,255,.08);
-      box-shadow: var(--shadow-lg);
+      padding: 6px;
+      border: 1px solid rgba(115,217,232,.4);
+      border-radius: 28px;
+      background: rgba(255,255,255,.11);
+      box-shadow: 0 34px 90px rgba(3, 13, 24, .42), 0 0 0 1px rgba(115,217,232,.08);
       backdrop-filter: blur(16px);
     }
     video {
@@ -166,6 +177,28 @@
       background: #02070c;
       object-fit: contain;
     }
+    .sound-cta {
+      position: absolute;
+      z-index: 5;
+      left: 50%;
+      bottom: 30px;
+      min-height: 54px;
+      max-width: calc(100% - 40px);
+      padding: 0 22px;
+      border: 1px solid rgba(255,255,255,.28);
+      border-radius: 999px;
+      color: #061322;
+      background: #fff;
+      box-shadow: 0 16px 42px rgba(0,0,0,.35);
+      font: inherit;
+      font-weight: 800;
+      cursor: pointer;
+      transform: translateX(-50%);
+      transition: transform 180ms ease, background 180ms ease;
+      white-space: nowrap;
+    }
+    .sound-cta:hover { background: #dff8fc; transform: translateX(-50%) translateY(-2px); }
+    .sound-cta[hidden] { display: none; }
     .video-help {
       position: relative;
       z-index: 2;
@@ -311,11 +344,12 @@
       .brand-name { font-size: 15px; }
       .back-link span { display: none; }
       .back-link::after { content: "Strona główna"; }
-      .hero-copy { margin-top: 52px; margin-bottom: 30px; }
-      h1 { font-size: clamp(2.55rem, 13vw, 4.2rem); }
+      .hero-copy { margin-top: 20px; margin-bottom: 22px; }
+      h1 { font-size: clamp(2.25rem, 11vw, 3.6rem); }
       .lead { font-size: 1rem; line-height: 1.6; }
-      .video-shell { width: calc(100% - 20px); margin-bottom: -90px; padding: 5px; border-radius: 16px; }
+      .video-shell { width: calc(100% - 12px); margin-bottom: -90px; padding: 3px; border-radius: 16px; }
       video { border-radius: 11px; }
+      .sound-cta { bottom: 14px; min-height: 48px; max-width: calc(100% - 20px); padding: 0 16px; font-size: 13px; white-space: normal; }
       .video-help { margin-top: 110px; padding-inline: 14px; }
       .section { padding: 68px 0; }
       .chapters { grid-template-columns: 1fr; }
@@ -352,10 +386,12 @@
     </div>
 
     <div class="video-shell" id="film">
-      <video controls playsinline preload="metadata" poster="poster.svg" aria-label="Pełna prezentacja systemu ELABS">
+      <video controls autoplay muted playsinline preload="auto" poster="poster.svg" aria-label="Pełna prezentacja systemu ELABS">
         <source src="../media/elabs-prezentacja-v10-web.mp4" type="video/mp4">
         Twoja przeglądarka nie obsługuje odtwarzania filmu HTML5.
       </video>
+      <button class="sound-cta" type="button">Włącz dźwięk i zacznij od początku</button>
+      <span id="player-status" class="sr-only" aria-live="polite"></span>
     </div>
   </header>
 
@@ -448,6 +484,39 @@
 
   <script>
     const video = document.querySelector('video');
+    const soundButton = document.querySelector('.sound-cta');
+    const playerStatus = document.querySelector('#player-status');
+
+    const startMuted = async () => {
+      video.muted = true;
+      try {
+        await video.play();
+        playerStatus.textContent = 'Film uruchomił się bez dźwięku.';
+      } catch (_) {
+        soundButton.textContent = 'Uruchom film';
+        playerStatus.textContent = 'Przeglądarka zablokowała automatyczne odtwarzanie.';
+      }
+    };
+
+    soundButton.addEventListener('click', async () => {
+      video.currentTime = 0;
+      video.muted = false;
+      try {
+        await video.play();
+        soundButton.hidden = true;
+        playerStatus.textContent = 'Dźwięk jest włączony. Film rozpoczął się od początku.';
+      } catch (_) {
+        video.muted = true;
+        soundButton.textContent = 'Dotknij, aby uruchomić film';
+        video.focus();
+      }
+    });
+
+    video.addEventListener('volumechange', () => {
+      if (!video.muted && video.volume > 0) soundButton.hidden = true;
+    });
+
+    startMuted();
     document.querySelectorAll('[data-time]').forEach((button) => {
       button.addEventListener('click', async () => {
         video.currentTime = Number(button.dataset.time);

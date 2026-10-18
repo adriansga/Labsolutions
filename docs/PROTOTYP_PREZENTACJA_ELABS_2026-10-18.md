@@ -1,6 +1,6 @@
 # PROTOTYP PODSTRONY PREZENTACJI ELABS
 
-Status: zatwierdzony kierunek do implementacji
+Status: zatwierdzony kierunek, aktualizacja 2026-10-18: dominujący odtwarzacz i autoplay
 
 ## Cel
 
@@ -14,13 +14,13 @@ Jednym linkiem otworzyć pełną prezentację ELABS dla kierowniczki lub zarząd
 +------------------------------------------------------------------+
 | PREZENTACJA SYSTEMU · 18 MINUT                                   |
 | Od telefonu klienta do gotowego wyniku                           |
-| Krótki opis procesu i zakresu filmu                              |
 |                                                                  |
-| +--------------------------------------------------------------+ |
+| +----------------------------------------------------------------+|
 | |                                                              | |
-| |                  ODTWARZACZ WIDEO 16:9                       | |
+| |          DOMINUJĄCY ODTWARZACZ 16:9, AUTOPLAY MUTED          | |
+| |              [Włącz dźwięk i zacznij od początku]            | |
 | |                                                              | |
-| +--------------------------------------------------------------+ |
+| +----------------------------------------------------------------+|
 | Film pokazuje stan procesu...                                    |
 +------------------------------------------------------------------+
 | ROZDZIAŁY                                                        |
@@ -36,17 +36,20 @@ Jednym linkiem otworzyć pełną prezentację ELABS dla kierowniczki lub zarząd
 
 - Logo i powrót układają się w jednym prostym pasku.
 - Nagłówek ma maksymalnie trzy krótkie wiersze.
-- Odtwarzacz zajmuje pełną szerokość kontenera i zachowuje 16:9.
+- Odtwarzacz zajmuje niemal całą szerokość ekranu i zachowuje 16:9.
+- Przycisk włączenia dźwięku pozostaje duży, czytelny i nie zasłania treści filmu.
 - Rozdziały układają się pionowo jako cele dotykowe minimum 44 px.
 - Brak poziomego przewijania przy 390 px.
 
 ## Stany
 
-- Domyślny: widoczny poster, przycisk play i pełne natywne sterowanie.
-- Odtwarzanie: użytkownik steruje głośnością, pełnym ekranem i osią czasu.
+- Domyślny: film uruchamia się automatycznie bez dźwięku, zgodnie z ograniczeniami przeglądarek.
+- Dźwięk: widoczny przycisk włącza dźwięk, cofa film do początku i ukrywa się po udanej akcji.
+- Fallback: jeśli przeglądarka zablokuje autoplay, ten sam przycisk ręcznie uruchamia film.
+- Odtwarzanie: użytkownik nadal steruje pauzą, głośnością, pełnym ekranem i osią czasu.
 - Rozdział: klik ustawia czas filmu i uruchamia odtwarzanie.
 - Błąd: natywny komunikat przeglądarki oraz bezpośredni link do pliku MP4.
-- Ograniczony ruch: brak automatycznych animacji i autoplay.
+- Ograniczony ruch: brak dekoracyjnych animacji; film pozostaje wyciszony do świadomego kliknięcia.
 
 ## Copy
 

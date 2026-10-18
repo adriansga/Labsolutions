@@ -5,12 +5,16 @@ from __future__ import annotations
 
 import os
 import re
+import sys
 from http.server import SimpleHTTPRequestHandler, ThreadingHTTPServer
 
 
 class RangeRequestHandler(SimpleHTTPRequestHandler):
     range_start: int | None = None
     range_end: int | None = None
+
+    def log_message(self, format: str, *args) -> None:
+        return
 
     def end_headers(self) -> None:
         self.send_header("Accept-Ranges", "bytes")
@@ -68,19 +72,31 @@ class RangeRequestHandler(SimpleHTTPRequestHandler):
         return source
 
     def copyfile(self, source, outputfile) -> None:
-        if self.range_start is None or self.range_end is None:
-            return super().copyfile(source, outputfile)
+        try:
+            if self.range_start is None or self.range_end is None:
+                return super().copyfile(source, outputfile)
 
-        source.seek(self.range_start)
-        remaining = self.range_end - self.range_start + 1
-        while remaining > 0:
-            chunk = source.read(min(64 * 1024, remaining))
-            if not chunk:
-                break
-            outputfile.write(chunk)
-            remaining -= len(chunk)
+            source.seek(self.range_start)
+            remaining = self.range_end - self.range_start + 1
+            while remaining > 0:
+                chunk = source.read(min(128 * 1024, remaining))
+                if not chunk:
+                    break
+                outputfile.write(chunk)
+                remaining -= len(chunk)
+        except (BrokenPipeError, ConnectionResetError):
+            return
+
+
+class RangeHTTPServer(ThreadingHTTPServer):
+    daemon_threads = True
+
+    def handle_error(self, request, client_address) -> None:
+        if isinstance(sys.exc_info()[1], (BrokenPipeError, ConnectionResetError)):
+            return
+        super().handle_error(request, client_address)
 
 
 if __name__ == "__main__":
-    server = ThreadingHTTPServer(("127.0.0.1", 4173), RangeRequestHandler)
+    server = RangeHTTPServer(("127.0.0.1", 4173), RangeRequestHandler)
     server.serve_forever()
