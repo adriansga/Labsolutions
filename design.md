@@ -1,7 +1,7 @@
 # DESIGN SYSTEM — ELABS LANDING
 
 > Status: APPROVED
-> Ostatnia aktualizacja: 2026-08-27
+> Ostatnia aktualizacja: 2026-10-18
 > Właściciel kierunku: Adrian / CTO
 > Prototyp/referencje: `docs/PROTOTYP_LANDING_ELABS_2026-08-26.md`
 
@@ -21,7 +21,7 @@
 | BRAIN: Mirek Burneiko, `PROMPT 2 Strona Sprzedażowa.txt` + `3 Warsztat OFERTA.MD/2.md` | strukturę B2B: hero/CTA, problem, rozwiązanie, proces, dowód, kalkulator ROI, CTA | sztucznej presji, placeholderów, przypadkowych pakietów i obietnic |
 | Dotychczasowy landing Labsolutions | perspektywę Adriana jako praktyka z laboratorium i statyczny, łatwy do wdrożenia format | ciemny „tech” styl, fałszywy formularz, countdown, niepotwierdzone certyfikaty/liczby |
 
-Prototyp: `docs/PROTOTYP_LANDING_ELABS_2026-08-26.md`.
+Prototypy: `docs/PROTOTYP_LANDING_ELABS_2026-08-26.md` oraz `docs/PROTOTYP_PREZENTACJA_ELABS_2026-10-18.md`.
 
 ## 3. Zasady wizualne
 
@@ -94,6 +94,7 @@ Kontrast tekstu i CTA minimum WCAG AA.
 | Mobile nav | button + panel | closed / open | `aria-expanded`, zamknięcie po wyborze linku |
 | Brand lockup | znak ELABS / nazwa / domena | desktop / mobile | `ELABS` pozostaje nazwą główną, a `labsolutions.pl` jest mniejszym tekstem pomocniczym w kolorze `--muted` |
 | Clean URL | `/` / bezpośrednie `/index.html` | wejście / link wewnętrzny | kanoniczny adres to `https://labsolutions.pl/`; bezpośrednie `/index.html` jest czyszczone przez `history.replaceState` z zachowaniem query i hash |
+| Presentation player | HTML5 video / rozdziały | loading / ready / playing / error | jeden dominujący odtwarzacz 16:9, natywne sterowanie, `preload="metadata"`, `playsinline`; przyciski rozdziałów ustawiają właściwy czas filmu |
 
 ## 7. Inwentarz ekranu
 
@@ -109,6 +110,7 @@ Kontrast tekstu i CTA minimum WCAG AA.
 | Wiarygodność + FAQ | odpowiedzi na obiekcje | przywrócona karta Adriana + `details` | IMPLEMENTED V3 |
 | Kontakt | rozpoczęcie rozmowy | formularz mailto + e-mail bezpośredni | IMPLEMENTED |
 | Polityka prywatności + informacje prawne | zgodny z faktycznym działaniem opis strony | statyczne podstrony, prawdziwy e-mail, hosting GitHub Pages, brak nieistniejących pakietów i gwarancji | IMPLEMENTED V7 |
+| Prezentacja ELABS `/prezentacja-elabs/` | przekazanie kierownictwu pełnego filmu jednym prostym linkiem | spokojny hero, odtwarzacz, 4 rozdziały, zakres filmu, kontakt i powrót na landing | APPROVED FOR IMPLEMENTATION 2026-10-18 |
 
 ## 8. Dostępność
 
@@ -119,6 +121,8 @@ Kontrast tekstu i CTA minimum WCAG AA.
 - Informacja nie opiera się tylko na kolorze.
 - Screenshoty mają opis alternatywny; dekoracyjne SVG są ukryte dla czytników.
 - Formularz nie udaje wysłania danych — tworzy prawdziwą wiadomość e-mail.
+- Podstrona prezentacji ma opis odtwarzacza i rozdziały dostępne z klawiatury; film nie uruchamia się automatycznie.
+- Gdy JavaScript jest wyłączony, natywne sterowanie filmu nadal pozwala obejrzeć całość.
 
 ## 9. Zakazy i wyjątki
 
@@ -161,3 +165,13 @@ Dowód V6 z 2026-08-26: usunięto ekran produktu z hero, a kalkulator zaczyna si
 Dowód V7 z 2026-08-26: finalny audyt copy CSO/CMO usunął półpauzy i nieaktualne obietnice ze wszystkich publicznych plików HTML. Uproszczono język, zachowując kalkulator przed/po, pięć ekranów produktu i kartę Adriana. Polityka prywatności oraz informacje prawne opisują faktyczne działanie statycznej strony i kontakt `mailto:`. Playwright `6/6`, skan półpauz `0`, skan starego copy `0`, brak overflow przy 390/768/1440; screenshoty w `_SCRATCH/ELABS_LANDING_FINAL_COPY_2026-08-26/`. Commit `0f7c601`, GitHub Pages run `32978395067` = success. Produkcja: wszystkie 5 publicznych adresów HTTP 200, wartości kalkulatora zgodne, karta Adriana = 1, ekrany produktu = 5, hero visual = 0, overflow = 0, błędy JS = 0.
 
 Dowód V8 z 2026-08-27: logo w nawigacji ma drugi, dyskretny wiersz `labsolutions.pl`, a kanoniczny adres pozostaje rootem domeny. Bezpośrednie wejście na `/index.html?source=prod#kalkulator` czyści pasek adresu do `/?source=prod#kalkulator` bez przeładowania. Playwright `7/7`; testy są dostosowane do dwóch publicznych suwaków przy stałych, nieedytowalnych założeniach kalkulatora. Produkcyjny test mobile/desktop: HTTP 200, podpis domeny widoczny w kolorze `--muted` i rozmiarze 10,24 px, overflow=0, błędy JS=0, uszkodzone obrazy=0. Publiczny skan sześciu adresów ma 0 półpauz. Commit funkcjonalny `991f7ac`, GitHub Pages run `33055867117` = success; screenshoty `_SCRATCH/LABSOLUTIONS_URL_LOGO_2026-08-27/`.
+
+## 11. Podstrona filmu prezentacyjnego
+
+- Adres: `https://labsolutions.pl/prezentacja-elabs/`.
+- Cel: kierowniczka lub członek zarządu ma od razu uruchomić pełną prezentację bez konta, pobierania pliku i elementów rozpraszających.
+- Widoczność: link bezpośredni, `noindex,nofollow`; podstrona nie jest częścią lejka SEO.
+- Hierarchia: marka i powrót, krótka obietnica, odtwarzacz 16:9, cztery rozdziały, zakres prezentacji, jedno CTA kontaktowe.
+- Wideo: lokalna kopia publikacyjna H.264/AAC z `faststart`, bez zmiany treści i czasu filmu; źródłowy master pozostaje poza repozytorium.
+- Prywatność: brak analityki, ciasteczek, autoplay i zewnętrznego playera.
+- Publiczny tekst stosuje te same zakazy co landing, w tym brak półpauzy i niepotwierdzonych deklaracji zgodności/certyfikacji.
