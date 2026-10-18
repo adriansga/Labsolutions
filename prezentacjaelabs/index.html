@@ -504,7 +504,7 @@
       try {
         await video.play();
         soundButton.hidden = true;
-        video.focus({ preventScroll: true });
+        window.setTimeout(() => video.focus({ preventScroll: true }), 0);
         playerStatus.textContent = 'Dźwięk jest włączony. Film rozpoczął się od początku.';
       } catch (_) {
         video.muted = true;
