@@ -94,7 +94,7 @@ Kontrast tekstu i CTA minimum WCAG AA.
 | Mobile nav | button + panel | closed / open | `aria-expanded`, zamknięcie po wyborze linku |
 | Brand lockup | znak ELABS / nazwa / domena | desktop / mobile | `ELABS` pozostaje nazwą główną, a `labsolutions.pl` jest mniejszym tekstem pomocniczym w kolorze `--muted` |
 | Clean URL | `/` / bezpośrednie `/index.html` | wejście / link wewnętrzny | kanoniczny adres to `https://labsolutions.pl/`; bezpośrednie `/index.html` jest czyszczone przez `history.replaceState` z zachowaniem query i hash |
-| Presentation player | HTML5 video / rozdziały | loading / autoplay-muted / playing-with-sound / blocked / error | jeden dominujący odtwarzacz 16:9 zajmujący niemal całą szerokość ekranu; `autoplay muted playsinline`, `preload="auto"`, natywne sterowanie; widoczny przycisk włącza dźwięk i cofa film do początku; przyciski rozdziałów ustawiają właściwy czas filmu |
+| Presentation player | HTML5 video / rozdziały | poster / playing-with-sound / paused / error | jeden dominujący odtwarzacz 16:9 widoczny w całości na pierwszym ekranie; bez autoplay; `playsinline`, `preload="metadata"`, natywne sterowanie; duży szary przycisk Play na środku miniatury uruchamia film od początku z dźwiękiem; przyciski rozdziałów ustawiają właściwy czas filmu |
 | Presentation tracking | link zwykły / indywidualny / prywatny raport | tracking-off / tracking-on / report-loading / report-error / recipient-created | analityka uruchamia się tylko dla losowego tokenu po `#v=`; widoczna informacja o pomiarze; brak cookies, IP i fingerprintingu w tabeli; prywatny raport wymaga osobnego tokenu po `#admin=` i pozwala Adrianowi tworzyć dowolną liczbę nazwanych linków; baza przechowuje wyłącznie SHA-256 tokenu odbiorcy |
 
 ## 7. Inwentarz ekranu
@@ -123,7 +123,7 @@ Kontrast tekstu i CTA minimum WCAG AA.
 - Informacja nie opiera się tylko na kolorze.
 - Screenshoty mają opis alternatywny; dekoracyjne SVG są ukryte dla czytników.
 - Formularz nie udaje wysłania danych — tworzy prawdziwą wiadomość e-mail.
-- Podstrona prezentacji ma opis odtwarzacza i rozdziały dostępne z klawiatury. Film uruchamia się automatycznie wyłącznie jako wyciszony; włączenie dźwięku wymaga świadomej akcji użytkownika i zaczyna prezentację od początku.
+- Podstrona prezentacji ma opis odtwarzacza i rozdziały dostępne z klawiatury. Film nie uruchamia się automatycznie. Duży szary przycisk Play jest widoczny na środku miniatury; świadome kliknięcie uruchamia prezentację od początku z dźwiękiem.
 - Gdy JavaScript jest wyłączony, natywne sterowanie filmu nadal pozwala obejrzeć całość.
 
 ## 9. Zakazy i wyjątki
@@ -176,6 +176,6 @@ Dowód V8 z 2026-08-27: logo w nawigacji ma drugi, dyskretny wiersz `labsolution
 - Widoczność: link bezpośredni, `noindex,nofollow`; podstrona nie jest częścią lejka SEO.
 - Hierarchia: marka i powrót, bardzo krótka obietnica, dominujący odtwarzacz 16:9 zajmujący niemal całą szerokość ekranu, cztery rozdziały, zakres prezentacji, jedno CTA kontaktowe.
 - Wideo: lokalna kopia publikacyjna H.264/AAC z `faststart`, bez zmiany treści i czasu filmu; źródłowy master pozostaje poza repozytorium.
-- Odtwarzanie: autoplay jest wyciszony, bo przeglądarki blokują automatyczny start z dźwiękiem. Nakładka „Włącz dźwięk i zacznij od początku” przywraca audio i początek filmu jednym kliknięciem; blokada autoplay ma czytelny fallback ręczny.
+- Odtwarzanie: brak autoplay. Miniatura i duży szary przycisk Play od razu komunikują interakcję; jedno kliknięcie uruchamia materiał od początku z dźwiękiem. Górny blok jest zwarty, a player zmniejsza maksymalną szerokość przy niskim ekranie laptopa, żeby jego całe okno pozostało widoczne.
 - Prywatność: zwykły link nie uruchamia analityki. Indywidualny token po fragmencie `#v=` aktywuje jawnie opisany pomiar: otwarcie, realny czas odtwarzania, ostatni i najdalszy moment, dźwięk oraz ukończenie. Token znika z paska adresu po zapisaniu w `sessionStorage`; tabela nie zapisuje IP, user-agenta ani fingerprintu. Dane są dostępne wyłącznie przez raport z osobnym tokenem administratora, a polityka prywatności opisuje zakres i 90-dniową retencję.
 - Publiczny tekst stosuje te same zakazy co landing, w tym brak półpauzy i niepotwierdzonych deklaracji zgodności/certyfikacji.

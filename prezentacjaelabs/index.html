@@ -93,7 +93,7 @@
     .nav {
       position: relative;
       z-index: 2;
-      min-height: 88px;
+      min-height: 72px;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -103,8 +103,8 @@
     .brand-mark {
       display: grid;
       place-items: center;
-      width: 52px;
-      height: 52px;
+      width: 46px;
+      height: 46px;
       border-radius: 16px;
       background: linear-gradient(145deg, var(--brand), var(--cyan));
       box-shadow: 0 12px 28px rgba(14, 127, 184, .3);
@@ -131,7 +131,7 @@
       position: relative;
       z-index: 2;
       max-width: 860px;
-      margin: 24px auto 24px;
+      margin: 10px auto 16px;
       text-align: center;
     }
     .eyebrow {
@@ -142,19 +142,20 @@
       letter-spacing: .16em;
       text-transform: uppercase;
     }
+    .hero-copy .eyebrow { margin-bottom: 8px; }
     h1 {
       max-width: 860px;
       margin: 0 auto;
-      font-size: clamp(2.35rem, 5.5vw, 4.4rem);
+      font-size: clamp(2.2rem, 4.4vw, 3.5rem);
       line-height: 1;
       letter-spacing: -.055em;
       text-wrap: balance;
     }
     .lead {
       max-width: 770px;
-      margin: 16px auto 0;
+      margin: 9px auto 0;
       color: #c4d6e4;
-      font-size: clamp(1.05rem, 2vw, 1.28rem);
+      font-size: clamp(1rem, 1.6vw, 1.16rem);
       text-wrap: pretty;
     }
     .video-shell {
@@ -181,23 +182,30 @@
       position: absolute;
       z-index: 5;
       left: 50%;
-      bottom: 30px;
-      min-height: 54px;
-      max-width: calc(100% - 40px);
-      padding: 0 22px;
-      border: 1px solid rgba(255,255,255,.28);
-      border-radius: 999px;
-      color: #061322;
-      background: #fff;
-      box-shadow: 0 16px 42px rgba(0,0,0,.35);
-      font: inherit;
-      font-weight: 800;
+      top: 50%;
+      width: clamp(78px, 8vw, 108px);
+      height: clamp(78px, 8vw, 108px);
+      padding: 0;
+      border: 2px solid rgba(255,255,255,.78);
+      border-radius: 50%;
+      color: #3d4853;
+      background: rgba(218, 223, 229, .94);
+      box-shadow: 0 18px 50px rgba(0,0,0,.42);
       cursor: pointer;
-      transform: translateX(-50%);
-      transition: transform 180ms ease, background 180ms ease;
-      white-space: nowrap;
+      transform: translate(-50%, -50%);
+      transition: transform 180ms ease, background 180ms ease, box-shadow 180ms ease;
     }
-    .sound-cta:hover { background: #dff8fc; transform: translateX(-50%) translateY(-2px); }
+    .sound-cta::before {
+      content: "";
+      display: block;
+      width: 0;
+      height: 0;
+      margin-left: 35%;
+      border-top: clamp(14px, 1.5vw, 20px) solid transparent;
+      border-bottom: clamp(14px, 1.5vw, 20px) solid transparent;
+      border-left: clamp(23px, 2.4vw, 32px) solid currentColor;
+    }
+    .sound-cta:hover { background: #eef1f4; box-shadow: 0 20px 56px rgba(0,0,0,.5); transform: translate(-50%, -50%) scale(1.06); }
     .sound-cta[hidden] { display: none; }
     .video-help {
       position: relative;
@@ -346,20 +354,26 @@
       .cta-card { grid-template-columns: 1fr; }
       .cta-card .button { justify-self: start; }
     }
+    @media (min-width: 901px) and (max-height: 1050px) {
+      .video-shell { width: min(1220px, calc(100% - 24px)); }
+    }
+    @media (min-width: 901px) and (max-height: 820px) {
+      .video-shell { width: min(920px, calc(100% - 24px)); }
+    }
     @media (max-width: 600px) {
       .container { width: min(100% - 32px, 1180px); }
       .hero { padding-bottom: 48px; }
-      .nav { min-height: 76px; }
+      .nav { min-height: 64px; }
       .brand-mark { width: 46px; height: 46px; border-radius: 14px; }
       .brand-name { font-size: 15px; }
       .back-link span { display: none; }
       .back-link::after { content: "Strona główna"; }
-      .hero-copy { margin-top: 20px; margin-bottom: 22px; }
+      .hero-copy { margin-top: 10px; margin-bottom: 16px; }
       h1 { font-size: clamp(2.25rem, 11vw, 3.6rem); }
       .lead { font-size: 1rem; line-height: 1.6; }
       .video-shell { width: calc(100% - 12px); margin-bottom: -90px; padding: 3px; border-radius: 16px; }
       video { border-radius: 11px; }
-      .sound-cta { bottom: 14px; min-height: 48px; max-width: calc(100% - 20px); padding: 0 16px; font-size: 13px; white-space: normal; }
+      .sound-cta { width: 74px; height: 74px; }
       .video-help { margin-top: 110px; padding-inline: 14px; }
       .section { padding: 68px 0; }
       .chapters { grid-template-columns: 1fr; }
@@ -396,11 +410,11 @@
     </div>
 
     <div class="video-shell" id="film">
-      <video controls autoplay muted playsinline preload="auto" poster="poster.svg" tabindex="0" aria-label="Pełna prezentacja systemu ELABS">
+      <video controls playsinline preload="metadata" poster="poster.svg" tabindex="0" aria-label="Pełna prezentacja systemu ELABS">
         <source src="../media/elabs-prezentacja-v10-web.mp4" type="video/mp4">
         Twoja przeglądarka nie obsługuje odtwarzania filmu HTML5.
       </video>
-      <button class="sound-cta" type="button">Włącz dźwięk i zacznij od początku</button>
+      <button class="sound-cta" type="button" aria-label="Odtwórz film z dźwiękiem"><span class="sr-only">Odtwórz film z dźwiękiem</span></button>
       <span id="player-status" class="sr-only" aria-live="polite"></span>
     </div>
   </header>
@@ -561,38 +575,29 @@
       window.addEventListener('pagehide', () => { setPlaybackClock(); track('pagehide'); });
     }
 
-    const startMuted = async () => {
-      video.muted = true;
-      try {
-        await video.play();
-        playerStatus.textContent = 'Film uruchomił się bez dźwięku.';
-      } catch (_) {
-        soundButton.textContent = 'Uruchom film';
-        playerStatus.textContent = 'Przeglądarka zablokowała automatyczne odtwarzanie.';
-      }
-    };
-
     soundButton.addEventListener('click', async () => {
       video.currentTime = 0;
       video.muted = false;
       try {
         await video.play();
         soundButton.hidden = true;
-        track('sound_on');
         window.setTimeout(() => video.focus({ preventScroll: true }), 0);
         playerStatus.textContent = 'Dźwięk jest włączony. Film rozpoczął się od początku.';
       } catch (_) {
-        video.muted = true;
-        soundButton.textContent = 'Dotknij, aby uruchomić film';
+        playerStatus.textContent = 'Nie udało się uruchomić filmu. Użyj sterowania odtwarzacza.';
         video.focus();
       }
     });
 
+    video.addEventListener('play', () => {
+      soundButton.hidden = true;
+      if (!video.muted && video.volume > 0) track('sound_on');
+    });
     video.addEventListener('volumechange', () => {
-      if (!video.muted && video.volume > 0) soundButton.hidden = true;
+      if (!video.muted && video.volume > 0 && !video.paused) track('sound_on');
     });
 
-    startMuted();
+    playerStatus.textContent = 'Kliknij duży przycisk odtwarzania, aby rozpocząć film z dźwiękiem.';
     document.querySelectorAll('[data-time]').forEach((button) => {
       button.addEventListener('click', async () => {
         video.currentTime = Number(button.dataset.time);

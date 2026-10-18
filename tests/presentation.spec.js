@@ -26,10 +26,10 @@ test('podstrona prezentacji ma pełny film i właściwe metadane', async ({ page
 
   const video = page.locator('video');
   await expect(video).toHaveAttribute('controls', '');
-  await expect(video).toHaveAttribute('autoplay', '');
-  await expect(video).toHaveAttribute('muted', '');
+  await expect(video).not.toHaveAttribute('autoplay', '');
+  await expect(video).not.toHaveAttribute('muted', '');
   await expect(video).toHaveAttribute('playsinline', '');
-  await expect(video).toHaveAttribute('preload', 'auto');
+  await expect(video).toHaveAttribute('preload', 'metadata');
   await expect(video).toHaveAttribute('poster', 'poster.svg');
   await expect(video.locator('source')).toHaveAttribute('src', '../media/elabs-prezentacja-v10-web.mp4');
   await video.evaluate((element) => new Promise((resolve, reject) => {
@@ -40,10 +40,9 @@ test('podstrona prezentacji ma pełny film i właściwe metadane', async ({ page
   const duration = await video.evaluate((element) => element.duration);
   expect(duration).toBeGreaterThan(1109);
   expect(duration).toBeLessThan(1111);
-  await expect.poll(() => video.evaluate((element) => element.currentTime), { timeout: 10_000 }).toBeGreaterThan(0.05);
-  expect(await video.evaluate((element) => ({ paused: element.paused, muted: element.muted }))).toEqual({ paused: false, muted: true });
+  expect(await video.evaluate((element) => ({ paused: element.paused, muted: element.muted, currentTime: element.currentTime }))).toEqual({ paused: true, muted: false, currentTime: 0 });
   await expect(page.locator('.sound-cta')).toBeVisible();
-  await expect(page.locator('.sound-cta')).toHaveText('Włącz dźwięk i zacznij od początku');
+  await expect(page.locator('.sound-cta')).toHaveAttribute('aria-label', 'Odtwórz film z dźwiękiem');
 
   const publicHtml = await page.locator('html').evaluate((element) => element.outerHTML);
   expect(publicHtml).not.toContain('—');
@@ -51,10 +50,10 @@ test('podstrona prezentacji ma pełny film i właściwe metadane', async ({ page
   expect(failedRequests).toEqual([]);
 });
 
-test('włączenie dźwięku zaczyna film od początku', async ({ page }) => {
+test('duży przycisk play zaczyna film od początku z dźwiękiem', async ({ page }) => {
   await page.goto('/prezentacjaelabs/', { waitUntil: 'domcontentloaded' });
   const video = page.locator('video');
-  await expect.poll(() => video.evaluate((element) => element.currentTime), { timeout: 10_000 }).toBeGreaterThan(0.05);
+  expect(await video.evaluate((element) => element.paused)).toBe(true);
   await page.locator('.sound-cta').click();
   await expect(page.locator('.sound-cta')).toBeHidden();
   expect(await page.locator('.skip-link').evaluate((element) => element.getBoundingClientRect().bottom)).toBeLessThanOrEqual(0);
@@ -166,13 +165,18 @@ for (const viewport of [
         clientWidth: document.documentElement.clientWidth,
         playerRatio: player.width / player.height,
         playerWidth: player.width,
+        playerTop: player.top,
+        playerBottom: player.bottom,
         chapterTargets: [...document.querySelectorAll('.chapter')].map((element) => element.getBoundingClientRect().height)
       };
     });
     expect(metrics.scrollWidth).toBeLessThanOrEqual(metrics.clientWidth);
     expect(metrics.playerRatio).toBeGreaterThan(1.76);
     expect(metrics.playerRatio).toBeLessThan(1.79);
-    expect(metrics.playerWidth).toBeGreaterThanOrEqual(viewport.width * 0.94);
+    if (viewport.width > 900) expect(metrics.playerWidth).toBeGreaterThanOrEqual(viewport.width * 0.82);
+    else expect(metrics.playerWidth).toBeGreaterThanOrEqual(viewport.width * 0.94);
+    expect(metrics.playerTop).toBeGreaterThanOrEqual(0);
+    expect(metrics.playerBottom).toBeLessThanOrEqual(viewport.height + 1);
     expect(metrics.chapterTargets.every((height) => height >= 44)).toBe(true);
 
     await page.screenshot({

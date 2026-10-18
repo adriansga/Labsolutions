@@ -1,6 +1,6 @@
 # PROTOTYP PODSTRONY PREZENTACJI ELABS
 
-Status: zatwierdzony kierunek, aktualizacja 2026-10-18: dominujący odtwarzacz i autoplay
+Status: zatwierdzony kierunek, aktualizacja 2026-10-18: dominujący odtwarzacz z ręcznym Play
 
 ## Cel
 
@@ -17,8 +17,8 @@ Jednym linkiem otworzyć pełną prezentację ELABS dla kierowniczki lub zarząd
 |                                                                  |
 | +----------------------------------------------------------------+|
 | |                                                              | |
-| |          DOMINUJĄCY ODTWARZACZ 16:9, AUTOPLAY MUTED          | |
-| |              [Włącz dźwięk i zacznij od początku]            | |
+| |          DOMINUJĄCY ODTWARZACZ 16:9, PEŁNE OKNO              | |
+| |                    [ DUŻY SZARY PLAY ]                       | |
 | |                                                              | |
 | +----------------------------------------------------------------+|
 | Film pokazuje stan procesu...                                    |
@@ -43,9 +43,8 @@ Jednym linkiem otworzyć pełną prezentację ELABS dla kierowniczki lub zarząd
 
 ## Stany
 
-- Domyślny: film uruchamia się automatycznie bez dźwięku, zgodnie z ograniczeniami przeglądarek.
-- Dźwięk: widoczny przycisk włącza dźwięk, cofa film do początku i ukrywa się po udanej akcji.
-- Fallback: jeśli przeglądarka zablokuje autoplay, ten sam przycisk ręcznie uruchamia film.
+- Domyślny: film pozostaje zatrzymany na miniaturze; duży szary przycisk Play jest jednoznacznie widoczny pośrodku.
+- Start: kliknięcie Play uruchamia film od początku z dźwiękiem i ukrywa nakładkę.
 - Odtwarzanie: użytkownik nadal steruje pauzą, głośnością, pełnym ekranem i osią czasu.
 - Rozdział: klik ustawia czas filmu i uruchamia odtwarzanie.
 - Błąd: natywny komunikat przeglądarki oraz bezpośredni link do pliku MP4.
