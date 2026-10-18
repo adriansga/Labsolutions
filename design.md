@@ -110,7 +110,7 @@ Kontrast tekstu i CTA minimum WCAG AA.
 | Wiarygodność + FAQ | odpowiedzi na obiekcje | przywrócona karta Adriana + `details` | IMPLEMENTED V3 |
 | Kontakt | rozpoczęcie rozmowy | formularz mailto + e-mail bezpośredni | IMPLEMENTED |
 | Polityka prywatności + informacje prawne | zgodny z faktycznym działaniem opis strony | statyczne podstrony, prawdziwy e-mail, hosting GitHub Pages, brak nieistniejących pakietów i gwarancji | IMPLEMENTED V7 |
-| Prezentacja ELABS `/prezentacja-elabs/` | przekazanie kierownictwu pełnego filmu jednym prostym linkiem | spokojny hero, odtwarzacz, 4 rozdziały, zakres filmu, kontakt i powrót na landing | APPROVED FOR IMPLEMENTATION 2026-10-18 |
+| Prezentacja ELABS `/prezentacjaelabs/` | przekazanie kierownictwu pełnego filmu jednym prostym linkiem | spokojny hero, odtwarzacz, 4 rozdziały, zakres filmu, kontakt i powrót na landing | IMPLEMENTED 2026-10-18 |
 
 ## 8. Dostępność
 
@@ -168,7 +168,8 @@ Dowód V8 z 2026-08-27: logo w nawigacji ma drugi, dyskretny wiersz `labsolution
 
 ## 11. Podstrona filmu prezentacyjnego
 
-- Adres: `https://labsolutions.pl/prezentacja-elabs/`.
+- Adres kanoniczny: `https://labsolutions.pl/prezentacjaelabs/`.
+- Poprzedni adres `/prezentacja-elabs/` pozostaje technicznym przekierowaniem, żeby wcześniej skopiowany link nie zwracał błędu.
 - Cel: kierowniczka lub członek zarządu ma od razu uruchomić pełną prezentację bez konta, pobierania pliku i elementów rozpraszających.
 - Widoczność: link bezpośredni, `noindex,nofollow`; podstrona nie jest częścią lejka SEO.
 - Hierarchia: marka i powrót, krótka obietnica, odtwarzacz 16:9, cztery rozdziały, zakres prezentacji, jedno CTA kontaktowe.

@@ -16,11 +16,11 @@ test('podstrona prezentacji ma pełny film i właściwe metadane', async ({ page
     if (!expectedMetadataAbort) failedRequests.push(failure);
   });
 
-  await page.goto('/prezentacja-elabs/', { waitUntil: 'networkidle' });
+  await page.goto('/prezentacjaelabs/', { waitUntil: 'networkidle' });
 
   await expect(page).toHaveTitle('Prezentacja ELABS | Od zgłoszenia do wyniku');
   await expect(page.locator('meta[name="robots"]')).toHaveAttribute('content', 'noindex,nofollow,noarchive');
-  await expect(page.locator('link[rel="canonical"]')).toHaveAttribute('href', 'https://labsolutions.pl/prezentacja-elabs/');
+  await expect(page.locator('link[rel="canonical"]')).toHaveAttribute('href', 'https://labsolutions.pl/prezentacjaelabs/');
   await expect(page.locator('h1')).toHaveText('Od telefonu klienta do gotowego wyniku');
   await expect(page.locator('.chapter')).toHaveCount(4);
 
@@ -46,7 +46,7 @@ test('podstrona prezentacji ma pełny film i właściwe metadane', async ({ page
 });
 
 test('rozdział ustawia film we właściwym miejscu', async ({ page }) => {
-  await page.goto('/prezentacja-elabs/', { waitUntil: 'networkidle' });
+  await page.goto('/prezentacjaelabs/', { waitUntil: 'networkidle' });
   const video = page.locator('video');
   await video.evaluate((element) => new Promise((resolve, reject) => {
     if (element.readyState >= 1) return resolve();
@@ -58,6 +58,12 @@ test('rozdział ustawia film we właściwym miejscu', async ({ page }) => {
   await video.evaluate((element) => element.pause());
 });
 
+test('stary adres przekierowuje na prezentacjaelabs i zachowuje parametry', async ({ page }) => {
+  await page.goto('/prezentacja-elabs/?source=old#film', { waitUntil: 'domcontentloaded' });
+  await page.waitForURL('/prezentacjaelabs/?source=old#film');
+  await expect(page.locator('h1')).toHaveText('Od telefonu klienta do gotowego wyniku');
+});
+
 for (const viewport of [
   { name: 'mobile-390', width: 390, height: 844 },
   { name: 'tablet-768', width: 768, height: 1024 },
@@ -65,7 +71,7 @@ for (const viewport of [
 ]) {
   test(`prezentacja ${viewport.name} bez overflow`, async ({ page }) => {
     await page.setViewportSize({ width: viewport.width, height: viewport.height });
-    await page.goto('/prezentacja-elabs/', { waitUntil: 'networkidle' });
+    await page.goto('/prezentacjaelabs/', { waitUntil: 'networkidle' });
 
     const metrics = await page.evaluate(() => {
       const player = document.querySelector('video').getBoundingClientRect();
