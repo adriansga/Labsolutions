@@ -386,7 +386,7 @@
     </div>
 
     <div class="video-shell" id="film">
-      <video controls autoplay muted playsinline preload="auto" poster="poster.svg" aria-label="Pełna prezentacja systemu ELABS">
+      <video controls autoplay muted playsinline preload="auto" poster="poster.svg" tabindex="0" aria-label="Pełna prezentacja systemu ELABS">
         <source src="../media/elabs-prezentacja-v10-web.mp4" type="video/mp4">
         Twoja przeglądarka nie obsługuje odtwarzania filmu HTML5.
       </video>
@@ -504,6 +504,7 @@
       try {
         await video.play();
         soundButton.hidden = true;
+        video.focus({ preventScroll: true });
         playerStatus.textContent = 'Dźwięk jest włączony. Film rozpoczął się od początku.';
       } catch (_) {
         video.muted = true;

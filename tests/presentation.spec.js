@@ -57,6 +57,8 @@ test('włączenie dźwięku zaczyna film od początku', async ({ page }) => {
   await expect.poll(() => video.evaluate((element) => element.currentTime), { timeout: 10_000 }).toBeGreaterThan(0.05);
   await page.locator('.sound-cta').click();
   await expect(page.locator('.sound-cta')).toBeHidden();
+  expect(await page.locator('.skip-link').evaluate((element) => element.getBoundingClientRect().bottom)).toBeLessThanOrEqual(0);
+  expect(await video.evaluate((element) => document.activeElement === element)).toBe(true);
   expect(await video.evaluate((element) => ({ paused: element.paused, muted: element.muted, currentTime: element.currentTime }))).toMatchObject({ paused: false, muted: false });
   expect(await video.evaluate((element) => element.currentTime)).toBeLessThan(2);
 });
