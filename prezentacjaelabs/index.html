@@ -208,6 +208,16 @@
       font-size: 14px;
     }
     .video-help a { color: var(--brand-dark); font-weight: 700; }
+    .tracking-note {
+      display: none;
+      width: min(920px, calc(100% - 40px));
+      margin: 14px auto 0;
+      color: var(--muted);
+      font-size: 13px;
+      text-align: center;
+    }
+    .tracking-note.is-visible { display: block; }
+    .tracking-note a { color: var(--brand-dark); font-weight: 700; }
 
     main { overflow: hidden; }
     .section { padding: 88px 0; }
@@ -397,6 +407,7 @@
 
   <main>
     <p class="container video-help">Film ma 18 minut i 30 sekund. Jeśli odtwarzacz nie działa, <a href="../media/elabs-prezentacja-v10-web.mp4">otwórz plik MP4 bezpośrednio</a>.</p>
+    <p class="tracking-note" id="tracking-note">Ten indywidualny link zapisuje dla nadawcy rozpoczęcie, postęp i zakończenie oglądania. Nie używa cookies ani identyfikatora reklamowego. <a href="../polityka-prywatnosci.html">Szczegóły prywatności</a>.</p>
 
     <section class="section" aria-labelledby="chapters-title">
       <div class="container">
@@ -482,10 +493,73 @@
     </div>
   </footer>
 
+  <script src="analytics-config.js"></script>
   <script>
     const video = document.querySelector('video');
     const soundButton = document.querySelector('.sound-cta');
     const playerStatus = document.querySelector('#player-status');
+    const trackingNote = document.querySelector('#tracking-note');
+    const trackingConfig = window.ELABS_ANALYTICS;
+    const hashParams = new URLSearchParams(location.hash.slice(1));
+    const suppliedTrackingToken = hashParams.get('v');
+    const previousTrackingToken = sessionStorage.getItem('elabsPresentationViewer');
+    if (suppliedTrackingToken) {
+      if (previousTrackingToken && previousTrackingToken !== suppliedTrackingToken) {
+        sessionStorage.removeItem('elabsPresentationSession');
+        sessionStorage.removeItem('elabsPresentationWatched');
+      }
+      sessionStorage.setItem('elabsPresentationViewer', suppliedTrackingToken);
+      history.replaceState(null, '', location.pathname + location.search);
+    }
+    const trackingToken = suppliedTrackingToken || sessionStorage.getItem('elabsPresentationViewer');
+    const trackingSessionKey = 'elabsPresentationSession';
+    const trackingSession = sessionStorage.getItem(trackingSessionKey) || (crypto.randomUUID ? crypto.randomUUID() : `${Date.now()}-0000-4000-8000-000000000000`);
+    sessionStorage.setItem(trackingSessionKey, trackingSession);
+    let watchedSeconds = Number(sessionStorage.getItem('elabsPresentationWatched') || 0);
+    let activeSince = null;
+
+    const updateWatched = () => {
+      if (activeSince !== null) {
+        watchedSeconds += Math.max(0, (performance.now() - activeSince) / 1000);
+        sessionStorage.setItem('elabsPresentationWatched', watchedSeconds.toFixed(2));
+        activeSince = performance.now();
+      }
+    };
+    const setPlaybackClock = () => {
+      updateWatched();
+      activeSince = !video.paused && !video.ended && document.visibilityState === 'visible' ? performance.now() : null;
+    };
+    const track = (eventName) => {
+      if (!trackingToken || !trackingConfig) return Promise.resolve();
+      updateWatched();
+      trackingNote.classList.add('is-visible');
+      return fetch(`${trackingConfig.url}/rest/v1/rpc/elabs_presentation_track`, {
+        method:'POST',
+        headers:{ 'apikey':trackingConfig.anonKey, 'Authorization':`Bearer ${trackingConfig.anonKey}`, 'Content-Type':'application/json' },
+        body:JSON.stringify({
+          p_token:trackingToken,
+          p_session_id:trackingSession,
+          p_event:eventName,
+          p_position_seconds:Number(video.currentTime || 0).toFixed(2),
+          p_duration_seconds:Number.isFinite(video.duration) ? video.duration.toFixed(2) : 0,
+          p_watched_seconds:watchedSeconds.toFixed(2)
+        }),
+        keepalive:true
+      }).catch(() => undefined);
+    };
+
+    if (trackingToken && trackingConfig) {
+      trackingNote.classList.add('is-visible');
+      track('view');
+      window.setInterval(() => {
+        if (!video.paused && !video.ended && document.visibilityState === 'visible') track('heartbeat');
+      }, 15000);
+      video.addEventListener('play', () => { setPlaybackClock(); track('play'); });
+      video.addEventListener('pause', () => { setPlaybackClock(); track('pause'); });
+      video.addEventListener('ended', () => { setPlaybackClock(); track('complete'); });
+      document.addEventListener('visibilitychange', () => { setPlaybackClock(); if (document.visibilityState === 'hidden') track('heartbeat'); });
+      window.addEventListener('pagehide', () => { setPlaybackClock(); track('pagehide'); });
+    }
 
     const startMuted = async () => {
       video.muted = true;
@@ -504,6 +578,7 @@
       try {
         await video.play();
         soundButton.hidden = true;
+        track('sound_on');
         window.setTimeout(() => video.focus({ preventScroll: true }), 0);
         playerStatus.textContent = 'Dźwięk jest włączony. Film rozpoczął się od początku.';
       } catch (_) {
@@ -521,6 +596,7 @@
     document.querySelectorAll('[data-time]').forEach((button) => {
       button.addEventListener('click', async () => {
         video.currentTime = Number(button.dataset.time);
+        track('seek');
         video.scrollIntoView({ behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth', block: 'center' });
         try { await video.play(); } catch (_) { video.focus(); }
       });

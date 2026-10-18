@@ -63,6 +63,74 @@ test('włączenie dźwięku zaczyna film od początku', async ({ page }) => {
   expect(await video.evaluate((element) => element.currentTime)).toBeLessThan(2);
 });
 
+test('zwykły link nie uruchamia śledzenia oglądania', async ({ page }) => {
+  let trackingCalls = 0;
+  await page.route('**/rest/v1/rpc/elabs_presentation_track', async (route) => {
+    trackingCalls += 1;
+    await route.fulfill({ status: 200, contentType: 'application/json', body: '{"ok":true}' });
+  });
+  await page.goto('/prezentacjaelabs/', { waitUntil: 'domcontentloaded' });
+  await page.waitForTimeout(500);
+  await expect(page.locator('#tracking-note')).not.toHaveClass(/is-visible/);
+  expect(trackingCalls).toBe(0);
+});
+
+test('indywidualny link zapisuje odbiorcę bez cookies i usuwa token z paska', async ({ page }) => {
+  const calls = [];
+  await page.route('**/rest/v1/rpc/elabs_presentation_track', async (route) => {
+    calls.push(JSON.parse(route.request().postData() || '{}'));
+    await route.fulfill({ status: 200, contentType: 'application/json', body: '{"ok":true}' });
+  });
+  await page.goto('/prezentacjaelabs/#v=testowy-token-o-dlugosci-co-najmniej-32-znakow', { waitUntil: 'domcontentloaded' });
+  await expect(page.locator('#tracking-note')).toHaveClass(/is-visible/);
+  await expect.poll(() => calls.some((call) => call.p_event === 'view')).toBe(true);
+  expect(page.url()).not.toContain('testowy-token');
+  await page.locator('.sound-cta').click();
+  await expect.poll(() => calls.some((call) => call.p_event === 'sound_on')).toBe(true);
+  const payload = JSON.stringify(calls);
+  expect(payload).not.toContain('userAgent');
+  expect(payload).not.toContain('kierowniczka');
+  expect(await page.context().cookies()).toEqual([]);
+});
+
+test('prywatny raport pokazuje oglądalność i ukrywa token', async ({ page }) => {
+  await page.route('**/rest/v1/rpc/elabs_presentation_report', async (route) => {
+    await route.fulfill({ status: 200, contentType: 'application/json', body: JSON.stringify({
+      generated_at: '2026-10-18T14:00:00Z',
+      recipients: [{
+        label: 'Kierowniczka', visits: 2, watched_seconds: 754, furthest_seconds: 780,
+        duration_seconds: 1110, sound_on: true, completed: false, last_seen_at: '2026-10-18T13:59:00Z',
+        sessions: [{ started_at: '2026-10-18T13:40:00Z', last_seen_at: '2026-10-18T13:59:00Z', watched_seconds: 754, last_position_seconds: 770, furthest_seconds: 780, sound_on: true, completed: false }]
+      }]
+    }) });
+  });
+  await page.goto('/prezentacjaelabs/wyniki/#admin=prywatny-token-administratora', { waitUntil: 'domcontentloaded' });
+  await expect(page.locator('h2')).toHaveText('Kierowniczka');
+  await expect(page.locator('.stat').nth(1)).toContainText('12:34');
+  await expect(page.locator('.stat').nth(2)).toContainText('13:00 (70%)');
+  expect(page.url()).not.toContain('prywatny-token');
+});
+
+test('panel tworzy osobny nazwany link bez wysyłania surowego tokenu do bazy', async ({ page }) => {
+  let createPayload = null;
+  await page.route('**/rest/v1/rpc/elabs_presentation_report', async (route) => {
+    await route.fulfill({ status: 200, contentType: 'application/json', body: '{"generated_at":"2026-10-18T14:00:00Z","recipients":[]}' });
+  });
+  await page.route('**/rest/v1/rpc/elabs_presentation_create_recipient', async (route) => {
+    createPayload = JSON.parse(route.request().postData() || '{}');
+    await route.fulfill({ status: 200, contentType: 'application/json', body: '{"ok":true,"id":1,"label":"Dyrektor"}' });
+  });
+  await page.goto('/prezentacjaelabs/wyniki/#admin=prywatny-token-administratora', { waitUntil: 'domcontentloaded' });
+  await page.locator('#recipient-name').fill('Dyrektor');
+  await page.locator('#creator button').click();
+  await expect(page.locator('#created-link')).toHaveClass(/is-visible/);
+  await expect(page.locator('#created-link')).toContainText('Link dla Dyrektor');
+  expect(createPayload.p_label).toBe('Dyrektor');
+  expect(createPayload.p_token_hash).toMatch(/^[0-9a-f]{64}$/);
+  expect(createPayload).not.toHaveProperty('p_token');
+  expect(await page.locator('#created-link a').getAttribute('href')).toMatch(/\/prezentacjaelabs\/#v=[A-Za-z0-9_-]{40,}$/);
+});
+
 test('rozdział ustawia film we właściwym miejscu', async ({ page }) => {
   await page.goto('/prezentacjaelabs/', { waitUntil: 'domcontentloaded' });
   const video = page.locator('video');

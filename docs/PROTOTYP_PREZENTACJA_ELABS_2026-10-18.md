@@ -50,6 +50,9 @@ Jednym linkiem otworzyć pełną prezentację ELABS dla kierowniczki lub zarząd
 - Rozdział: klik ustawia czas filmu i uruchamia odtwarzanie.
 - Błąd: natywny komunikat przeglądarki oraz bezpośredni link do pliku MP4.
 - Ograniczony ruch: brak dekoracyjnych animacji; film pozostaje wyciszony do świadomego kliknięcia.
+- Link zwykły: nie uruchamia pomiaru oglądania.
+- Link indywidualny: pokazuje krótką informację o pomiarze i zapisuje otwarcie, realny czas odtwarzania, ostatni oraz najdalszy moment, dźwięk i zakończenie.
+- Raport prywatny: cztery główne metryki oraz tabela wizyt; dostęp tylko przez osobny losowy token administratora. Formularz nazwa odbiorcy → utwórz i skopiuj link pozwala samodzielnie przygotować osobne adresy dla 10 lub większej liczby osób.
 
 ## Copy
 
