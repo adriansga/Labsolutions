@@ -23,9 +23,11 @@ test('podstrona prezentacji ma pełny film i właściwe metadane', async ({ page
   await expect(page.locator('link[rel="canonical"]')).toHaveAttribute('href', 'https://labsolutions.pl/prezentacjaelabs/');
   await expect(page.locator('h1')).toHaveText('Od telefonu klienta do gotowego wyniku');
   await expect(page.locator('.chapter')).toHaveCount(4);
+  await expect(page.locator('.brand-logo')).toHaveAttribute('src', '../favicon.svg');
+  await expect(page.locator('.back-link')).toHaveCount(0);
 
   const video = page.locator('video');
-  await expect(video).toHaveAttribute('controls', '');
+  await expect(video).not.toHaveAttribute('controls', '');
   await expect(video).not.toHaveAttribute('autoplay', '');
   await expect(video).not.toHaveAttribute('muted', '');
   await expect(video).toHaveAttribute('playsinline', '');
@@ -40,9 +42,16 @@ test('podstrona prezentacji ma pełny film i właściwe metadane', async ({ page
   const duration = await video.evaluate((element) => element.duration);
   expect(duration).toBeGreaterThan(1109);
   expect(duration).toBeLessThan(1111);
+  expect(await video.evaluate((element) => element.controls)).toBe(false);
   expect(await video.evaluate((element) => ({ paused: element.paused, muted: element.muted, currentTime: element.currentTime }))).toEqual({ paused: true, muted: false, currentTime: 0 });
   await expect(page.locator('.sound-cta')).toBeVisible();
   await expect(page.locator('.sound-cta')).toHaveAttribute('aria-label', 'Odtwórz film z dźwiękiem');
+  await expect(page.locator('.player-controls')).toBeVisible();
+  await expect(page.locator('.progress')).toBeVisible();
+  await expect(page.locator('.fullscreen-toggle')).toBeVisible();
+  await expect(page.getByText('Film ma 18 minut i 30 sekund.')).toHaveCount(0);
+  await expect(page.getByText('Ten indywidualny link zapisuje')).toHaveCount(0);
+  await expect(page.getByText('Materiał demonstracyjny.')).toHaveCount(0);
 
   const publicHtml = await page.locator('html').evaluate((element) => element.outerHTML);
   expect(publicHtml).not.toContain('—');
@@ -60,6 +69,29 @@ test('duży przycisk play zaczyna film od początku z dźwiękiem', async ({ pag
   await expect.poll(() => video.evaluate((element) => document.activeElement === element)).toBe(true);
   expect(await video.evaluate((element) => ({ paused: element.paused, muted: element.muted, currentTime: element.currentTime }))).toMatchObject({ paused: false, muted: false });
   expect(await video.evaluate((element) => element.currentTime)).toBeLessThan(2);
+  await expect(page.locator('.play-toggle')).toHaveAttribute('aria-label', 'Wstrzymaj film');
+  await expect.poll(async () => Number(await page.locator('.progress').inputValue())).toBeGreaterThan(0);
+});
+
+test('w pełnym ekranie pasek postępu i sterowanie pozostają stale widoczne', async ({ page }) => {
+  await page.setViewportSize({ width: 1366, height: 768 });
+  await page.goto('/prezentacjaelabs/', { waitUntil: 'domcontentloaded' });
+  await page.locator('.sound-cta').click();
+  await expect.poll(() => page.locator('video').evaluate((element) => element.paused)).toBe(false);
+  await page.locator('.fullscreen-toggle').click();
+  await expect.poll(() => page.evaluate(() => Boolean(document.fullscreenElement || document.querySelector('.video-shell').classList.contains('is-fallback-fullscreen')))).toBe(true);
+  await page.waitForTimeout(2500);
+  await expect(page.locator('.player-controls')).toBeVisible();
+  await expect(page.locator('.progress')).toBeVisible();
+  await expect(page.locator('.fullscreen-toggle')).toBeVisible();
+  const fullscreenMetrics = await page.evaluate(() => {
+    const player = document.querySelector('.video-shell').getBoundingClientRect();
+    const controls = document.querySelector('.player-controls').getBoundingClientRect();
+    return { playerTop: player.top, playerBottom: player.bottom, controlsBottom: controls.bottom, viewportHeight: innerHeight };
+  });
+  expect(fullscreenMetrics.playerTop).toBe(0);
+  expect(fullscreenMetrics.playerBottom).toBeLessThanOrEqual(fullscreenMetrics.viewportHeight);
+  expect(fullscreenMetrics.controlsBottom).toBeLessThanOrEqual(fullscreenMetrics.viewportHeight);
 });
 
 test('zwykły link nie uruchamia śledzenia oglądania', async ({ page }) => {
@@ -70,7 +102,7 @@ test('zwykły link nie uruchamia śledzenia oglądania', async ({ page }) => {
   });
   await page.goto('/prezentacjaelabs/', { waitUntil: 'domcontentloaded' });
   await page.waitForTimeout(500);
-  await expect(page.locator('#tracking-note')).not.toHaveClass(/is-visible/);
+  await expect(page.locator('#tracking-note')).toHaveCount(0);
   expect(trackingCalls).toBe(0);
 });
 
@@ -81,7 +113,7 @@ test('indywidualny link zapisuje odbiorcę bez cookies i usuwa token z paska', a
     await route.fulfill({ status: 200, contentType: 'application/json', body: '{"ok":true}' });
   });
   await page.goto('/prezentacjaelabs/#v=testowy-token-o-dlugosci-co-najmniej-32-znakow', { waitUntil: 'domcontentloaded' });
-  await expect(page.locator('#tracking-note')).toHaveClass(/is-visible/);
+  await expect(page.locator('#tracking-note')).toHaveCount(0);
   await expect.poll(() => calls.some((call) => call.p_event === 'view')).toBe(true);
   expect(page.url()).not.toContain('testowy-token');
   await page.locator('.sound-cta').click();
@@ -152,6 +184,8 @@ test('stary adres przekierowuje na prezentacjaelabs i zachowuje parametry', asyn
 for (const viewport of [
   { name: 'mobile-390', width: 390, height: 844 },
   { name: 'tablet-768', width: 768, height: 1024 },
+  { name: 'laptop-1366x768', width: 1366, height: 768 },
+  { name: 'laptop-1440x900', width: 1440, height: 900 },
   { name: 'desktop-1440', width: 1440, height: 1000 }
 ]) {
   test(`prezentacja ${viewport.name} bez overflow`, async ({ page }) => {
@@ -159,24 +193,33 @@ for (const viewport of [
     await page.goto('/prezentacjaelabs/', { waitUntil: 'domcontentloaded' });
 
     const metrics = await page.evaluate(() => {
-      const player = document.querySelector('video').getBoundingClientRect();
+      const player = document.querySelector('.video-shell').getBoundingClientRect();
+      const stage = document.querySelector('.video-stage').getBoundingClientRect();
+      const controls = document.querySelector('.player-controls').getBoundingClientRect();
+      const controlsHit = document.elementFromPoint(controls.left + 24, controls.top + (controls.height / 2));
       return {
         scrollWidth: document.documentElement.scrollWidth,
         clientWidth: document.documentElement.clientWidth,
-        playerRatio: player.width / player.height,
+        playerRatio: stage.width / stage.height,
         playerWidth: player.width,
         playerTop: player.top,
         playerBottom: player.bottom,
+        controlsHeight: controls.height,
+        controlsBottom: controls.bottom,
+        controlsReallyVisible: Boolean(controlsHit && controlsHit.closest('.player-controls')),
         chapterTargets: [...document.querySelectorAll('.chapter')].map((element) => element.getBoundingClientRect().height)
       };
     });
     expect(metrics.scrollWidth).toBeLessThanOrEqual(metrics.clientWidth);
     expect(metrics.playerRatio).toBeGreaterThan(1.76);
     expect(metrics.playerRatio).toBeLessThan(1.79);
-    if (viewport.width > 900) expect(metrics.playerWidth).toBeGreaterThanOrEqual(viewport.width * 0.82);
+    if (viewport.width > 900) expect(metrics.playerWidth).toBeGreaterThanOrEqual(viewport.width * 0.5);
     else expect(metrics.playerWidth).toBeGreaterThanOrEqual(viewport.width * 0.94);
     expect(metrics.playerTop).toBeGreaterThanOrEqual(0);
-    expect(metrics.playerBottom).toBeLessThanOrEqual(viewport.height + 1);
+    expect(metrics.playerBottom).toBeLessThanOrEqual(viewport.height);
+    expect(metrics.controlsHeight).toBeGreaterThanOrEqual(44);
+    expect(metrics.controlsBottom).toBeLessThanOrEqual(viewport.height);
+    expect(metrics.controlsReallyVisible).toBe(true);
     expect(metrics.chapterTargets.every((height) => height >= 44)).toBe(true);
 
     await page.screenshot({

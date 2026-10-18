@@ -94,8 +94,8 @@ Kontrast tekstu i CTA minimum WCAG AA.
 | Mobile nav | button + panel | closed / open | `aria-expanded`, zamknięcie po wyborze linku |
 | Brand lockup | znak ELABS / nazwa / domena | desktop / mobile | `ELABS` pozostaje nazwą główną, a `labsolutions.pl` jest mniejszym tekstem pomocniczym w kolorze `--muted` |
 | Clean URL | `/` / bezpośrednie `/index.html` | wejście / link wewnętrzny | kanoniczny adres to `https://labsolutions.pl/`; bezpośrednie `/index.html` jest czyszczone przez `history.replaceState` z zachowaniem query i hash |
-| Presentation player | HTML5 video / rozdziały | poster / playing-with-sound / paused / error | jeden dominujący odtwarzacz 16:9 widoczny w całości na pierwszym ekranie; bez autoplay; `playsinline`, `preload="metadata"`, natywne sterowanie; duży szary przycisk Play na środku miniatury uruchamia film od początku z dźwiękiem; przyciski rozdziałów ustawiają właściwy czas filmu |
-| Presentation tracking | link zwykły / indywidualny / prywatny raport | tracking-off / tracking-on / report-loading / report-error / recipient-created | analityka uruchamia się tylko dla losowego tokenu po `#v=`; widoczna informacja o pomiarze; brak cookies, IP i fingerprintingu w tabeli; prywatny raport wymaga osobnego tokenu po `#admin=` i pozwala Adrianowi tworzyć dowolną liczbę nazwanych linków; baza przechowuje wyłącznie SHA-256 tokenu odbiorcy |
+| Presentation player | HTML5 video / rozdziały | poster / playing-with-sound / paused / fullscreen / error | jeden dominujący odtwarzacz widoczny w całości na pierwszym ekranie; bez autoplay; `playsinline`, `preload="metadata"`; duży szary przycisk Play na środku miniatury uruchamia film od początku z dźwiękiem; własny pasek sterowania jest stale widoczny także w pełnym ekranie i zawiera play/pauzę, czas, przewijanie, dźwięk oraz pełny ekran; przyciski rozdziałów ustawiają właściwy czas filmu; bez JavaScript pozostają natywne kontrolki |
+| Presentation tracking | link zwykły / indywidualny / prywatny raport | tracking-off / tracking-on / report-loading / report-error / recipient-created | analityka uruchamia się tylko dla losowego tokenu po `#v=`; pod odtwarzaczem nie ma osobnego komunikatu, a zakres i retencję opisuje polityka prywatności; brak cookies, IP i fingerprintingu w tabeli; prywatny raport wymaga osobnego tokenu po `#admin=` i pozwala Adrianowi tworzyć dowolną liczbę nazwanych linków; baza przechowuje wyłącznie SHA-256 tokenu odbiorcy |
 
 ## 7. Inwentarz ekranu
 
@@ -111,7 +111,7 @@ Kontrast tekstu i CTA minimum WCAG AA.
 | Wiarygodność + FAQ | odpowiedzi na obiekcje | przywrócona karta Adriana + `details` | IMPLEMENTED V3 |
 | Kontakt | rozpoczęcie rozmowy | formularz mailto + e-mail bezpośredni | IMPLEMENTED |
 | Polityka prywatności + informacje prawne | zgodny z faktycznym działaniem opis strony | statyczne podstrony, prawdziwy e-mail, hosting GitHub Pages, brak nieistniejących pakietów i gwarancji | IMPLEMENTED V7 |
-| Prezentacja ELABS `/prezentacjaelabs/` | przekazanie kierownictwu pełnego filmu jednym prostym linkiem | spokojny hero, odtwarzacz, 4 rozdziały, zakres filmu, kontakt i powrót na landing | IMPLEMENTED 2026-10-18 |
+| Prezentacja ELABS `/prezentacjaelabs/` | przekazanie kierownictwu pełnego filmu jednym prostym linkiem | właściwy znak logo jako jedyny element nagłówka i zarazem powrót na landing, spokojny hero, odtwarzacz ze stałym paskiem, 4 rozdziały, zakres filmu i kontakt | IMPLEMENTED 2026-10-18 |
 | Prywatny raport `/prezentacjaelabs/wyniki/` | sprawdzenie przez Adriana, czy wskazany odbiorca obejrzał film | 4 metryki, sesje, ostatni i najdalszy moment, auto-refresh | IMPLEMENTED 2026-10-18 |
 
 ## 8. Dostępność
@@ -123,7 +123,7 @@ Kontrast tekstu i CTA minimum WCAG AA.
 - Informacja nie opiera się tylko na kolorze.
 - Screenshoty mają opis alternatywny; dekoracyjne SVG są ukryte dla czytników.
 - Formularz nie udaje wysłania danych — tworzy prawdziwą wiadomość e-mail.
-- Podstrona prezentacji ma opis odtwarzacza i rozdziały dostępne z klawiatury. Film nie uruchamia się automatycznie. Duży szary przycisk Play jest widoczny na środku miniatury; świadome kliknięcie uruchamia prezentację od początku z dźwiękiem.
+- Podstrona prezentacji ma opis odtwarzacza i rozdziały dostępne z klawiatury. Film nie uruchamia się automatycznie. Duży szary przycisk Play jest widoczny na środku miniatury; świadome kliknięcie uruchamia prezentację od początku z dźwiękiem. Stały własny pasek sterowania ma czytelne etykiety, widoczny focus i nie znika w pełnym ekranie.
 - Gdy JavaScript jest wyłączony, natywne sterowanie filmu nadal pozwala obejrzeć całość.
 
 ## 9. Zakazy i wyjątki

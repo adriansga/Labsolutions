@@ -73,7 +73,7 @@
 
     .hero {
       position: relative;
-      overflow: hidden;
+      overflow: visible;
       color: #fff;
       background:
         radial-gradient(circle at 86% 0%, rgba(34, 184, 207, .26), transparent 34%),
@@ -99,34 +99,14 @@
       justify-content: space-between;
       gap: 24px;
     }
-    .brand { display: inline-flex; align-items: center; gap: 12px; text-decoration: none; }
-    .brand-mark {
-      display: grid;
-      place-items: center;
-      width: 46px;
-      height: 46px;
+    .brand { display: inline-flex; align-items: center; text-decoration: none; }
+    .brand-logo {
+      display: block;
+      width: 52px;
+      height: 52px;
       border-radius: 16px;
-      background: linear-gradient(145deg, var(--brand), var(--cyan));
       box-shadow: 0 12px 28px rgba(14, 127, 184, .3);
-      color: #fff;
-      font-weight: 800;
-      font-size: 15px;
-      letter-spacing: -.04em;
     }
-    .brand-copy { display: grid; line-height: 1.12; }
-    .brand-name { font-weight: 800; letter-spacing: .08em; }
-    .brand-domain { color: #a9c3d8; font-size: 12px; letter-spacing: .04em; }
-    .back-link {
-      min-height: 44px;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      color: #d9e8f4;
-      text-decoration: none;
-      font-weight: 650;
-      font-size: 15px;
-    }
-    .back-link:hover { color: #fff; }
     .hero-copy {
       position: relative;
       z-index: 2;
@@ -161,7 +141,7 @@
     .video-shell {
       position: relative;
       z-index: 3;
-      width: min(1520px, calc(100% - 24px));
+      width: min(1520px, calc(100% - 24px), var(--player-fit-width, 1520px));
       margin: 0 auto -190px;
       padding: 6px;
       border: 1px solid rgba(115,217,232,.4);
@@ -170,11 +150,19 @@
       box-shadow: 0 34px 90px rgba(3, 13, 24, .42), 0 0 0 1px rgba(115,217,232,.08);
       backdrop-filter: blur(16px);
     }
+    .video-stage {
+      position: relative;
+      overflow: hidden;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      border-radius: 18px 18px 0 0;
+      background: #02070c;
+    }
     video {
       display: block;
       width: 100%;
-      aspect-ratio: 16 / 9;
-      border-radius: 18px;
+      height: 100%;
+      border-radius: inherit;
       background: #02070c;
       object-fit: contain;
     }
@@ -207,27 +195,94 @@
     }
     .sound-cta:hover { background: #eef1f4; box-shadow: 0 20px 56px rgba(0,0,0,.5); transform: translate(-50%, -50%) scale(1.06); }
     .sound-cta[hidden] { display: none; }
-    .video-help {
+    .player-controls {
       position: relative;
-      z-index: 2;
-      margin: 212px auto 0;
-      text-align: center;
-      color: var(--muted);
-      font-size: 14px;
-    }
-    .video-help a { color: var(--brand-dark); font-weight: 700; }
-    .tracking-note {
+      z-index: 6;
       display: none;
-      width: min(920px, calc(100% - 40px));
-      margin: 14px auto 0;
-      color: var(--muted);
+      align-items: center;
+      gap: 9px;
+      min-height: 58px;
+      padding: 7px 10px;
+      border-radius: 0 0 18px 18px;
+      color: #eef6fc;
+      background: #08131d;
+    }
+    .video-shell.custom-ready .player-controls { display: flex; }
+    .control-button {
+      min-width: 44px;
+      height: 44px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 7px;
+      padding: 0 10px;
+      border: 1px solid rgba(255,255,255,.16);
+      border-radius: 10px;
+      color: #eef6fc;
+      background: rgba(255,255,255,.08);
+      font: inherit;
       font-size: 13px;
+      font-weight: 750;
+      cursor: pointer;
+    }
+    .control-button:hover { background: rgba(255,255,255,.16); }
+    .control-button:focus-visible, .progress:focus-visible { outline: 3px solid #73d9e8; outline-offset: 2px; }
+    .control-icon { font-size: 18px; line-height: 1; }
+    .player-time {
+      min-width: 42px;
+      color: #d9e8f4;
+      font-size: 12px;
+      font-variant-numeric: tabular-nums;
       text-align: center;
     }
-    .tracking-note.is-visible { display: block; }
-    .tracking-note a { color: var(--brand-dark); font-weight: 700; }
+    .progress {
+      flex: 1 1 auto;
+      min-width: 80px;
+      height: 28px;
+      margin: 0;
+      accent-color: #73d9e8;
+      cursor: pointer;
+    }
+    .video-shell:fullscreen,
+    .video-shell.is-native-fullscreen,
+    .video-shell.is-fallback-fullscreen {
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      width: 100% !important;
+      height: 100% !important;
+      margin: 0;
+      padding: 0;
+      border: 0;
+      border-radius: 0;
+      background: #000;
+      box-shadow: none;
+      display: flex;
+      flex-direction: column;
+    }
+    .video-shell:fullscreen .video-stage,
+    .video-shell.is-native-fullscreen .video-stage,
+    .video-shell.is-fallback-fullscreen .video-stage {
+      flex: 1 1 auto;
+      min-height: 0;
+      aspect-ratio: auto;
+      border-radius: 0;
+    }
+    .video-shell:fullscreen .player-controls,
+    .video-shell.is-native-fullscreen .player-controls,
+    .video-shell.is-fallback-fullscreen .player-controls {
+      flex: 0 0 auto;
+      width: 100%;
+      min-height: 64px;
+      padding: 10px 16px max(10px, env(safe-area-inset-bottom));
+      border-radius: 0;
+    }
+    .video-shell:fullscreen video,
+    .video-shell.is-native-fullscreen video,
+    .video-shell.is-fallback-fullscreen video { border-radius: 0; }
+    body.player-fullscreen { overflow: hidden; }
 
-    main { overflow: hidden; }
+    main { overflow: hidden; padding-top: 212px; }
     .section { padding: 88px 0; }
     .section-heading { max-width: 720px; margin-bottom: 34px; }
     .section-heading .eyebrow { color: var(--brand); margin-bottom: 10px; }
@@ -354,27 +409,29 @@
       .cta-card { grid-template-columns: 1fr; }
       .cta-card .button { justify-self: start; }
     }
-    @media (min-width: 901px) and (max-height: 1050px) {
-      .video-shell { width: min(1220px, calc(100% - 24px)); }
-    }
     @media (min-width: 901px) and (max-height: 820px) {
-      .video-shell { width: min(920px, calc(100% - 24px)); }
+      .nav { min-height: 58px; }
+      .hero-copy { margin-top: 0; margin-bottom: 10px; }
+      .hero-copy .lead { display: none; }
+      h1 { font-size: clamp(2rem, 3.2vw, 2.8rem); }
     }
     @media (max-width: 600px) {
       .container { width: min(100% - 32px, 1180px); }
       .hero { padding-bottom: 48px; }
       .nav { min-height: 64px; }
-      .brand-mark { width: 46px; height: 46px; border-radius: 14px; }
-      .brand-name { font-size: 15px; }
-      .back-link span { display: none; }
-      .back-link::after { content: "Strona główna"; }
+      .brand-logo { width: 46px; height: 46px; border-radius: 14px; }
       .hero-copy { margin-top: 10px; margin-bottom: 16px; }
       h1 { font-size: clamp(2.25rem, 11vw, 3.6rem); }
       .lead { font-size: 1rem; line-height: 1.6; }
-      .video-shell { width: calc(100% - 12px); margin-bottom: -90px; padding: 3px; border-radius: 16px; }
-      video { border-radius: 11px; }
+      .video-shell { width: min(calc(100% - 12px), var(--player-fit-width, 100%)); margin-bottom: -90px; padding: 3px; border-radius: 16px; }
+      .video-stage { border-radius: 11px 11px 0 0; }
       .sound-cta { width: 74px; height: 74px; }
-      .video-help { margin-top: 110px; padding-inline: 14px; }
+      .player-controls { min-height: 54px; gap: 5px; padding: 5px 6px; border-radius: 0 0 11px 11px; }
+      .control-button { min-width: 40px; width: 40px; height: 40px; padding: 0; }
+      .control-text { display: none; }
+      .player-time { min-width: 38px; font-size: 11px; }
+      .progress { min-width: 54px; }
+      main { padding-top: 110px; }
       .section { padding: 68px 0; }
       .chapters { grid-template-columns: 1fr; }
       .chapter { min-height: 0; padding: 20px; }
@@ -393,14 +450,9 @@
   <a class="skip-link" href="#film">Przejdź do filmu</a>
   <header class="hero">
     <div class="container nav">
-      <a class="brand" href="../" aria-label="ELABS, strona główna">
-        <span class="brand-mark" aria-hidden="true">EL</span>
-        <span class="brand-copy">
-          <span class="brand-name">ELABS</span>
-          <span class="brand-domain">labsolutions.pl</span>
-        </span>
+      <a class="brand" href="../" aria-label="Labsolutions, strona główna">
+        <img class="brand-logo" src="../favicon.svg" alt="">
       </a>
-      <a class="back-link" href="../"><span>Wróć do strony głównej</span> <span aria-hidden="true">→</span></a>
     </div>
 
     <div class="container hero-copy">
@@ -410,19 +462,26 @@
     </div>
 
     <div class="video-shell" id="film">
-      <video controls playsinline preload="metadata" poster="poster.svg" tabindex="0" aria-label="Pełna prezentacja systemu ELABS">
-        <source src="../media/elabs-prezentacja-v10-web.mp4" type="video/mp4">
-        Twoja przeglądarka nie obsługuje odtwarzania filmu HTML5.
-      </video>
-      <button class="sound-cta" type="button" aria-label="Odtwórz film z dźwiękiem"><span class="sr-only">Odtwórz film z dźwiękiem</span></button>
+      <div class="video-stage">
+        <video controls playsinline preload="metadata" poster="poster.svg" tabindex="0" aria-label="Pełna prezentacja systemu ELABS">
+          <source src="../media/elabs-prezentacja-v10-web.mp4" type="video/mp4">
+          Twoja przeglądarka nie obsługuje odtwarzania filmu HTML5.
+        </video>
+        <button class="sound-cta" type="button" aria-label="Odtwórz film z dźwiękiem"><span class="sr-only">Odtwórz film z dźwiękiem</span></button>
+      </div>
+      <div class="player-controls" role="group" aria-label="Sterowanie filmem">
+        <button class="control-button play-toggle" type="button" aria-label="Odtwórz film"><span class="control-icon" aria-hidden="true">▶</span></button>
+        <span class="player-time current-time" aria-label="Aktualny czas">00:00</span>
+        <input class="progress" type="range" min="0" max="1110" step="0.1" value="0" aria-label="Postęp filmu">
+        <span class="player-time duration-time" aria-label="Długość filmu">18:30</span>
+        <button class="control-button mute-toggle" type="button" aria-label="Wycisz dźwięk"><span class="control-icon" aria-hidden="true">●</span><span class="control-text">Dźwięk</span></button>
+        <button class="control-button fullscreen-toggle" type="button" aria-label="Włącz pełny ekran"><span class="control-icon" aria-hidden="true">⛶</span><span class="control-text">Pełny ekran</span></button>
+      </div>
       <span id="player-status" class="sr-only" aria-live="polite"></span>
     </div>
   </header>
 
   <main>
-    <p class="container video-help">Film ma 18 minut i 30 sekund. Jeśli odtwarzacz nie działa, <a href="../media/elabs-prezentacja-v10-web.mp4">otwórz plik MP4 bezpośrednio</a>.</p>
-    <p class="tracking-note" id="tracking-note">Ten indywidualny link zapisuje dla nadawcy rozpoczęcie, postęp i zakończenie oglądania. Nie używa cookies ani identyfikatora reklamowego. <a href="../polityka-prywatnosci.html">Szczegóły prywatności</a>.</p>
-
     <section class="section" aria-labelledby="chapters-title">
       <div class="container">
         <div class="section-heading">
@@ -503,16 +562,24 @@
   <footer>
     <div class="container footer-row">
       <p>ELABS · labsolutions.pl</p>
-      <p>Materiał demonstracyjny. Lektor przygotowany na podstawie zatwierdzonego nagrania autora.</p>
     </div>
   </footer>
 
   <script src="analytics-config.js"></script>
   <script>
+    const player = document.querySelector('.video-shell');
+    const videoStage = document.querySelector('.video-stage');
     const video = document.querySelector('video');
     const soundButton = document.querySelector('.sound-cta');
+    const playToggle = document.querySelector('.play-toggle');
+    const playIcon = playToggle.querySelector('.control-icon');
+    const muteToggle = document.querySelector('.mute-toggle');
+    const muteIcon = muteToggle.querySelector('.control-icon');
+    const fullscreenToggle = document.querySelector('.fullscreen-toggle');
+    const progress = document.querySelector('.progress');
+    const currentTimeLabel = document.querySelector('.current-time');
+    const durationTimeLabel = document.querySelector('.duration-time');
     const playerStatus = document.querySelector('#player-status');
-    const trackingNote = document.querySelector('#tracking-note');
     const trackingConfig = window.ELABS_ANALYTICS;
     const hashParams = new URLSearchParams(location.hash.slice(1));
     const suppliedTrackingToken = hashParams.get('v');
@@ -546,7 +613,6 @@
     const track = (eventName) => {
       if (!trackingToken || !trackingConfig) return Promise.resolve();
       updateWatched();
-      trackingNote.classList.add('is-visible');
       return fetch(`${trackingConfig.url}/rest/v1/rpc/elabs_presentation_track`, {
         method:'POST',
         headers:{ 'apikey':trackingConfig.anonKey, 'Authorization':`Bearer ${trackingConfig.anonKey}`, 'Content-Type':'application/json' },
@@ -563,7 +629,6 @@
     };
 
     if (trackingToken && trackingConfig) {
-      trackingNote.classList.add('is-visible');
       track('view');
       window.setInterval(() => {
         if (!video.paused && !video.ended && document.visibilityState === 'visible') track('heartbeat');
@@ -574,6 +639,118 @@
       document.addEventListener('visibilitychange', () => { setPlaybackClock(); if (document.visibilityState === 'hidden') track('heartbeat'); });
       window.addEventListener('pagehide', () => { setPlaybackClock(); track('pagehide'); });
     }
+
+    const formatTime = (seconds) => {
+      const safeSeconds = Number.isFinite(seconds) ? Math.max(0, Math.floor(seconds)) : 0;
+      const minutes = Math.floor(safeSeconds / 60);
+      return `${String(minutes).padStart(2, '0')}:${String(safeSeconds % 60).padStart(2, '0')}`;
+    };
+    const isFullscreen = () => Boolean(document.fullscreenElement || document.webkitFullscreenElement || player.classList.contains('is-fallback-fullscreen'));
+    const syncControls = () => {
+      player.classList.toggle('is-native-fullscreen', Boolean(document.fullscreenElement || document.webkitFullscreenElement));
+      const duration = Number.isFinite(video.duration) ? video.duration : 1110;
+      progress.max = duration;
+      progress.value = Math.min(video.currentTime || 0, duration);
+      currentTimeLabel.textContent = formatTime(video.currentTime);
+      durationTimeLabel.textContent = formatTime(duration);
+      playIcon.textContent = video.paused ? '▶' : 'Ⅱ';
+      playToggle.setAttribute('aria-label', video.paused ? 'Odtwórz film' : 'Wstrzymaj film');
+      muteIcon.textContent = video.muted || video.volume === 0 ? '×' : '♪';
+      muteToggle.setAttribute('aria-label', video.muted || video.volume === 0 ? 'Włącz dźwięk' : 'Wycisz dźwięk');
+      fullscreenToggle.setAttribute('aria-label', isFullscreen() ? 'Wyłącz pełny ekran' : 'Włącz pełny ekran');
+      const fullscreenText = fullscreenToggle.querySelector('.control-text');
+      if (fullscreenText) fullscreenText.textContent = isFullscreen() ? 'Zamknij pełny ekran' : 'Pełny ekran';
+    };
+
+    let fitFrame = null;
+    const fitPlayerToViewport = () => {
+      if (fitFrame !== null) cancelAnimationFrame(fitFrame);
+      fitFrame = requestAnimationFrame(() => {
+        fitFrame = null;
+        player.style.removeProperty('--player-fit-width');
+        if (isFullscreen() || window.innerWidth <= 600) return;
+        const playerTop = player.getBoundingClientRect().top;
+        const verticalChrome = player.offsetHeight - videoStage.offsetHeight;
+        const horizontalChrome = player.offsetWidth - videoStage.offsetWidth;
+        const availableStageHeight = Math.max(180, window.innerHeight - playerTop - verticalChrome - 6);
+        const fittedWidth = Math.max(360, Math.floor((availableStageHeight * 16 / 9) + horizontalChrome));
+        player.style.setProperty('--player-fit-width', `${fittedWidth}px`);
+      });
+    };
+
+    const togglePlayback = async () => {
+      if (!video.paused) {
+        video.pause();
+        return;
+      }
+      video.muted = false;
+      try {
+        await video.play();
+      } catch (_) {
+        playerStatus.textContent = 'Nie udało się uruchomić filmu. Użyj przycisku odtwarzania ponownie.';
+      }
+    };
+
+    const leaveFallbackFullscreen = () => {
+      player.classList.remove('is-fallback-fullscreen');
+      document.body.classList.remove('player-fullscreen');
+    };
+    const toggleFullscreen = async () => {
+      try {
+        if (player.classList.contains('is-fallback-fullscreen')) {
+          leaveFallbackFullscreen();
+        } else if (document.fullscreenElement || document.webkitFullscreenElement) {
+          const exitFullscreen = document.exitFullscreen || document.webkitExitFullscreen;
+          await exitFullscreen.call(document);
+        } else if (player.requestFullscreen) {
+          await player.requestFullscreen();
+        } else if (player.webkitRequestFullscreen) {
+          await player.webkitRequestFullscreen();
+        } else {
+          player.classList.add('is-fallback-fullscreen');
+          document.body.classList.add('player-fullscreen');
+        }
+      } catch (_) {
+        player.classList.add('is-fallback-fullscreen');
+        document.body.classList.add('player-fullscreen');
+      }
+      syncControls();
+      fitPlayerToViewport();
+    };
+
+    video.controls = false;
+    player.classList.add('custom-ready');
+    playToggle.addEventListener('click', togglePlayback);
+    video.addEventListener('click', togglePlayback);
+    muteToggle.addEventListener('click', () => {
+      video.muted = !(video.muted || video.volume === 0);
+      if (!video.muted && video.volume === 0) video.volume = 1;
+      syncControls();
+    });
+    progress.addEventListener('input', () => {
+      video.currentTime = Number(progress.value);
+      syncControls();
+    });
+    progress.addEventListener('change', () => track('seek'));
+    fullscreenToggle.addEventListener('click', toggleFullscreen);
+    video.addEventListener('dblclick', toggleFullscreen);
+    video.addEventListener('timeupdate', syncControls);
+    video.addEventListener('durationchange', () => { syncControls(); fitPlayerToViewport(); });
+    video.addEventListener('loadedmetadata', () => { syncControls(); fitPlayerToViewport(); });
+    video.addEventListener('play', syncControls);
+    video.addEventListener('pause', syncControls);
+    video.addEventListener('ended', syncControls);
+    video.addEventListener('volumechange', syncControls);
+    document.addEventListener('fullscreenchange', () => { syncControls(); fitPlayerToViewport(); });
+    document.addEventListener('webkitfullscreenchange', () => { syncControls(); fitPlayerToViewport(); });
+    window.addEventListener('resize', fitPlayerToViewport);
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape' && player.classList.contains('is-fallback-fullscreen')) {
+        leaveFallbackFullscreen();
+        syncControls();
+        fitPlayerToViewport();
+      }
+    });
 
     soundButton.addEventListener('click', async () => {
       video.currentTime = 0;
@@ -598,6 +775,8 @@
     });
 
     playerStatus.textContent = 'Kliknij duży przycisk odtwarzania, aby rozpocząć film z dźwiękiem.';
+    syncControls();
+    fitPlayerToViewport();
     document.querySelectorAll('[data-time]').forEach((button) => {
       button.addEventListener('click', async () => {
         video.currentTime = Number(button.dataset.time);
